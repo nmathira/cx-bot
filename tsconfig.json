@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ESNext",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "lib": [
+      "ESNext",
+      "ESNext.Array",
+      "ESNext.AsyncIterable",
+      "ESNext.Intl",
+      "ESNext.Symbol",
+      "DOM"
+    ],
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "declaration": true,
+    "resolveJsonModule": true
+  },
+  "include": ["src"],
+  "exclude": [
+    "node_modules"
+  ]
+}

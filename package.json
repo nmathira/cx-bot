@@ -1,0 +1,17 @@
+{
+  "name": "cx-bot-rewrite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^15.6.0",
+    "discord-akairo": "github:1Computer1/discord-akairo",
+    "discord.js": "^12.5.3"
+  }
+}

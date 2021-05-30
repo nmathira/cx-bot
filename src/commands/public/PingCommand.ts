@@ -12,8 +12,9 @@ export default class PingCommand extends Command {
                 examples: ["ping"]
             },
             ratelimit: 3,
-            });
+        });
     }
+
     public async exec(message: Message): Promise<Message> {
         let initial = await message.util.reply()
         return message.util.send(`ping: \`${this.client.ws.ping}ms\``);

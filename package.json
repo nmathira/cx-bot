@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/node": "^15.6.0",
+    "common-tags": "^1.8.0",
     "discord-akairo": "github:1Computer1/discord-akairo",
     "discord.js": "^12.5.3"
   }

@@ -1,7 +1,7 @@
 import {Command} from "discord-akairo";
 import {GuildMember, Message, MessageEmbed} from "discord.js";
 
-export default class UserCommand extends Command {
+export default class User extends Command {
     public constructor() {
         super("userinfo", {
             aliases: ["userinfo", "ui"],

@@ -2,7 +2,7 @@ import {Command} from "discord-akairo";
 import {Message, MessageEmbed} from "discord.js";
 import {stripIndents} from "common-tags";
 
-export default class HelpCommand extends Command {
+export default class Help extends Command {
     public constructor() {
         super("help", {
             aliases: ["help", "commands"],
@@ -29,7 +29,7 @@ export default class HelpCommand extends Command {
                 .setAuthor(`Help | ${command}`, this.client.user.displayAvatarURL())
                 .setColor("RANDOM")
                 .setDescription(stripIndents`
-                **Description:**
+                **Description:**\n
                 ${command.description.content || "No content provided."}
                 
                 **Usage:**

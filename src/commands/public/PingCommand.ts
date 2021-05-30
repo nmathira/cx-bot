@@ -22,8 +22,8 @@ export default class PingCommand extends Command {
         const timeDiff: number = (sent.editedAt || sent.createdAt) - (message.editedAt || message.createdAt);
 
         return message.util.send(new MessageEmbed()
-            .addFields({name: "Latest:", value: timeDiff})
-            .addFields({name: "Average:", value: this.client.ws.ping})
+            .addFields({name: "RTT:", value: timeDiff})
+            .addFields({name: "Ping:", value: this.client.ws.ping})
         );
     }
 }

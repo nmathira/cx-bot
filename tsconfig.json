@@ -1,29 +1,25 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
     "target": "ESNext",
-    "sourceMap": true,
+    "module": "CommonJS",
+    "strict": false,
     "moduleResolution": "node",
-    "outDir": "dist",
-    "lib": [
-      "ESNext",
-      "ESNext.Array",
-      "ESNext.AsyncIterable",
-      "ESNext.Intl",
-      "ESNext.Symbol",
-      "DOM"
-    ],
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": false,
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "declaration": true,
-    "resolveJsonModule": true
+    "sourceMap": true,
+    "outDir": "dist/",
+    "baseUrl": ".",
+    "paths": {
+      "@fire/lib/*": ["lib/*"],
+      "@fire/src/*": ["src/*"],
+      "@fire/config/*": ["config/*"]
+    }
   },
-  "include": ["src"],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "./node_modules",
+    "./node_modules/*",
+    "./node_modules/@types/node/index.d.ts"
   ]
 }

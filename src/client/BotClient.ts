@@ -12,8 +12,8 @@ declare module "discord-akairo" {
 }
 
 interface BotOptions {
-    token?: string;
-    owners?: string;
+    token: string;
+    owners: string;
 }
 
 export default class BotClient extends AkairoClient{
@@ -37,7 +37,7 @@ export default class BotClient extends AkairoClient{
                 ended: "You exceeded the maximum amount of tries, so the command has been cancelled",
                 cancel: "This command has been cancelled",
                 retries: 3,
-                time: 3e4,
+                time: 1e4,
             },
             otherwise: "",
         },

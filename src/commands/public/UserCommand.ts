@@ -27,7 +27,7 @@ export default class UserCommand extends Command {
         });
     }
 
-    public exec(message: Message, {member}: { member: GuildMember }): Promise<Message> {
+    public async exec(message: Message, {member}: { member: GuildMember }): Promise<Message> {
         return message.util.send(new MessageEmbed()
             .setAuthor(member.user.username, member.user.avatarURL())
             .setTitle(member.user.tag)

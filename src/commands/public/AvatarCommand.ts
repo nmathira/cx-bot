@@ -36,7 +36,7 @@ export default class AvatarCommand extends Command {
         });
     }
 
-    public exec(message: Message, {member, size}: { member: GuildMember, size: number }): Promise<Message> {
+    public async exec(message: Message, {member, size}: { member: GuildMember, size: number }): Promise<Message> {
         return message.util.send(new MessageEmbed()
             .setTitle("avatar")
             .setColor("RANDOM")

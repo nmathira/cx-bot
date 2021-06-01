@@ -16,8 +16,7 @@ export default class Avatar extends Command {
                 ]
             },
             ratelimit: 3,
-            args: [
-                {
+            args: [{
                     id: "member",
                     type: "member",
                     match: "rest",

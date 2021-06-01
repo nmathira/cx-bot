@@ -1,5 +1,5 @@
 import {Command} from "discord-akairo";
-import {DMChannel, Message, MessageEmbed, TextChannel} from "discord.js";
+import {DMChannel, Message, TextChannel} from "discord.js";
 
 export default class Clear extends Command{
     public constructor() {
@@ -17,7 +17,7 @@ export default class Clear extends Command{
             args: [{
                     id: "amount",
                     type: "integer",
-                    default: 0,
+                    default: 1,
                 },
             ]
         });
@@ -25,7 +25,7 @@ export default class Clear extends Command{
 
     public async exec(message: Message, {amount}: {amount: number}): Promise<void | Message>  {
         if (message.channel instanceof TextChannel) {
-            await message.channel.bulkDelete(amount);
+            await message.channel.bulkDelete(amount, true);
             return ;
         }
         else {

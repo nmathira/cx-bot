@@ -17,11 +17,11 @@ export default class Avatar extends Command {
             },
             ratelimit: 3,
             args: [{
-                    id: "member",
-                    type: "member",
-                    match: "rest",
-                    default: (msg: Message) => msg.member
-                },
+                id: "member",
+                type: "member",
+                match: "rest",
+                default: (msg: Message) => msg.member
+            },
                 {
                     id: "size",
                     type: (_: Message, str: string): null | number => {

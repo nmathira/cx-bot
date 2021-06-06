@@ -13,6 +13,10 @@
     "@types/node": "^15.6.0",
     "common-tags": "^1.8.0",
     "discord-akairo": "github:1Computer1/discord-akairo",
-    "discord.js": "^12.5.3"
+    "discord.js": "^12.5.3",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.10"
   }
 }

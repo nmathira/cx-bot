@@ -14,7 +14,8 @@ export default class BotInfo extends Command {
             },
         });
     }
-    public async exec(message: Message, ): Promise<Message>{
+
+    public async exec(message: Message): Promise<Message> {
         return message.util.send(new MessageEmbed()
             .setTitle("Invite Link")
             .setURL(await this.client.generateInvite({permissions: "ADMINISTRATOR"}))

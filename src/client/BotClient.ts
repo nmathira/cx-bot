@@ -1,5 +1,4 @@
 import {AkairoClient, CommandHandler, ListenerHandler} from "discord-akairo";
-import {Message} from "discord.js";
 import {join} from "path";
 import {owners, prefix} from "../config";
 

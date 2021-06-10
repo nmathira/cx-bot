@@ -744,3 +744,4 @@ Temporary Items
 .apdisk
 
 src/config.ts
+/src/commands/public/Typeform.ts

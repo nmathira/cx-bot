@@ -18,7 +18,6 @@ export default class Ping extends Command {
     public async exec(message: Message): Promise<Message> {
         const sent = await message.util.send('you have good eyes!');
         // @ts-ignore
-        // ???????????????????
         const timeDiff: number = (sent.editedAt || sent.createdAt) - (message.editedAt || message.createdAt);
 
         return message.util.send(new MessageEmbed()

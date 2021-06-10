@@ -41,6 +41,7 @@ export default class BotClient extends AkairoClient {
             otherwise: "",
         },
         ignorePermissions: owners,
+        ignoreCooldown: owners,
     });
     public inhibitorHandler: InhibitorHandler = new InhibitorHandler(this, {
         directory: join(__dirname, "..", "inhibitors")

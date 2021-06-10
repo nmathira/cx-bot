@@ -1,7 +1,7 @@
-import {Command,  Listener} from "discord-akairo";
+import {Command, Listener} from "discord-akairo";
 import {Message} from "discord.js";
 
-export default class missingPermissions extends Listener{
+export default class missingPermissions extends Listener {
     public constructor() {
         super('missingPermissions', {
             emitter: "commandHandler",

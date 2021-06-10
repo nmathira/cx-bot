@@ -1,4 +1,4 @@
-import {AkairoClient, CommandHandler, ListenerHandler} from "discord-akairo";
+import {AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler} from "discord-akairo";
 import {join} from "path";
 import {owners, prefix} from "../config";
 
@@ -42,6 +42,9 @@ export default class BotClient extends AkairoClient {
         },
         ignorePermissions: owners,
     });
+    public inhibitorHandler: InhibitorHandler = new InhibitorHandler(this, {
+        directory: join(__dirname, "..", "inhibitors")
+    })
 
     public constructor(config: BotOptions) {
         super({
@@ -58,13 +61,16 @@ export default class BotClient extends AkairoClient {
 
     private async _init(): Promise<void> {
         this.commandHandler.useListenerHandler(this.listenerHandler);
+        this.commandHandler.useInhibitorHandler(this.inhibitorHandler);
         this.listenerHandler.setEmitters({
             commandHandler: this.commandHandler,
+            inhibitorHandler: this.inhibitorHandler,
             listenerHandler: this.listenerHandler,
             process,
         });
 
         this.commandHandler.loadAll();
         this.listenerHandler.loadAll();
+        this.inhibitorHandler.loadAll();
     }
 }

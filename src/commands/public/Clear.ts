@@ -28,7 +28,11 @@ export default class Clear extends Command {
 
     public async exec(message: Message, {amount}: { amount: number }): Promise<void | Message> {
         if (message.channel instanceof TextChannel) {
-            await message.channel.bulkDelete(amount + 1, true);
+            if (amount <= 0 || amount > 100) {
+                return message.util.send("I can't clear that amount")
+            } else amount++;
+            console.log(amount)
+            await message.channel.bulkDelete(amount, true).catch(reason => console.log(reason));
             return;
         } else {
             return message.util.send("You can't clear messages not in a TextChannel");

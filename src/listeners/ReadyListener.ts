@@ -9,7 +9,8 @@ export default class ReadyListener extends Listener {
         });
     }
 
-    public exec(): void {
+    public async exec(): Promise<void> {
         console.log(`${this.client.user.tag} is now ready`);
+
     }
 }

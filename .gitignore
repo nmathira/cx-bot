@@ -743,7 +743,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 .vscode/
-src/inhibitors/Insiders.ts
-src/config.ts
-/src/commands/explorehacks/Typeform.ts
-/src/commands/explorehacks/Trello.ts
+src/bot/inhibitors/Insiders.ts
+src/config/config.ts
+/src/bot/commands/explorehacks/Typeform.ts
+/src/bot/commands/explorehacks/Trello.ts

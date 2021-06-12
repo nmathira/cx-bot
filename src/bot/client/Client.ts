@@ -1,6 +1,6 @@
 import {AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler} from "discord-akairo";
 import {join} from "path";
-import {owners, prefix} from "../config";
+import {owners, prefix} from "../../config/config";
 
 declare module "discord-akairo" {
 
@@ -15,7 +15,7 @@ interface BotOptions {
     owners: string;
 }
 
-export default class BotClient extends AkairoClient {
+export default class Client extends AkairoClient {
     public config: BotOptions;
     public listenerHandler: ListenerHandler = new ListenerHandler(this, {
         directory: join(__dirname, "..", "listeners")
@@ -43,7 +43,7 @@ export default class BotClient extends AkairoClient {
         ignorePermissions: owners,
         ignoreCooldown: owners,
     });
-    public inhibitorHandler: InhibitorHandler = new InhibitorHandler(this, {
+    public inhibitorHandler = new InhibitorHandler(this, {
         directory: join(__dirname, "..", "inhibitors")
     })
 

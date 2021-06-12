@@ -47,6 +47,7 @@ export default class Help extends Command {
             .setFooter(`${this.client.commandHandler.prefix} help [command] for more information for a command`);
         for (const category of this.handler.categories.values()) {
             if (["default"].includes(category.id)) continue;
+            if (["Explore Hacks"].includes(category.id)) continue;
 
             embed.addField(category.id, category
                 .filter(cmd => cmd.aliases.length > 0)

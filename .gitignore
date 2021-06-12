@@ -744,4 +744,5 @@ Temporary Items
 .apdisk
 
 src/config.ts
-/src/commands/public/Typeform.ts
+/src/commands/explorehacks/Typeform.ts
+/src/commands/explorehacks/Trello.ts

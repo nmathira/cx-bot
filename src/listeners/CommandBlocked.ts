@@ -10,7 +10,6 @@ export default class CommandBlocked extends Listener {
     }
 
     public exec(message: Message, command: Command, reason) {
-        console.log(`${message.author.username} was blocked from using ${command.id} because of ${reason}`)
-        return message.util.reply("You have been blocked. Deleted. Also, Backtraced")
+        return message.util.reply(` You are blocked from using ${command.id} because of ${reason}`)
     }
 }

@@ -11,11 +11,6 @@
     "outDir": "dist/",
     "allowJs": true,
     "baseUrl": ".",
-    "paths": {
-      "@fire/lib/*": ["lib/*"],
-      "@fire/src/*": ["src/*"],
-      "@fire/config/*": ["config/*"]
-    }
   },
   "exclude": [
     "dist/",

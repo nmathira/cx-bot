@@ -30,6 +30,8 @@
 
     "discord.js": "^12.5.3",
 
+    "node-cron": "^3.0.0",
+
     "node-fetch": "^2.6.1",
 
     "sequelize": "^6.6.2",

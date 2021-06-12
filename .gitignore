@@ -742,7 +742,8 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-
+.vscode/
+src/inhibitors/Insiders.ts
 src/config.ts
 /src/commands/explorehacks/Typeform.ts
 /src/commands/explorehacks/Trello.ts

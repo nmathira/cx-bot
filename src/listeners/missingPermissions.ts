@@ -9,7 +9,7 @@ export default class missingPermissions extends Listener {
         });
     }
 
-    public exec(message: Message, command: Command, reason): any {
+    public exec(message: Message, command: Command, reason: string): Promise<Message> {
         return message.util.reply(`You don't have the required permissions to run ${command.id}`)
     }
 }

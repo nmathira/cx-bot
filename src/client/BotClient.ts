@@ -28,18 +28,18 @@ export default class BotClient extends AkairoClient {
         commandUtil: true,
         commandUtilLifetime: 3e5,
         defaultCooldown: 0,
-        argumentDefaults: {
-            prompt: {
-                modifyStart: (_, str): string => `${str}\n\nType \`cancel\` to cancel the command`,
-                modifyRetry: (_, str): string => `${str}\n\nType \`cancel\` to cancel the command`,
-                timeout: "You took too long, and the command has been cancelled",
-                ended: "You exceeded the maximum amount of tries, so the command has been cancelled",
-                cancel: "This command has been cancelled",
-                retries: 3,
-                time: 1e4,
-            },
-            otherwise: "",
-        },
+        // argumentDefaults: {
+        //     prompt: {
+        //         modifyStart: (_, str): string => `${str}\n\nType \`cancel\` to cancel the command`,
+        //         modifyRetry: (_, str): string => `${str}\n\nType \`cancel\` to cancel the command`,
+        //         timeout: "You took too long, and the command has been cancelled",
+        //         ended: "You exceeded the maximum amount of tries, so the command has been cancelled",
+        //         cancel: "This command has been cancelled",
+        //         retries: 3,
+        //         time: 1e4,
+        //     },
+        //     otherwise: "",
+        // },
         ignorePermissions: owners,
         ignoreCooldown: owners,
     });
@@ -48,10 +48,7 @@ export default class BotClient extends AkairoClient {
     })
 
     public constructor(config: BotOptions) {
-        super({
-            ownerID: config.owners,
-        });
-
+        super({ownerID: config.owners});
         this.config = config;
     }
 

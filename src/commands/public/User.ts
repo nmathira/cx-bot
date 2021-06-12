@@ -28,11 +28,11 @@ export default class User extends Command {
     }
 
     public async exec(message: Message, {member}: { member: GuildMember }): Promise<Message> {
-        return message.util.send(new MessageEmbed()
-            .setAuthor(member.user.username, member.user.avatarURL())
+        return message.util!.send(new MessageEmbed()
+            .setAuthor(member.user.username, member.user.avatarURL()!)
             .setTitle(member.user.tag)
             .setColor(member.displayColor)
-            .setThumbnail(member.user.avatarURL())
+            .setThumbnail(member.user.avatarURL()!)
             .addFields({
                 name: "presence",
                 value: member.user.presence.clientStatus?.web ?? member.user.presence.clientStatus?.mobile ?? member.user.presence.clientStatus?.desktop ?? "offline",
@@ -40,10 +40,10 @@ export default class User extends Command {
             })
             .addFields({name: "mention", value: member.user, inline: true})
             .addFields({name: "creation time", value: `${member.user.createdAt.toUTCString()}`,})
-            .addFields({name: "joined at", value: member.joinedAt.toUTCString(), inline: true})
+            .addFields({name: "joined at", value: member.joinedAt!.toUTCString(), inline: true})
 
             // .addFields({name: "permissions", value: member.permissions.toArray()})
-            .setFooter(member.user.id, member.user.avatarURL())
+            .setFooter(member.user.id, member.user.avatarURL()!)
             .setTimestamp(new Date())
         );
     }

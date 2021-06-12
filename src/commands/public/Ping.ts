@@ -16,11 +16,10 @@ export default class Ping extends Command {
     }
 
     public async exec(message: Message): Promise<Message> {
-        const sent = await message.util.send('you have good eyes!');
-        // @ts-ignore
-        const timeDiff: number = (sent.editedAt || sent.createdAt) - (message.editedAt || message.createdAt);
+        const sent = await message.util!.send('you have good eyes!');
+        const timeDiff: number = (sent.editedAt?.getTime() || sent.createdAt.getTime()) - (message?.editedAt?.getTime() || message.createdAt.getTime());
 
-        return message.util.send(new MessageEmbed()
+        return message.util!.send(new MessageEmbed()
             .addFields({name: "RTT:", value: timeDiff})
             .addFields({name: "Ping:", value: this.client.ws.ping})
         );

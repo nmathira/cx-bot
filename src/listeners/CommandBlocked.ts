@@ -9,7 +9,7 @@ export default class CommandBlocked extends Listener {
         });
     }
 
-    public exec(message: Message, command: Command, reason) {
-        return message.util.reply(` You are blocked from using ${command.id} because of ${reason}`)
+    public exec(message: Message, command: Command, reason: string) {
+        return message.util!.reply(` You are blocked from using ${command.id} because of ${reason}`)
     }
 }

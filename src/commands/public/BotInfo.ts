@@ -16,11 +16,11 @@ export default class BotInfo extends Command {
     }
 
     public async exec(message: Message): Promise<Message> {
-        return message.util.send(new MessageEmbed()
+        return message.util!.send(new MessageEmbed()
             .setTitle("Invite Link")
             .setURL(await this.client.generateInvite({permissions: "ADMINISTRATOR"}))
             .addFields({name: "version", value: version})
-            .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
+            .setAuthor(this.client.user!.tag, this.client.user!.displayAvatarURL())
             .setTimestamp(Date.now())
         )
     }

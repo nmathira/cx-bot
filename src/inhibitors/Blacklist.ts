@@ -9,7 +9,8 @@ export default class BlacklistInhibitor extends Inhibitor {
     }
 
     public async exec(message: Message, command?: Command): Promise<boolean> {
-        const blacklist = [];
-        return blacklist.includes(message.author.id);
+        return false;
+        // const blacklist: string[] = [];
+        // return blacklist.includes(message.author.id);
     }
 }

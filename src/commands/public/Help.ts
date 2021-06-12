@@ -27,7 +27,7 @@ export default class Help extends Command {
     public async exec(message: Message, {command}: { command: Command }): Promise<Message> {
         if (command) {
             return message.channel.send(new MessageEmbed()
-                .setAuthor(`Help | ${command}`, this.client.user.displayAvatarURL())
+                .setAuthor(`Help | ${command}`, this.client.user!.displayAvatarURL())
                 .setColor("RANDOM")
                 .setDescription(stripIndents`
                 **Description:**\n
@@ -37,12 +37,12 @@ export default class Help extends Command {
                 ${command.description.usage || "No usage provided."}
                 
                 **Examples:**
-                ${command.description.examples ? command.description.examples.map(e => `\`${e}\``).join("\n") : "No Example Provided"}
+                ${command.description.examples ? command.description.examples.map((e: any) => `\`${e}\``).join("\n") : "No Example Provided"}
                 `)
             )
         }
         const embed = new MessageEmbed()
-            .setAuthor(`Help | ${this.client.user.username}`, this.client.user.displayAvatarURL())
+            .setAuthor(`Help | ${this.client.user!.username}`, this.client.user!.displayAvatarURL())
             .setColor("RANDOM")
             .setFooter(`${this.client.commandHandler.prefix} help [command] for more information for a command`);
         for (const category of this.handler.categories.values()) {

@@ -22,9 +22,8 @@ export default class Cat extends Command {
             headers: {
                 'API-Key': hypixelapi
             }
-        }).then(res => res.json())
-            .then(json => console.log(json))
-        return message.util.send("you succeeded");
+        }).then((res: { json: () => any; }) => res.json())
+        return message.util!.send("you succeeded");
 
     }
 }

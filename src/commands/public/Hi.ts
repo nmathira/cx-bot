@@ -18,7 +18,7 @@ export default class Hi extends Command {
     }
 
     public async exec(message: Message): Promise<Message> {
-        return message.util.reply("Hi");
+        return message.util!.reply("Hi");
     }
 
 

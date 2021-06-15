@@ -44,6 +44,8 @@
 
     "@types/common-tags": "^1.8.0",
 
+    "@types/node-cron": "^2.0.3",
+
     "@types/node-fetch": "^2.5.10"
 
   }

@@ -28,7 +28,7 @@ export default class Clear extends Command {
 
     public async exec(message: Message, {amount}: { amount: number }): Promise<void | Message> {
         if (message.channel instanceof TextChannel) {
-            if (amount <= 0 || amount > 100) {
+            if (amount <= 0 || amount > 99) {
                 return message.util!.send("I can't clear that amount")
             } else amount++;
             console.log(amount)

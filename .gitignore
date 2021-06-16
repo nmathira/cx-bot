@@ -747,3 +747,5 @@ src/bot/inhibitors/Insiders.ts
 src/config/config.ts
 /src/bot/commands/explorehacks/Typeform.ts
 /src/bot/commands/explorehacks/Trello.ts
+/src/config/trello.ts
+/src/util/trello.ts

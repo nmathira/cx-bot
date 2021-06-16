@@ -1,6 +1,6 @@
-import {Command} from "discord-akairo";
-import {Message, MessageEmbed} from "discord.js";
-import {stripIndents} from "common-tags";
+import { Command } from "discord-akairo";
+import { Message, MessageEmbed } from "discord.js";
+import { stripIndents } from "common-tags";
 
 export default class Help extends Command {
     public constructor() {
@@ -24,7 +24,7 @@ export default class Help extends Command {
         });
     }
 
-    public async exec(message: Message, {command}: { command: Command }): Promise<Message> {
+    public async exec(message: Message, { command }: { command: Command }): Promise<Message> {
         if (command) {
             return message.channel.send(new MessageEmbed()
                 .setAuthor(`Help | ${command}`, this.client.user!.displayAvatarURL())

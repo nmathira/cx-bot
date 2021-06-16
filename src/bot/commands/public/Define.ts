@@ -1,7 +1,7 @@
-import {Command} from "discord-akairo";
-import {Message} from "discord.js";
+import { Command } from "discord-akairo";
+import { Message } from "discord.js";
 import fetch from "node-fetch";
-import {dictionary} from "../../../config/config";
+import { dictionary } from "../../../config/config";
 
 export default class Define extends Command {
     public constructor() {
@@ -24,7 +24,7 @@ export default class Define extends Command {
         });
     }
 
-    public async exec(message: Message, {word}: { word: string }): Promise<Message> {
+    public async exec(message: Message, { word }: { word: string }): Promise<Message> {
         if (word === null || word === undefined) return message.util!.send("You didn't pass in an argument!")
         let webster = await fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${dictionary}`);
         let final: Array<object> = await webster.json();

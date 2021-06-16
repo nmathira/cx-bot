@@ -1,5 +1,5 @@
-import {Command, Listener} from "discord-akairo";
-import {Message} from "discord.js";
+import { Command, Listener } from "discord-akairo";
+import { Message } from "discord.js";
 
 export default class CommandBlocked extends Listener {
     public constructor() {

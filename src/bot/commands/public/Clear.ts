@@ -1,5 +1,5 @@
-import {Command} from "discord-akairo";
-import {Message, TextChannel} from "discord.js";
+import { Command } from "discord-akairo";
+import { Message, TextChannel } from "discord.js";
 
 export default class Clear extends Command {
     public constructor() {
@@ -26,7 +26,7 @@ export default class Clear extends Command {
         });
     }
 
-    public async exec(message: Message, {amount}: { amount: number }): Promise<void | Message> {
+    public async exec(message: Message, { amount }: { amount: number }): Promise<void | Message> {
         if (message.channel instanceof TextChannel) {
             if (amount <= 0 || amount > 99) {
                 return message.util!.send("I can't clear that amount")

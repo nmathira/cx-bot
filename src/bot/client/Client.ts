@@ -1,6 +1,6 @@
-import {AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler} from "discord-akairo";
-import {join} from "path";
-import {owners, prefix} from "../../config/config";
+import { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } from "discord-akairo";
+import { join } from "path";
+import { owners, prefix } from "../../config/config";
 
 declare module "discord-akairo" {
 
@@ -48,7 +48,7 @@ export default class Client extends AkairoClient {
     })
 
     public constructor(config: BotOptions) {
-        super({ownerID: config.owners});
+        super({ ownerID: config.owners });
         this.config = config;
     }
 

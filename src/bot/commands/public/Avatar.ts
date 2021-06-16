@@ -1,5 +1,5 @@
-import {Command} from "discord-akairo";
-import {GuildMember, ImageSize, Message, MessageEmbed} from "discord.js";
+import { Command } from "discord-akairo";
+import { GuildMember, ImageSize, Message, MessageEmbed } from "discord.js";
 
 export default class Avatar extends Command {
     public constructor() {
@@ -35,11 +35,14 @@ export default class Avatar extends Command {
         });
     }
 
-    public async exec(message: Message, {member, size}: { member: GuildMember, size: number }): Promise<Message> {
+    public async exec(message: Message, {
+        member,
+        size
+    }: { member: GuildMember, size: number }): Promise<Message> {
         return message.util!.send(new MessageEmbed()
             .setTitle("avatar")
             .setColor("RANDOM")
-            .setImage(member.user.displayAvatarURL({size: size as ImageSize}))
+            .setImage(member.user.displayAvatarURL({ size: size as ImageSize }))
         );
     }
 }

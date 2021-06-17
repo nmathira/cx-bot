@@ -1,6 +1,5 @@
 import { Command } from "discord-akairo";
 import { Message, MessageEmbed } from "discord.js";
-import { stripIndents } from "common-tags";
 
 export default class Help extends Command {
     public constructor() {
@@ -8,7 +7,7 @@ export default class Help extends Command {
             aliases: ["help", "commands"],
             category: "Public Commands",
             description: {
-                content: "view avaliable commands",
+                content: "view available commands",
                 usage: "help [command]",
                 examples: [
                     "help",
@@ -29,7 +28,7 @@ export default class Help extends Command {
             return message.channel.send(new MessageEmbed()
                 .setAuthor(`Help | ${command}`, this.client.user!.displayAvatarURL())
                 .setColor("RANDOM")
-                .setDescription(stripIndents`
+                .setDescription(`
                 **Description:**\n
                 ${command.description.content || "No content provided."}
                 
@@ -37,7 +36,7 @@ export default class Help extends Command {
                 ${command.description.usage || "No usage provided."}
                 
                 **Examples:**
-                ${command.description.examples ? command.description.examples.map((e: any) => `\`${e}\``).join("\n") : "No Example Provided"}
+                ${command.description.examples ? command.description.examples.map((example: string) => `\`${example}\``).join("\n") : "No Example Provided"}
                 `)
             )
         }
@@ -48,6 +47,7 @@ export default class Help extends Command {
         for (const category of this.handler.categories.values()) {
             if (["default"].includes(category.id)) continue;
             if (["Explore Hacks"].includes(category.id)) continue;
+            if (["Owner"].includes(category.id)) continue;
 
             embed.addField(category.id, category
                 .filter(cmd => cmd.aliases.length > 0)

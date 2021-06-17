@@ -6,3 +6,4 @@ const client: Client = new Client({ token, owners });
 client.start().then(() => console.log("Now Online"));
 // trelloReminders(client);
 client.commandHandler.remove("trelloReminders");
+client.commandHandler.remove("cat");

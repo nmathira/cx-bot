@@ -9,7 +9,7 @@ export default class CommandBlocked extends Listener {
         });
     }
 
-    public exec(message: Message, command: Command, reason: string) {
+    public async exec(message: Message, command: Command, reason: string): Promise<Message> {
         return message.util!.reply(` You are blocked from using ${command.id} because of ${reason}`)
     }
 }

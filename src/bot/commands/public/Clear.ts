@@ -1,5 +1,5 @@
-import { Command } from "discord-akairo";
-import { Message, TextChannel } from "discord.js";
+import { Argument, Command } from "discord-akairo";
+import { Message } from "discord.js";
 
 export default class Clear extends Command {
     public constructor() {
@@ -19,7 +19,7 @@ export default class Clear extends Command {
             },
             args: [{
                 id: "amount",
-                type: "integer",
+                type: Argument.range('number', 1, 99, true),
                 default: 1,
             },
             ]
@@ -27,16 +27,7 @@ export default class Clear extends Command {
     }
 
     public async exec(message: Message, { amount }: { amount: number }): Promise<void | Message> {
-        if (message.channel instanceof TextChannel) {
-            if (amount <= 0 || amount > 99) {
-                return message.util!.send("I can't clear that amount")
-            } else amount++;
-            console.log(amount)
-            await message.channel.bulkDelete(amount, true).catch(reason => console.log(reason));
-            return;
-        } else {
-            return message.util!.send("You can't clear messages not in a TextChannel");
-        }
-
+        // @ts-ignore setting channel to guild in the constructor should solve this.
+        await message.channel.bulkDelete(amount + 1, true).catch((reason: any) => console.log(reason));
     }
 }

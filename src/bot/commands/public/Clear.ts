@@ -1,5 +1,5 @@
-import { Argument, Command } from "discord-akairo";
-import { Message } from "discord.js";
+import {Argument, Command} from "discord-akairo";
+import {Message} from "discord.js";
 
 export default class Clear extends Command {
     public constructor() {
@@ -26,7 +26,7 @@ export default class Clear extends Command {
         });
     }
 
-    public async exec(message: Message, { amount }: { amount: number }): Promise<void | Message> {
+    public async exec(message: Message, {amount}: { amount: number }): Promise<void | Message> {
         // @ts-ignore setting channel to guild in the constructor should solve this.
         await message.channel.bulkDelete(amount + 1, true).catch((reason: any) => console.log(reason));
     }

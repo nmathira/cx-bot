@@ -22,7 +22,6 @@
 
   "dependencies": {
 
-    "@types/node": "^15.6.0",
 
     "common-tags": "^1.8.0",
 
@@ -41,6 +40,8 @@
   },
 
   "devDependencies": {
+
+    "@types/node": "^15.6.0",
 
     "@types/common-tags": "^1.8.0",
 

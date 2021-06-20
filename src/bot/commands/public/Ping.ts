@@ -1,5 +1,5 @@
-import { Command } from "discord-akairo";
-import { Message, MessageEmbed } from "discord.js";
+import {Command} from "discord-akairo";
+import {Message, MessageEmbed} from "discord.js";
 
 export default class Ping extends Command {
     public constructor() {
@@ -20,8 +20,8 @@ export default class Ping extends Command {
         const timeDiff: number = (sent.editedAt?.getTime() || sent.createdAt.getTime()) - (message?.editedAt?.getTime() || message.createdAt.getTime());
 
         return message.util!.send(new MessageEmbed()
-            .addFields({ name: "RTT:", value: timeDiff })
-            .addFields({ name: "Ping:", value: this.client.ws.ping })
+            .addFields({name: "RTT:", value: timeDiff})
+            .addFields({name: "Ping:", value: this.client.ws.ping})
         );
     }
 }

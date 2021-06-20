@@ -1,5 +1,5 @@
-import { Command } from "discord-akairo";
-import { GuildMember, Message, MessageEmbed } from "discord.js";
+import {Command} from "discord-akairo";
+import {GuildMember, Message, MessageEmbed} from "discord.js";
 
 export default class User extends Command {
     public constructor() {
@@ -27,7 +27,7 @@ export default class User extends Command {
         });
     }
 
-    public async exec(message: Message, { member }: { member: GuildMember }): Promise<Message> {
+    public async exec(message: Message, {member}: { member: GuildMember }): Promise<Message> {
         return message.util!.send(new MessageEmbed()
             .setAuthor(member.user.username, member.user.avatarURL()!)
             .setTitle(member.user.tag)
@@ -38,9 +38,16 @@ export default class User extends Command {
                 value: member.user.presence.clientStatus?.web ?? member.user.presence.clientStatus?.mobile ?? member.user.presence.clientStatus?.desktop ?? "offline",
                 inline: true
             })
-            .addFields({ name: "mention", value: member.user, inline: true })
-            .addFields({ name: "creation time", value: `${member.user.createdAt.toUTCString()}`, })
-            .addFields({ name: "joined at", value: member.joinedAt!.toUTCString(), inline: true })
+            .addFields({name: "mention", value: member.user, inline: true})
+            .addFields({
+                name: "creation time",
+                value: `${member.user.createdAt.toUTCString()}`,
+            })
+            .addFields({
+                name: "joined at",
+                value: member.joinedAt!.toUTCString(),
+                inline: true
+            })
 
             // .addFields({name: "permissions", value: member.permissions.toArray()})
             .setFooter(member.user.id, member.user.avatarURL()!)

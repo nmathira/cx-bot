@@ -1,7 +1,7 @@
 const fetcher = require('node-fetch');
-import { Message } from "discord.js";
-import { Command } from "discord-akairo";
-import { hypixelapi } from "../../../config/config"
+import {Message} from "discord.js";
+import {Command} from "discord-akairo";
+import {hypixelapi} from "../../../config/config"
 
 export default class Cat extends Command {
     public constructor() {

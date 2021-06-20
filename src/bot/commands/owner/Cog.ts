@@ -1,5 +1,5 @@
 import {Command} from "discord-akairo";
-import { Message} from "discord.js";
+import {Message} from "discord.js";
 
 export default class Ping extends Command {
     public constructor() {

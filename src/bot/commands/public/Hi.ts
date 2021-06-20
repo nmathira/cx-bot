@@ -1,5 +1,5 @@
-import { Message } from "discord.js";
-import { Command } from "discord-akairo";
+import {Message} from "discord.js";
+import {Command} from "discord-akairo";
 
 export default class Hi extends Command {
     public constructor() {
@@ -18,7 +18,7 @@ export default class Hi extends Command {
     }
 
     public async exec(message: Message): Promise<Message> {
-        return message.util!.reply("Hi");
+        return message.util!.send("aaaaaaaaaaaaaaaaaaaaa");
     }
 
 

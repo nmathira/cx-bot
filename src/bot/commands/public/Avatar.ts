@@ -1,5 +1,5 @@
-import { Command } from "discord-akairo";
-import { GuildMember, ImageSize, Message, MessageEmbed } from "discord.js";
+import {Command} from "discord-akairo";
+import {GuildMember, ImageSize, Message, MessageEmbed} from "discord.js";
 
 export default class Avatar extends Command {
     public constructor() {
@@ -42,7 +42,7 @@ export default class Avatar extends Command {
         return message.util!.send(new MessageEmbed()
             .setTitle("avatar")
             .setColor("RANDOM")
-            .setImage(member.user.displayAvatarURL({ size: size as ImageSize }))
+            .setImage(member.user.displayAvatarURL({size: size as ImageSize}))
         );
     }
 }

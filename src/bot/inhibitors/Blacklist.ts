@@ -1,5 +1,5 @@
-import { Command, Inhibitor } from "discord-akairo";
-import { Message } from "discord.js";
+import {Command, Inhibitor} from "discord-akairo";
+import {Message} from "discord.js";
 
 export default class BlacklistInhibitor extends Inhibitor {
     constructor() {

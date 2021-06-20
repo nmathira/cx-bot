@@ -1,6 +1,11 @@
-import { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } from "discord-akairo";
-import { join } from "path";
-import { owners, prefix } from "../../config/config";
+import {
+    AkairoClient,
+    CommandHandler,
+    InhibitorHandler,
+    ListenerHandler
+} from "discord-akairo";
+import {join} from "path";
+import {owners, prefix} from "../../config/config";
 
 declare module "discord-akairo" {
 
@@ -27,7 +32,7 @@ export default class Client extends AkairoClient {
         handleEdits: true,
         commandUtil: true,
         commandUtilLifetime: 3e5,
-        defaultCooldown: 0,
+        defaultCooldown: 3e5,
         // argumentDefaults: {
         //     prompt: {
         //         modifyStart: (_, str): string => `${str}\n\nType \`cancel\` to cancel the command`,
@@ -48,7 +53,15 @@ export default class Client extends AkairoClient {
     })
 
     public constructor(config: BotOptions) {
-        super({ ownerID: config.owners });
+        super({ownerID: config.owners}, {ws: {intents: [
+                    "DIRECT_MESSAGES",
+                    "GUILDS",
+                    "GUILD_MEMBERS",
+                    "GUILD_BANS",
+                    "GUILD_INVITES",
+                    "GUILD_MESSAGES",
+                    "GUILD_MESSAGE_REACTIONS"
+                ]}});
         this.config = config;
     }
 

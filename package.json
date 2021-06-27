@@ -1,55 +1,29 @@
 {
-
   "name": "cx-bot-rewrite",
-
   "version": "1.0.0",
-
   "description": "",
-
   "main": "index.js",
-
   "scripts": {
-
+    "start": "tsc && node dist",
     "test": "echo \"Error: no test specified\" && exit 1"
-
   },
-
   "keywords": [],
-
   "author": "",
-
   "license": "ISC",
-
   "dependencies": {
-
-
     "common-tags": "^1.8.0",
-
     "discord-akairo": "github:1Computer1/discord-akairo",
-
     "discord.js": "^12.5.3",
-
     "node-cron": "^3.0.0",
-
     "node-fetch": "^2.6.1",
-
     "sequelize": "^6.6.2",
-
     "sqlite": "^4.0.23"
-
   },
-
   "devDependencies": {
-
     "@types/node": "^15.6.0",
-
     "@types/common-tags": "^1.8.0",
-
     "@types/node-cron": "^2.0.3",
-
     "@types/node-fetch": "^2.5.10"
-
   }
-
 }
 

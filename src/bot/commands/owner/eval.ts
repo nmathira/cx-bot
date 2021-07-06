@@ -6,7 +6,7 @@ export default class EvalCommand extends Command {
         super("eval", {
             ownerOnly: true,
             category: "Owner",
-            aliases: ["eval", "ev"],
+            aliases: ["eval"],
             args: [{
                 id: "javascript",
                 type: "string",
@@ -19,19 +19,19 @@ export default class EvalCommand extends Command {
         let start = process.hrtime();
         let result: any = null;
         if(javascript.startsWith('```') && javascript.endsWith('```')) {
-            javascript = javascript.replace(/(^.*?\s)|(\n.*$)/g, '');
+            javascript = javascript.replace(/(^.*?\s)|(\n.*$)/g, ''); // regex to remove code blocks
         }
         try {
             result = eval(javascript);
         }
         catch (e) {
-            return message.util.send(`Error while evaluating ${e}`)
+            return message.util!.send(`Error while evaluating ${e}`)
         }
         let endtime = process.hrtime(start);
         let embed = new MessageEmbed();
         embed.setDescription(`Evaluated Output: ${result}`);
         embed.setFooter(`time taken: ${endtime}`)
-        return message.util.send(embed);
+        return message.util!.send(embed);
 
     }
 }

@@ -11,7 +11,7 @@ export default class ErrorListener extends Listener {
 
     public async exec(error: Error, message: Message, command ?: Command): Promise<Message> {
         let owner = await this.client.users.fetch("" + this.client.ownerID);
-        await owner.send(`AYO boss man fix your code at \`${command}\`, which was called by ${message.author.username} (who is a dumbass) in ${message.guild} who ran \`${message}\``);
+        await owner.send(`AYO boss man fix your code at \`${command}\`, which was called by ${message.author.username} (who is a dumbass) in ${message.guild} who ran \`${message}\`. The Error's details are: ${error.message} and ${error.stack}`);
         return message.util!.send("An unexpected error occured. My owner has been notified.");
     }
 }

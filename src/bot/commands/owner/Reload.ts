@@ -1,4 +1,4 @@
-import {Command, Argument} from "discord-akairo";
+import {Command} from "discord-akairo";
 import {Message} from "discord.js";
 
 
@@ -15,10 +15,10 @@ export default class LoadCommand extends Command {
         });
     }
 
-    public async exec(message, {command}: {command: Command}): Promise<Message | Command> {
-        // this.handler.remove(command.id);
-        // this.handler.load(command.)
-        this.handler.removeAll();
+    public async exec(message: Message, {command}: { command: Command }): Promise<Message | Command> {
+        this.handler.remove(command.id);
+        this.handler.load(command.id)
+        // this.handler.removeAll();
         return message.reply(`Reloaded command \`${command}\``)
     }
 }

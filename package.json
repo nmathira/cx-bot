@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "rm -rdf dist && tsc && node dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "sh ./deploy.sh"
   },
   "keywords": [],
   "author": "",

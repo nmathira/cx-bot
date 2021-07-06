@@ -1,17 +1,26 @@
 import {Command, Listener} from "discord-akairo";
-import {Message} from "discord.js";
+import {Message, MessageEmbed} from "discord.js";
 
 export default class ErrorListener extends Listener {
-    public constructor() {
-        super("commandError", {
-            emitter: "commandHandler",
-            event: "error",
-        });
-    }
+  public constructor() {
+    super("commandError", {
+      emitter: "commandHandler",
+      event: "error",
+    });
+  }
 
-    public async exec(error: Error, message: Message, command ?: Command): Promise<Message> {
-        let owner = await this.client.users.fetch("" + this.client.ownerID);
-        await owner.send(`AYO boss man fix your code at \`${command}\`, which was called by ${message.author.username} (who is a dumbass) in ${message.guild} who ran \`${message}\`. The Error's details are: ${error.message} and ${error.stack}`);
-        return message.util!.send("An unexpected error occured. My owner has been notified.");
-    }
+  public async exec(error: Error, message: Message, command ?: Command): Promise<Message> {
+    let owner = await this.client.users.fetch("" + this.client.ownerID);
+    let embed = new MessageEmbed()
+      .setTitle("AYO Boss man, fix your code!!")
+      .addField("Command that broke: ", command)
+      .addField("Who ran it (He is a DumbAss): ", message.author.username)
+      .addField("Where it was run: ", message.guild ?? message.channel)
+      .addField("ran command: ", message)
+      .addField("Error type", error.name)
+      .addField("Error message", error.message)
+    await owner.send(embed);
+    await owner.send(`The Error's stacktrace: \`\`\` ${error.stack}\`\`\``);
+    return await message.util!.send("An unexpected error occurred. My owner has been notified.");
+  }
 }

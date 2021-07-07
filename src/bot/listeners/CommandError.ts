@@ -19,8 +19,7 @@ export default class ErrorListener extends Listener {
       .addField("ran command: ", message)
       .addField("Error type", error.name)
       .addField("Error message", error.message)
-    await owner.send(embed);
-    await owner.send(`The Error's stacktrace: \`\`\` ${error.stack}\`\`\``);
+    await owner.send(`The Error's stacktrace: \`\`\` ${error.stack}\`\`\``, {embed});
     return await message.util!.send("An unexpected error occurred. My owner has been notified.");
   }
 }

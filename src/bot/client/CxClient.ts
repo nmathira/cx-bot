@@ -6,6 +6,7 @@ import {
 } from "discord-akairo";
 import {join} from "path";
 import {owners, prefix} from "../../config/config";
+import ScheduleHandler from "../scheduled/ScheduleHandler";
 
 declare module "discord-akairo" {
 
@@ -20,7 +21,7 @@ interface BotOptions {
   owners: string;
 }
 
-export default class Client extends AkairoClient {
+export default class CxClient extends AkairoClient {
   public config: BotOptions;
   public listenerHandler: ListenerHandler = new ListenerHandler(this, {
     directory: join(__dirname, "..", "listeners"),
@@ -50,6 +51,9 @@ export default class Client extends AkairoClient {
   });
   public inhibitorHandler = new InhibitorHandler(this, {
     directory: join(__dirname, "..", "inhibitors"),
+  })
+  public scheduledHandler = new ScheduleHandler(this, {
+    directory: join(__dirname, "..", "scheduled"),
   })
 
   public constructor(config: BotOptions) {
@@ -86,6 +90,7 @@ export default class Client extends AkairoClient {
 
     this.commandHandler.loadAll();
     this.listenerHandler.loadAll();
+    this.scheduledHandler.loadAll();
     this.inhibitorHandler.loadAll();
   }
 }

@@ -1,6 +1,6 @@
 import {Command} from "discord-akairo";
 import {Message, MessageEmbed} from "discord.js";
-import {version} from "../../../config/config"
+import {version} from "@cx/config/config"
 
 export default class BotInfo extends Command {
   public constructor() {

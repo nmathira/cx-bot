@@ -744,9 +744,9 @@ Temporary Items
 .apdisk
 .vscode/
 src/bot/inhibitors/Insiders.ts
-src/config/config.ts
+config/config.ts
 /src/bot/commands/explorehacks/Typeform.ts
 /src/bot/disabled/Trello.ts
-/src/config/trello.ts
+/config/trello.ts
 /src/util/trello.ts
 deploy.sh

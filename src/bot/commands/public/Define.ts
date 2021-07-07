@@ -1,7 +1,7 @@
 import {Command} from "discord-akairo";
 import {Message} from "discord.js";
 import fetch from "node-fetch";
-import {dictionary} from "../../../config/config";
+import {dictionary} from "@cx/config/config";
 
 export default class Define extends Command {
   public constructor() {

@@ -1,3 +1,4 @@
+import "module-alias/register";
 import {
   AkairoClient,
   CommandHandler,
@@ -5,7 +6,7 @@ import {
   ListenerHandler,
 } from "discord-akairo";
 import {join} from "path";
-import {owners, prefix} from "../../config/config";
+import {owners, prefix} from "@cx/config/config";
 import ScheduleHandler from "../scheduled/ScheduleHandler";
 
 declare module "discord-akairo" {

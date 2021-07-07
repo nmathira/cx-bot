@@ -10,7 +10,12 @@
     "sourceMap": true,
     "outDir": "dist/",
     "allowJs": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@cx/config/*": [
+        "config/*"
+      ]
+    }
   },
   "exclude": [
     "dist/",

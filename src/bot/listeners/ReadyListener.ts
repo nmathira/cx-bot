@@ -11,5 +11,7 @@ export default class ReadyListener extends Listener {
 
   public async exec(): Promise<void> {
     console.log(`${this.client.user!.tag} is now ready`);
+    console.log(`prefix: ${this.client.commandHandler.prefix}`)
+    console.log(`commands: ${this.client.commandHandler.aliases.array().toString()}`)
   }
 }

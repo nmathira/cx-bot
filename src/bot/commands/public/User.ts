@@ -28,30 +28,17 @@ export default class User extends Command {
   }
 
   public async exec(message: Message, {member}: { member: GuildMember }): Promise<Message> {
-    return await message.util!.send(new MessageEmbed()
+    let embed = new MessageEmbed()
       .setAuthor(member.user.username, member.user.avatarURL()!)
       .setTitle(member.user.tag)
       .setColor(member.displayColor)
       .setThumbnail(member.user.avatarURL()!)
-      .addFields({
-        name: "presence",
-        value: member.user.presence.clientStatus?.web ?? member.user.presence.clientStatus?.mobile ?? member.user.presence.clientStatus?.desktop ?? "offline",
-        inline: true,
-      })
-      .addFields({name: "mention", value: member.user, inline: true})
-      .addFields({
-        name: "creation time",
-        value: `${member.user.createdAt.toUTCString()}`,
-      })
-      .addFields({
-        name: "joined at",
-        value: member.joinedAt!.toUTCString(),
-        inline: true,
-      })
-
-      // .addFields({name: "permissions", value: member.permissions.toArray()})
+      .addField("presence", member.user.presence.clientStatus?.web ?? member.user.presence.clientStatus?.mobile ?? member.user.presence.clientStatus?.desktop ?? "offline", true)
+      .addField("mention", member.user.toString(), true)
+      .addField("creation time", `${member.user.createdAt.toUTCString()}`)
+      .addField("joined at", member.joinedAt!.toUTCString(), true)
       .setFooter(member.user.id, member.user.avatarURL()!)
-      .setTimestamp(new Date()),
-    );
+      .setTimestamp(new Date());
+    return await message.util!.send({embeds: [embed]});
   }
 }

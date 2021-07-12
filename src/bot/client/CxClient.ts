@@ -1,10 +1,10 @@
-import "module-alias/register";
 import {
   AkairoClient,
   CommandHandler,
   InhibitorHandler,
   ListenerHandler,
 } from "discord-akairo";
+import {Snowflake} from "discord.js"
 import {join} from "path";
 import {owners, prefix} from "@config/config";
 
@@ -18,7 +18,7 @@ declare module "discord-akairo" {
 
 interface BotOptions {
   token: string;
-  owners: string;
+  owners: Snowflake;
 }
 
 export default class CxClient extends AkairoClient {
@@ -46,29 +46,18 @@ export default class CxClient extends AkairoClient {
     //     },
     //     otherwise: "",
     // },
+    // ignorePermissions: owners,
     ignorePermissions: owners,
     ignoreCooldown: owners,
   });
   public inhibitorHandler = new InhibitorHandler(this, {
     directory: join(__dirname, "..", "inhibitors"),
   })
-  public scheduledHandler = new ScheduleHandler(this, {
-    directory: join(__dirname, "..", "scheduled"),
-  })
 
   public constructor(config: BotOptions) {
-    super({ownerID: config.owners}, {
-      ws: {
-        intents: [
-          "DIRECT_MESSAGES",
-          "GUILDS",
-          "GUILD_MEMBERS",
-          "GUILD_BANS",
-          "GUILD_INVITES",
-          "GUILD_MESSAGES",
-          "GUILD_MESSAGE_REACTIONS",
-        ],
-      },
+    super({
+      ownerID: config.owners,
+      intents: ["DIRECT_MESSAGES", "GUILDS", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_INVITES", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"],
     });
     this.config = config;
   }
@@ -90,7 +79,6 @@ export default class CxClient extends AkairoClient {
 
     this.commandHandler.loadAll();
     this.listenerHandler.loadAll();
-    this.scheduledHandler.loadAll();
     this.inhibitorHandler.loadAll();
   }
 }

@@ -24,8 +24,9 @@ export default class Help extends Command {
   }
 
   public async exec(message: Message, {command}: { command: Command }): Promise<Message> {
+    console.log("got here")
     if (command) {
-      return await message.channel.send(new MessageEmbed()
+      let embed1 = new MessageEmbed()
         .setAuthor(`Help | ${command}`, this.client.user!.displayAvatarURL())
         .setColor("#0079fa")
         .setDescription(`
@@ -37,7 +38,8 @@ export default class Help extends Command {
                 
                 **Examples:**
                 ${command.description.examples ? command.description.examples.map((example: string) => `\`${example}\``).join("\n") : "No Example Provided"}
-                `),
+                `);
+      return await message.channel.send({embeds: [embed1]},
       )
     }
     const embed = new MessageEmbed()
@@ -56,6 +58,6 @@ export default class Help extends Command {
       );
 
     }
-    return await message.channel.send(embed);
+    return await message.channel.send({embeds: [embed]});
   }
 }

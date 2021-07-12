@@ -1,6 +1,6 @@
 import {Command} from "discord-akairo";
-import {Message, MessageEmbed} from "discord.js";
-import {version} from "@cx/config/config"
+import {Message, MessageEmbed, Permissions} from "discord.js";
+import {version} from "@config/config"
 
 export default class BotInfo extends Command {
   public constructor() {
@@ -16,12 +16,12 @@ export default class BotInfo extends Command {
   }
 
   public async exec(message: Message): Promise<Message> {
-    return await message.util!.send(new MessageEmbed()
+    let embed = new MessageEmbed()
       .setTitle("Invite Link")
-      .setURL(await this.client.generateInvite({permissions: "ADMINISTRATOR"}))
-      .addFields({name: "version", value: version})
+      .setURL(this.client.generateInvite({permissions: [Permissions.FLAGS.ADMINISTRATOR]}))
+      .addField("version", version)
       .setAuthor(this.client.user!.tag, this.client.user!.displayAvatarURL())
-      .setTimestamp(Date.now()),
-    )
+      .setTimestamp(Date.now());
+    return await message.util!.send({embeds: [embed]})
   }
 }

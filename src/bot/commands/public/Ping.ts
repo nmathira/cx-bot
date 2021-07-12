@@ -19,9 +19,10 @@ export default class Ping extends Command {
     const sent = await message.util!.send("you have good eyes!");
     const timeDiff: number = (sent.editedAt?.getTime() || sent.createdAt.getTime()) - (message?.editedAt?.getTime() || message.createdAt.getTime());
 
-    return await message.util!.send(new MessageEmbed()
-      .addFields({name: "RTT:", value: timeDiff})
-      .addFields({name: "Ping:", value: this.client.ws.ping}),
+    let embed = new MessageEmbed()
+      .addField("RTT:", String(timeDiff))
+      .addField("Ping:", String(this.client.ws.ping));
+    return await message.util!.send({embeds: [embed]},
     );
   }
 }

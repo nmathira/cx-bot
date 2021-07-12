@@ -30,7 +30,7 @@ export default class EvalCommand extends Command {
     let embed = new MessageEmbed();
     embed.setDescription(`Evaluated Output: ${result}`);
     embed.setFooter(`time taken: ${endtime}`)
-    return await message.util!.send(embed);
+    return await message.util!.send({embeds: [embed]});
 
   }
 }

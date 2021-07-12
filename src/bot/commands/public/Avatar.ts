@@ -39,10 +39,10 @@ export default class Avatar extends Command {
     member,
     size,
   }: { member: GuildMember, size: number }): Promise<Message> {
-    return await message.util!.send(new MessageEmbed()
+    let embed = new MessageEmbed()
       .setTitle("avatar")
       .setColor("RANDOM")
-      .setImage(member.user.displayAvatarURL({size: size as ImageSize})),
-    );
+      .setImage(member.user.displayAvatarURL({size: size as ImageSize}));
+    return await message.util!.send({embeds: [embed]});
   }
 }

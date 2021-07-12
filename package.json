@@ -1,33 +1,18 @@
 {
-  "name": "cx-bot-rewrite",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "cx-bot",
+  "version": "0.0.1",
+  "description": "a self developed discord bot",
+  "main": "dist/src/index.js",
   "scripts": {
     "start": "rm -rdf dist && tsc && node dist/src",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "sh ./deploy.sh"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Neragin <niranjan@nmathirajan.xyz>",
+  "repository": "https://github.com/Neragin/cx-bot.git",
   "dependencies": {
-    "common-tags": "^1.8.0",
-    "discord-akairo": "github:1Computer1/discord-akairo",
-    "discord.js": "^12.5.3",
-    "module-alias": "^2.2.2",
-    "node-cron": "^3.0.0",
-    "node-fetch": "^2.6.1",
-    "sequelize": "^6.6.2",
-    "sqlite": "^4.0.23"
-  },
-  "devDependencies": {
-    "@types/common-tags": "^1.8.0",
-    "@types/node": "^15.6.0",
-    "@types/node-cron": "^2.0.3",
-    "@types/node-fetch": "^2.5.10"
-  },
-  "_moduleAliases": {
-    "@cx/config": "dist/config"
+    "discord-akairo": "SkyBlockDev/discord-akairo",
+    "discord.js": "discordjs/discord.js"
   }
 }

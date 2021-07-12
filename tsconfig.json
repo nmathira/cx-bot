@@ -12,7 +12,7 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "@cx/config/*": [
+      "@config/*": [
         "config/*"
       ]
     }

@@ -6,8 +6,7 @@ import {
   ListenerHandler,
 } from "discord-akairo";
 import {join} from "path";
-import {owners, prefix} from "../../../config/config";
-import ScheduleHandler from "../scheduled/ScheduleHandler";
+import {owners, prefix} from "@config/config";
 
 declare module "discord-akairo" {
 

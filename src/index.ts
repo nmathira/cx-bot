@@ -1,4 +1,5 @@
-import {owners, token} from "../config/config";
+import "module-alias/register";
+import {owners, token} from "@config/config";
 import CxClient from "./bot/client/CxClient";
 
 const cxbot: CxClient = new CxClient({token, owners});

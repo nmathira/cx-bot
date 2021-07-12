@@ -14,7 +14,7 @@
   "dependencies": {
     "@types/node-fetch": "^2.5.11",
     "discord-akairo": "SkyBlockDev/discord-akairo",
-    "discord.js": "discordjs/discord.js",
+    "discord.js": "^13.0.0-dev.1dcad05.1626091387",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {

@@ -33,7 +33,6 @@ export default class User extends Command {
       .setTitle(member.user.tag)
       .setColor(member.displayColor)
       .setThumbnail(member.user.avatarURL()!)
-      .addField("presence", member.user.presence.clientStatus?.web ?? member.user.presence.clientStatus?.mobile ?? member.user.presence.clientStatus?.desktop ?? "offline", true)
       .addField("mention", member.user.toString(), true)
       .addField("creation time", `${member.user.createdAt.toUTCString()}`)
       .addField("joined at", member.joinedAt!.toUTCString(), true)

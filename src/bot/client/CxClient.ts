@@ -34,19 +34,6 @@ export default class CxClient extends AkairoClient {
     commandUtil: true,
     commandUtilLifetime: 3e5,
     defaultCooldown: 3e5,
-    // argumentDefaults: {
-    //     prompt: {
-    //         modifyStart: (_, str): string => `${str}\n\nType \`cancel\` to cancel the command`,
-    //         modifyRetry: (_, str): string => `${str}\n\nType \`cancel\` to cancel the command`,
-    //         timeout: "You took too long, and the command has been cancelled",
-    //         ended: "You exceeded the maximum amount of tries, so the command has been cancelled",
-    //         cancel: "This command has been cancelled",
-    //         retries: 3,
-    //         time: 1e4,
-    //     },
-    //     otherwise: "",
-    // },
-    // ignorePermissions: owners,
     ignorePermissions: owners,
     ignoreCooldown: owners,
   });

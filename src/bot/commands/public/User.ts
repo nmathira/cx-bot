@@ -6,15 +6,15 @@ export default class User extends Command {
     super("userinfo", {
       aliases: ["userinfo", "ui"],
       category: "Public Commands",
-      description: {
-        content: "Displays User Info about the member",
-        usage: "userinfo [ member ]",
-        examples: [
-          "userinfo",
-          "userinfo @user#0001",
-          "userinfo user",
-        ],
-      },
+      // description: {
+      //   content: "Displays User Info about the member",
+      //   usage: "userinfo [ member ]",
+      //   examples: [
+      //     "userinfo",
+      //     "userinfo @user#0001",
+      //     "userinfo user",
+      //   ],
+      // },
       ratelimit: 3,
       args: [
         {

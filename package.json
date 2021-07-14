@@ -12,12 +12,12 @@
   "author": "Neragin <niranjan@nmathirajan.xyz>",
   "repository": "https://github.com/Neragin/cx-bot.git",
   "dependencies": {
-    "@types/node-fetch": "^2.5.11",
-    "discord-akairo": "SkyBlockDev/discord-akairo",
-    "discord.js": "^13.0.0-dev.1dcad05.1626091387",
+    "discord-akairo": "discord-akairo/discord-akairo",
+    "discord.js": "^13.0.0-dev.98c6078.1626264203",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
+    "@types/node-fetch": "^2.5.11",
     "module-alias": "^2.2.2"
   },
   "_moduleAliases": {

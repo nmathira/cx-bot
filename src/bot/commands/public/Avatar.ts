@@ -6,15 +6,15 @@ export default class Avatar extends Command {
     super("avatar", {
       aliases: ["avatar", "av"],
       category: "Public Commands",
-      description: {
-        content: "Displays the avatar of the member",
-        usage: "avatar [ member ]",
-        examples: [
-          "avatar",
-          "avatar @user#0001",
-          "avatar user",
-        ],
-      },
+      // description: {
+      //   content: "Displays the avatar of the member",
+      //   usage: "avatar [ member ]",
+      //   examples: [
+      //     "avatar",
+      //     "avatar @user#0001",
+      //     "avatar user",
+      //   ],
+      // },
       ratelimit: 3,
       args: [{
         id: "member",

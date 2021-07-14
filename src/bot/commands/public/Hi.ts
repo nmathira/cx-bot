@@ -6,13 +6,13 @@ export default class Hi extends Command {
     super("hi", {
       aliases: ["hi", "hello"],
       category: "Public Commands",
-      description: {
-        content: "say hi to cxbot and have cxbot say hi back",
-        usage: "hi",
-        examples: [
-          "hi",
-        ],
-      },
+      // description: {
+      //   content: "say hi to cxbot and have cxbot say hi back",
+      //   usage: "hi",
+      //   examples: [
+      //     "hi",
+      //   ],
+      // },
       ratelimit: 0,
     });
   }
@@ -20,7 +20,5 @@ export default class Hi extends Command {
   public async exec(message: Message): Promise<Message> {
     return await message.util!.send("hi");
   }
-
-
 }
 

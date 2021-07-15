@@ -18,7 +18,10 @@ export default class BotInfo extends Command {
   public async exec(message: Message): Promise<Message> {
     let embed = new MessageEmbed()
       .setTitle("Invite Link")
-      // .setURL(this.client.generateInvite({permissions: [Permissions.FLAGS.ADMINISTRATOR]}))
+      .setURL(this.client.generateInvite({
+        scopes: ["bot"],
+        permissions: ["ADMINISTRATOR"],
+      }))
       .addField("version", version)
       .setAuthor(this.client.user!.tag, this.client.user!.displayAvatarURL())
       .setTimestamp(Date.now());

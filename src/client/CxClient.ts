@@ -4,15 +4,17 @@ import {
   InhibitorHandler,
   ListenerHandler,
 } from "discord-akairo";
-import {Snowflake} from "discord.js"
+import {MessageEmbed, Snowflake, TextChannel} from "discord.js"
 import {join} from "path";
 import {owners, prefix} from "@config/config";
+
 
 declare module "discord-akairo" {
 
   interface AkairoClient {
     commandHandler: CommandHandler;
     listenerHandler: ListenerHandler;
+    logger: (level: "debug" | "info" | "warn" | "error" | "fatal", loggedMessage: string, error?: Error) => Promise<any>;
   }
 }
 
@@ -49,6 +51,17 @@ export default class CxClient extends AkairoClient {
     this.config = config;
   }
 
+  public logger = async (level: "debug" | "info" | "warn" | "error" | "fatal", loggedMessage: string, error?: Error) => {
+    console.log(`[${level}] ${loggedMessage}`);
+    let log = await this.channels.fetch("865012699109130291") as TextChannel;
+    if (level !== "error" || "fatal") {
+      let message = new MessageEmbed()
+        .setTitle(`[${level}]`)
+        .setDescription(loggedMessage);
+      await log.send({embeds: [message]});
+    }
+  }
+
   public async start(): Promise<string> {
     await this._init();
     return this.login(this.config.token);
@@ -68,4 +81,6 @@ export default class CxClient extends AkairoClient {
     this.listenerHandler.loadAll();
     this.inhibitorHandler.loadAll();
   }
+
 }
+

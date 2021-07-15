@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "a self developed discord bot",
   "main": "dist/src/index.js",
+  "license": "UNLICENSED",
   "scripts": {
     "start": "rm -rdf dist && tsc && node dist/src",
     "test": "echo \"Error: no test specified\" && exit 1",

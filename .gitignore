@@ -750,3 +750,4 @@ config/config.ts
 /config/trello.ts
 /src/util/trello.ts
 deploy.sh
+secrets.json

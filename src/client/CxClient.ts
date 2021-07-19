@@ -4,17 +4,19 @@ import {
   InhibitorHandler,
   ListenerHandler,
 } from "discord-akairo";
-import {MessageEmbed, Snowflake, TextChannel} from "discord.js"
-import {join} from "path";
-import {owners, prefix} from "@config/config";
-
+import { MessageEmbed, Snowflake, TextChannel } from "discord.js"
+import { join } from "path";
+import { owners, prefix } from "@config/config";
+import { DataTypes, Model, ModelCtor, Sequelize } from "sequelize";
 
 declare module "discord-akairo" {
 
   interface AkairoClient {
     commandHandler: CommandHandler;
     listenerHandler: ListenerHandler;
+    inhibitorHandler: InhibitorHandler;
     logger: (level: "debug" | "info" | "warn" | "error" | "fatal", loggedMessage: string, error?: Error) => Promise<any>;
+    points: ModelCtor<Model>,
   }
 }
 
@@ -39,7 +41,7 @@ export default class CxClient extends AkairoClient {
     ignorePermissions: owners,
     ignoreCooldown: owners,
   });
-  public inhibitorHandler = new InhibitorHandler(this, {
+  public inhibitorHandler: InhibitorHandler = new InhibitorHandler(this, {
     directory: join(__dirname, "..", "inhibitors"),
   })
 
@@ -51,7 +53,18 @@ export default class CxClient extends AkairoClient {
     this.config = config;
   }
 
-  public logger = async (level: "debug" | "info" | "warn" | "error" | "fatal", loggedMessage: string, error?: Error) => {
+  public sequelize = new Sequelize({
+    dialect: "sqlite",
+    storage: join(__dirname, "..", "db", "database.sqlite"),
+  })
+
+  public points = this.sequelize.define("points", {
+    discordId: {
+      type: DataTypes.INTEGER,
+    },
+    location: DataTypes.INTEGER,
+  })
+  public logger = async (level: "debug" | "info" | "warn" | "error" | "fatal", loggedMessage: string, _error?: Error) => {
     console.log(`[${level}] ${loggedMessage}`);
     let log = await this.channels.fetch("865012699109130291") as TextChannel;
     if (level !== "error" || "fatal") {
@@ -64,6 +77,12 @@ export default class CxClient extends AkairoClient {
 
   public async start(): Promise<string> {
     await this._init();
+    try {
+      await this.sequelize.authenticate();
+      console.log("Connection has been established successfully.");
+    } catch (error) {
+      console.error("Unable to connect to the database:", error);
+    }
     return this.login(this.config.token);
   }
 

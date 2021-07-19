@@ -11,5 +11,6 @@ export default class ReadyListener extends Listener {
 
   public async exec(): Promise<void> {
     await this.client.logger("info", "has successfully logged in!");
+    await this.client.points.sync(); // Sync points with the database.
   }
 }

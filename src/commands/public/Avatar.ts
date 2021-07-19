@@ -1,5 +1,5 @@
-import {Command} from "discord-akairo";
-import {GuildMember, ImageSize, Message, MessageEmbed} from "discord.js";
+import { Command } from "discord-akairo";
+import { GuildMember, ImageSize, Message, MessageEmbed } from "discord.js";
 
 export default class Avatar extends Command {
   public constructor() {

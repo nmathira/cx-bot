@@ -1,5 +1,5 @@
-import {Command} from "discord-akairo";
-import {GuildMember, Message, MessageEmbed} from "discord.js";
+import { Command } from "discord-akairo";
+import { GuildMember, Message, MessageEmbed } from "discord.js";
 
 export default class User extends Command {
   public constructor() {

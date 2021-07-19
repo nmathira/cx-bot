@@ -1,5 +1,5 @@
-import {Message} from "discord.js";
-import {Command} from "discord-akairo";
+import { Message } from "discord.js";
+import { Command } from "discord-akairo";
 
 export default class Hi extends Command {
   public constructor() {

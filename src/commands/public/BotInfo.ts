@@ -1,13 +1,13 @@
-import {Command} from "discord-akairo";
-import {Message, MessageEmbed} from "discord.js";
-import {version} from "@config/config"
+import { Command } from "discord-akairo";
+import { Message, MessageEmbed } from "discord.js";
+import { version } from "@config/config"
 
 export default class BotInfo extends Command {
   public constructor() {
     super("botinfo", {
       aliases: ["botinfo"],
       category: "Public Commands",
-      description: "shows information about the bot, such as the link"
+      description: "shows information about the bot, such as the link",
     });
   }
 

@@ -1,5 +1,5 @@
-import {Argument, Command} from "discord-akairo";
-import {Message} from "discord.js";
+import { Argument, Command } from "discord-akairo";
+import { Message } from "discord.js";
 
 export default class Clear extends Command {
   public constructor() {

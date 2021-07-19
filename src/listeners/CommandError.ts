@@ -1,5 +1,5 @@
-import {Command, Listener} from "discord-akairo";
-import {Message, MessageEmbed, Snowflake} from "discord.js";
+import { Command, Listener } from "discord-akairo";
+import { Message, MessageEmbed, Snowflake } from "discord.js";
 
 export default class ErrorListener extends Listener {
   public constructor() {

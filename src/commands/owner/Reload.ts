@@ -1,5 +1,5 @@
-import {Command} from "discord-akairo";
-import {Message} from "discord.js";
+import { Command } from "discord-akairo";
+import { Message } from "discord.js";
 
 
 export default class LoadCommand extends Command {

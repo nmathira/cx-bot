@@ -17,41 +17,28 @@ export default class Help extends Command {
   }
 
   public async exec(message: Message, {command}: { command: Command }): Promise<Message | void> {
-    console.log("got here")
-    //   if (command) {
-    //     let embed1 = new MessageEmbed()
-    //       .setAuthor(`Help | ${command}`, this.client.user!.displayAvatarURL())
-    //       .setColor("#0079fa")
-    //       .setDescription(`
-    //               **Description:**\n
-    //               ${command.description.content || "No content provided."}
+    if (command) {
+      let embed1 = new MessageEmbed()
+        .setAuthor(`Help | ${command}`, this.client.user!.displayAvatarURL())
+        .setColor("#0079fa")
+        .setDescription(`**Description:** \n ${command.description || "No content provided."}`);
+      return await message.channel.send({embeds: [embed1]})
+    }
+    const embed = new MessageEmbed()
+      .setAuthor(`Help | ${this.client.user!.username}`, this.client.user!.displayAvatarURL())
+      .setColor("RANDOM")
+      .setFooter(`${this.client.commandHandler.prefix} help [command] for more information for a command`);
+    for (const category of this.handler.categories.values()) {
+      if (["default", "Owner", "hidden"].includes(category.id)) continue;
 
-    //               **Usage:**
-    //               ${command.description.usage || "No usage provided."}
-
-    //               **Examples:**
-    //               ${command.description.examples ? command.description.examples.map((example: string) => `\`${example}\``).join("\n") : "No Example Provided"}
-    //               `);
-    //     return await message.channel.send({embeds: [embed1]},
-    //     )
-    //   }
-    //   const embed = new MessageEmbed()
-    //     .setAuthor(`Help | ${this.client.user!.username}`, this.client.user!.displayAvatarURL())
-    //     .setColor("RANDOM")
-    //     .setFooter(`${this.client.commandHandler.prefix} help [command] for more information for a command`);
-    //   for (const category of this.handler.categories.values()) {
-    //     if (["default"].includes(category.id)) continue;
-    //     if (["Explore Hacks"].includes(category.id)) continue;
-    //     if (["Owner"].includes(category.id)) continue;
-
-    //     embed.addField(category.id, category
-    //       .filter(cmd => cmd.aliases.length > 0)
-    //       .map(cmd => `**\`${cmd}\`**`)
-    //       .join(", ") || "No commands in this category,",
-    //     );
-
-    //   }
-    //   return await message.channel.send({embeds: [embed]});
-    // }
+      embed.addField(category.id, category
+        .filter(cmd => cmd.aliases.length > 0)
+        .map(cmd => `**\`${cmd}\`**`)
+        .join(", ") || "No commands in this category,",
+      );
+    }
+    return await message.channel.send({embeds: [embed]});
   }
+
+  // return await message.util!.send("discord-akairo is stupid and changed the stupid code for descriptions in commands")
 }

@@ -6,13 +6,7 @@ export default class ExplorePoints extends Command {
     super("explorepoints", {
       aliases: ["exp"],
       category: "Explore Hacks",
-      // description: {
-      //   content: "DM's the user how many explore points they have.",
-      //   usage: "exp",
-      //   examples: [
-      //     "exp",
-      //   ],
-      // },
+      description: "Check your current Explore Points. **NEEDS USER TO HAVE *allow direct messages from server members* enabled**",
     });
   }
 

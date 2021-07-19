@@ -8,13 +8,7 @@ export default class Define extends Command {
     super("define", {
       aliases: ["define", "definition", "leo"],
       category: "Public Commands",
-      // description: {
-      //   content: "Use a dictionary to define words!",
-      //   usage: "define [ word ]",
-      //   examples: [
-      //     "define word",
-      //   ],
-      // },
+      description: "defines words! Or breaks, depending on cxbot's mood",
       args: [{
         id: "word",
         type: "string",

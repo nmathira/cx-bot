@@ -9,14 +9,7 @@ export default class Clear extends Command {
       category: "Public Commands",
       userPermissions: "MANAGE_MESSAGES",
       clientPermissions: ["MANAGE_MESSAGES"],
-      // description: {
-      //   content: "Clears the amount of messages specified",
-      //   usage: "clear [amount]",
-      //   examples: [
-      //     "clear",
-      //     "clear [amount]",
-      //   ],
-      // },
+      description: "clears the passed in amount of messages, requires manage_messages permission",
       args: [{
         id: "amount",
         type: Argument.range("number", 1, 99, true),

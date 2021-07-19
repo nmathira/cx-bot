@@ -6,11 +6,7 @@ export default class Ping extends Command {
     super("ping", {
       aliases: ["ping"],
       category: "Public Commands",
-      // description: {
-      //   content: "Check latency between the bot and the Discord API",
-      //   usage: "ping",
-      //   examples: ["ping"],
-      // },
+      description: "check cxbot's latency to the Discord API",
       ratelimit: 3,
     });
   }

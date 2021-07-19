@@ -6,14 +6,7 @@ export default class Help extends Command {
     super("help", {
       aliases: ["help", "commands"],
       category: "Public Commands",
-      // description: {
-      //   content: "view available commands",
-      //   usage: "help [command]",
-      //   examples: [
-      //     "help",
-      //     "help ping",
-      //   ],
-      // },
+      description: "gives information on commands",
       ratelimit: 3,
       args: [{
         id: "command",

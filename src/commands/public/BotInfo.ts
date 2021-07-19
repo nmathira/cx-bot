@@ -7,11 +7,7 @@ export default class BotInfo extends Command {
     super("botinfo", {
       aliases: ["botinfo"],
       category: "Public Commands",
-      // description: {
-      //   content: "Displays general info about the bot",
-      //   usage: "botinfo",
-      //   examples: ["botinfo"],
-      // },
+      description: "shows information about the bot, such as the link"
     });
   }
 

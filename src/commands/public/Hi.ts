@@ -6,13 +6,7 @@ export default class Hi extends Command {
     super("hi", {
       aliases: ["hi", "hello"],
       category: "Public Commands",
-      // description: {
-      //   content: "say hi to cxbot and have cxbot say hi back",
-      //   usage: "hi",
-      //   examples: [
-      //     "hi",
-      //   ],
-      // },
+      description: "say hi to cxbot!",
       ratelimit: 0,
     });
   }

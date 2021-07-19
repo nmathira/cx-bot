@@ -13,9 +13,13 @@
   "author": "Neragin <niranjan@nmathirajan.xyz>",
   "repository": "https://github.com/Neragin/cx-bot.git",
   "dependencies": {
-    "discord-akairo": "discord-akairo/discord-akairo",
-    "discord.js": "^13.0.0-dev.98c6078.1626264203",
-    "node-fetch": "^2.6.1"
+    "@types/node": "^16.3.3",
+    "discord-akairo": "github:discord-akairo/discord-akairo",
+    "discord.js": "^13.0.0-dev.4d53d0f.1626609771",
+    "googleapis": "^81.0.0",
+    "node-fetch": "^2.6.1",
+    "sequelize": "^6.6.5",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "@types/node-fetch": "^2.5.11",

@@ -8,9 +8,9 @@ export default class FillSheet extends Command {
       aliases: ["adduser"],
       category: "hidden",
       args: [{
-        id: "user",
+        id: "member",
         type: "member",
-        match: "rest",
+        match: "phrase",
         prompt: {
           start: "Who would you like to add to the database?",
           retry: "That\'s not a valid member! Try again.",
@@ -20,9 +20,10 @@ export default class FillSheet extends Command {
   }
 
   public async exec(message: Message, {member}: { member: GuildMember }): Promise<Message> {
-    let loc = await addUserToSheet(message.author.id, message.author.username);
+    console.log(member.displayName);
+    let loc = await addUserToSheet(member.id, member.displayName);
     await this.client.points.create({
-      discordId: message.author.id,
+      discordId: member.id,
       location: loc,
     })
     return message.util.send(`Added user to row ${loc}`);

@@ -21,7 +21,7 @@ export default class AddAll extends Command {
       let hacker = hackerArr[1]
       await this.client.points.create({
         discordId: hacker.id,
-        location: await addUserToSheet(hacker.id, hacker.nickname),
+        location: await addUserToSheet(hacker.id, hacker.displayName),
       });
       console.log(`${hacker.id} added to sheet`);
       await delay(1250);

@@ -23,6 +23,5 @@ export async function addUserToSheet(memberId: string, name: string, _points?: n
     insertDataOption: "INSERT_ROWS",
     requestBody: {values},
   });
-  console.log(result.data.updates.updatedRange.split(":")[1].slice(1) + "  <----that")
   return result.data.updates.updatedRange.split(":")[1].slice(1);
 }

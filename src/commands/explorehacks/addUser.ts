@@ -7,10 +7,11 @@ export default class FillSheet extends Command {
     super("adduser", {
       aliases: ["adduser"],
       category: "hidden",
+      ownerOnly: true,
       args: [{
         id: "member",
         type: "member",
-        match: "phrase",
+        match: "rest",
         prompt: {
           start: "Who would you like to add to the database?",
           retry: "That\'s not a valid member! Try again.",

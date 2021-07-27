@@ -44,6 +44,16 @@ export default class CxClient extends AkairoClient {
   public inhibitorHandler: InhibitorHandler = new InhibitorHandler(this, {
     directory: join(__dirname, "..", "inhibitors"),
   })
+  public sequelize = new Sequelize({
+    dialect: "sqlite",
+    storage: join(__dirname, "..", "db", "database.sqlite"),
+  })
+  public points = this.sequelize.define("points", {
+    discordId: {
+      type: DataTypes.INTEGER,
+    },
+    location: DataTypes.INTEGER,
+  })
 
   public constructor(config: BotOptions) {
     super({
@@ -53,17 +63,6 @@ export default class CxClient extends AkairoClient {
     this.config = config;
   }
 
-  public sequelize = new Sequelize({
-    dialect: "sqlite",
-    storage: join(__dirname, "..", "db", "database.sqlite"),
-  })
-
-  public points = this.sequelize.define("points", {
-    discordId: {
-      type: DataTypes.INTEGER,
-    },
-    location: DataTypes.INTEGER,
-  })
   public logger = async (level: "debug" | "info" | "warn" | "error" | "fatal", loggedMessage: string, _error?: Error) => {
     console.log(`[${level}] ${loggedMessage}`);
     let log = await this.channels.fetch("865012699109130291") as TextChannel;

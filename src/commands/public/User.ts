@@ -13,7 +13,6 @@ export default class User extends Command {
           id: "member",
           type: "member",
           match: "rest",
-          default: (msg: Message) => msg.member,
         },
       ],
     });

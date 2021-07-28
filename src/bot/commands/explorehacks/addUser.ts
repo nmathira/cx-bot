@@ -1,6 +1,6 @@
 import { GuildMember, Message } from "discord.js";
 import { Command } from "discord-akairo";
-import { addUserToSheet } from "../../util/sheets";
+import { addUserToSheet } from "../../../util/sheets";
 
 export default class FillSheet extends Command {
   public constructor() {

@@ -1,6 +1,6 @@
 import { Command } from "discord-akairo";
 import { Message, MessageEmbed } from "discord.js";
-import { getDataFromSheet } from "../../util/sheets";
+import { getDataFromSheet } from "../../../util/sheets";
 
 export default class ExplorePoints extends Command {
   constructor() {

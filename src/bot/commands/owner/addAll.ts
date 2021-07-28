@@ -1,6 +1,6 @@
 import { Command } from "discord-akairo"
 import { Message, Snowflake } from "discord.js"
-import { addUserToSheet } from "../../util/sheets";
+import { addUserToSheet } from "../../../util/sheets";
 
 export default class AddAll extends Command {
   public constructor() {

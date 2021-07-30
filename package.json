@@ -13,13 +13,17 @@
   "author": "Neragin <niranjan@nmathirajan.xyz>",
   "repository": "https://github.com/Neragin/cx-bot.git",
   "dependencies": {
+    "@sapphire/decorators": "^2.2.0",
     "@sapphire/framework": "^2.0.0-next.9790c48d.0",
+    "bufferutil": "^4.0.3",
     "discord.js": "^13.0.0-dev.30a58dc.1627430624",
     "dotenv-extended": "^2.9.0",
     "googleapis": "^81.0.0",
     "node-fetch": "^2.6.1",
     "sequelize": "^6.6.5",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "utf-8-validate": "^5.0.5",
+    "zlib-sync": "^0.1.7"
   },
   "devDependencies": {
     "@types/node": "^16.3.3",
@@ -31,6 +35,7 @@
     "module-alias": "^2.2.2"
   },
   "_moduleAliases": {
-    "@config": "dist/config"
+    "@lib": "dist/lib",
+    "@bot": "dist/bot"
   }
 }

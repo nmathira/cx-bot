@@ -1,16 +1,14 @@
-import { Listener } from "discord-akairo";
+import { Listener } from "@sapphire/framework";
 
-export default class ReadyListener extends Listener {
-  public constructor() {
-    super("ready", {
-      emitter: "client",
-      event: "ready",
-      category: "client",
+export default class ready extends Listener {
+  //TODO: Figure out what exactly this context thingy is
+  public constructor(context: any) {
+    super(context, {
+      once: true,
     });
   }
 
-  public async exec(): Promise<void> {
-    await this.client.logger("info", "has successfully logged in!");
-    await this.client.points.sync(); // Sync points with the database.
+  public async run() {
+    this.container.logger.info("Successfully logged in!");
   }
 }

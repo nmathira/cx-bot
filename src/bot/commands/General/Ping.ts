@@ -1,14 +1,17 @@
-import { Command, PieceContext } from "@sapphire/framework";
 import { Message } from "discord.js";
+import { ApplyOptions } from "@sapphire/decorators";
+import { CxCommand, CxCommandOptions } from "@lib/command/CxCommand";
 
-export class Ping extends Command {
-  public constructor(context: PieceContext) {
-    super(context, {
-      name: "ping",
-      description: "Send back the ping of the bot",
-    });
-  }
-
+@ApplyOptions<CxCommandOptions>({
+  name: "ping",
+  aliases: ["ping"],
+  category: "Utilities",
+  usage: "cx ping",
+  examples: ["cx ping"],
+  description: "sends the ping of CxBot.",
+  detailedDescription: "Sends the ping of CxBot's connection to Discord, as well as the ping from Discord.",
+})
+export class Ping extends CxCommand {
   async run(message: Message): Promise<Message> {
     const msg = await message.channel.send("you have good eyes?");
     return await msg.edit(

@@ -15,8 +15,10 @@ import { execSync } from "child_process";
 export class Stats extends CxCommand {
   async run(message: Message): Promise<Message> {
     const embed = new MessageEmbed()
+      .setTitle("CxBot's Statistics!")
+      .addField("Guilds: ", this.container.client.guilds.cache.size.toString())
+      .addField("Users: ", this.container.client.users.cache.size.toString())
       .addField("Commit Hash: ", execSync("git rev-parse HEAD").toString().trim())
-      .addField("CPU Usage: ", `${process.cpuUsage().user}`)
       .addField("Memory Usage: ", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB / ${process.memoryUsage().heapTotal / 1024 / 1024}`)
       .addField("Discord.js Version: ", version)
       .addField("NodeJS Version", process.version)

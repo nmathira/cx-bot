@@ -1,14 +1,13 @@
-import { Listener } from "@sapphire/framework";
+import { Listener, PieceContext } from "@sapphire/framework";
 
-export default class ready extends Listener {
-  //TODO: Figure out what exactly this context thingy is
-  public constructor(context: any) {
+export class ready extends Listener {
+  public constructor(context: PieceContext) {
     super(context, {
       once: true,
     });
   }
 
-  public async run() {
+  public run(): void {
     this.container.logger.info("Successfully logged in!");
   }
 }

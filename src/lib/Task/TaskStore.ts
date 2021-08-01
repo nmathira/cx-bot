@@ -1,8 +1,9 @@
-import { Store } from "@sapphire/pieces";
 import { Task } from "./Task";
+import type { Constructor } from "@sapphire/pieces";
+import { Store } from "@sapphire/pieces";
 
 export class TaskStore extends Store<Task> {
-  public constructor() {
-    super(Task as any, {name: "tasks"});
+  constructor() {
+    super(Task as Constructor<Task>, {name: "tasks"});
   }
 }

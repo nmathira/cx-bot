@@ -1,38 +1,45 @@
-import { Piece, PieceContext, PieceOptions } from "@sapphire/pieces";
-import { Awaited } from "@sapphire/framework";
+import type { PieceContext, PieceOptions } from "@sapphire/pieces";
+import { Piece } from "@sapphire/pieces";
 import { schedule, ScheduledTask, validate } from "node-cron";
 
-export interface TaskOptions extends PieceOptions {
-  interval?: string;
-}
+//https://github.com/EFREI-Horizon/MonkaBot
 
 export abstract class Task extends Piece {
-  private readonly interval: string;
-  private readonly cron: ScheduledTask;
+  public readonly cron?: string;
+  private _scheduleCron: ScheduledTask;
+  private readonly _callback: (() => Promise<void>) | null;
 
-  protected constructor(context: PieceContext, options: TaskOptions = {}) {
+  protected constructor(context: PieceContext, options: TaskOptions) {
     super(context, options);
-    this.interval = validate(options.interval) ? options.interval : "* * * * *";
-    this.cron = schedule(this.interval, this.run);
+
+    this.cron = validate(options.cron) ? options.cron : null;
+    this._callback = this._run.bind(this);
   }
 
-  public abstract run(...args: readonly unknown[]): Awaited<void>;
-
-  public onLoad(): Awaited<unknown> {
-    this.cron.start();
-    return super.onLoad();
+  public onLoad(): void {
+    this._scheduleCron = schedule(this.cron, this._callback);
   }
 
-  public onUnload(): Awaited<unknown> {
-    this.cron.stop();
-    return super.onUnload();
+  public onUnload(): void {
+    if (this._scheduleCron) this._scheduleCron.stop().destroy();
   }
 
-  public toJSON(): Record<string, any> {
+  public toJSON(): Record<PropertyKey, unknown> {
     return {
       ...super.toJSON(),
       cron: this.cron,
-      interval: this.interval,
     };
   }
+
+  public abstract run(): unknown;
+
+  private async _run(): Promise<void> {
+    try {
+      await this.run();
+    } catch (error: unknown) {
+      // this.container.client.emit(Events.TaskError, error as Error, { piece: this });
+    }
+  }
 }
+
+export type TaskOptions = | PieceOptions & { cron: string }

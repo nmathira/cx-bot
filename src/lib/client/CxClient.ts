@@ -3,11 +3,6 @@ import { SapphireClient, SapphirePrefix } from "@sapphire/framework";
 import { join } from "path";
 import { TaskStore } from "@lib/Task/TaskStore";
 
-declare module "@sapphire/pieces" {
-  export interface StoreRegistryEntries {
-    tasks: TaskStore;
-  }
-}
 export default class CxClient extends SapphireClient {
   public constructor({
     prefix = process.env.PREFIX,
@@ -20,9 +15,14 @@ export default class CxClient extends SapphireClient {
       intents: intents,
       defaultPrefix: prefix,
     });
-
-    this.stores.register(new TaskStore().registerPath(join(__dirname, "..", "tasks")));
+    // Store.defaultStrategy.onLoad = (store, piece) => container.logger.info(`Loading ${store.name}:${piece.name}`);
+    this.stores.register(new TaskStore());
   }
 
   public fetchPrefix = (): string => process.env.PREFIX;
+}
+declare module "@sapphire/pieces" {
+  interface StoreRegistryEntries {
+    tasks: TaskStore;
+  }
 }

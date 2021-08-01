@@ -1,7 +1,6 @@
 import { Message } from "discord.js";
 import { ApplyOptions } from "@sapphire/decorators";
 import { CxCommand, CxCommandOptions } from "@lib/command/CxCommand";
-import { Args } from "@sapphire/framework";
 
 @ApplyOptions<CxCommandOptions>({
   name: "reloadall",
@@ -14,7 +13,10 @@ import { Args } from "@sapphire/framework";
   detailedDescription: "Sends the ping of CxBot's connection to Discord, as well as the ping from Discord.",
 })
 export class Reload extends CxCommand {
-  async run(message: Message, args: Args): Promise<void> {
-    return this.container.stores.get("commands").get(await args.pick("string")).reload();
+  async run(message: Message): Promise<Message> {
+    this.container.stores.get("commands").forEach(cmd => {
+      cmd.reload();
+    });
+    return await message.channel.send("All commands reloaded!");
   }
 }

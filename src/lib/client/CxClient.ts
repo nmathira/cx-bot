@@ -26,3 +26,11 @@ declare module "@sapphire/pieces" {
     tasks: TaskStore;
   }
 }
+
+declare module "@sapphire/framework" {
+  interface Command {
+    category: Readonly<string>;
+    examples: Readonly<string[]>;
+    usage: Readonly<string>;
+  }
+}

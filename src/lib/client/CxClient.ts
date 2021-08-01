@@ -1,7 +1,13 @@
 import { BitFieldResolvable, IntentsString } from "discord.js";
 import { SapphireClient, SapphirePrefix } from "@sapphire/framework";
 import { join } from "path";
+import { TaskStore } from "@lib/Task/TaskStore";
 
+declare module "@sapphire/pieces" {
+  export interface StoreRegistryEntries {
+    tasks: TaskStore;
+  }
+}
 export default class CxClient extends SapphireClient {
   public constructor({
     prefix = process.env.PREFIX,
@@ -14,6 +20,8 @@ export default class CxClient extends SapphireClient {
       intents: intents,
       defaultPrefix: prefix,
     });
+
+    this.stores.register(new TaskStore().registerPath(join(__dirname, "..", "tasks")));
   }
 
   public fetchPrefix = (): string => process.env.PREFIX;

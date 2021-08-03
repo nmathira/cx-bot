@@ -2,12 +2,13 @@
   "name": "cx-bot",
   "version": "0.0.1",
   "description": "a self developed discord bot",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "rm -rdf dist && tsc && node dist/",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "sh ./deploy.sh"
+    "start": "node dist/",
+    "lint": "eslint --ext ts src --fix",
+    "clean": "tsc -b . --clean",
+    "build": "tsc src"
   },
   "keywords": [],
   "author": "Neragin <niranjan@nmathirajan.xyz>",
@@ -15,6 +16,7 @@
   "dependencies": {
     "@sapphire/decorators": "^2.2.0",
     "@sapphire/discord.js-utilities": "^1.6.0",
+    "@sapphire/fetch": "^1.0.5",
     "@sapphire/framework": "^2.0.0-next.9790c48d.0",
     "@sapphire/type": "^2.0.11",
     "@sapphire/utilities": "^1.7.0",

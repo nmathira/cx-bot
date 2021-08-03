@@ -18,22 +18,42 @@ import { execSync } from "child_process";
 export class Stats extends CxCommand {
   async run(message: Message): Promise<Message> {
     const embed = new MessageEmbed()
-      .setTitle("CxBot's Statistics!")
-      .addField("Guilds: ", this.container.client.guilds.cache.size.toString())
-      .addField("Users: ", this.container.client.users.cache.size.toString())
-      .addField(
-        "Commit Hash: ",
-        execSync("git rev-parse HEAD").toString().trim()
+      .setTitle("CxBot's Invite!")
+      .setURL(
+        this.container.client.generateInvite({
+          scopes: ["bot"],
+          permissions: ["ADMINISTRATOR"],
+        })
       )
+      .addField(
+        "Guilds: ",
+        this.container.client.guilds.cache.size.toString(),
+        true
+      )
+      .addField(
+        "Users: ",
+        this.container.client.users.cache.size.toString(),
+        true
+      )
+      .addField("Discord.js", version.split("t")[0], true)
+      .addField("NodeJS", process.version, true)
       .addField(
         "Memory Usage: ",
-        `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB / ${
-          process.memoryUsage().heapTotal / 1024 / 1024
-        }`
+        `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MiB / ${(
+          process.memoryUsage().heapTotal /
+          1024 /
+          1024
+        ).toFixed(2)} MiB`,
+        true
       )
-      .addField("Discord.js Version: ", version)
-      .addField("NodeJS Version", process.version)
-      .addField("Process ID", process.pid.toString());
+      .setFooter(
+        `PID: ${process.pid.toString()} | ${execSync(
+          "git rev-parse --short HEAD"
+        )
+          .toString()
+          .trim()} | `
+      )
+      .setTimestamp(Date.now());
     return await message.channel.send({ embeds: [embed] });
   }
 }

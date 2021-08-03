@@ -42,4 +42,4 @@ export abstract class Task extends Piece {
   }
 }
 
-export type TaskOptions = | PieceOptions & { cron: string }
+export type TaskOptions = PieceOptions & { cron: string };

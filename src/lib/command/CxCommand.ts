@@ -1,9 +1,10 @@
-import { Command, CommandOptions, PieceContext } from "@sapphire/framework";
+import type { CommandOptions, PieceContext } from "@sapphire/framework";
+import { Command } from "@sapphire/framework";
 
 export interface CxCommandOptions extends CommandOptions {
-  category?: string,
+  category?: string;
   examples?: string[];
-  usage?: string,
+  usage?: string;
 }
 
 export abstract class CxCommand extends Command {

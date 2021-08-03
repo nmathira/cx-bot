@@ -4,6 +4,6 @@ import { Store } from "@sapphire/pieces";
 
 export class TaskStore extends Store<Task> {
   constructor() {
-    super(Task as Constructor<Task>, {name: "tasks"});
+    super(Task as Constructor<Task>, { name: "tasks" });
   }
 }

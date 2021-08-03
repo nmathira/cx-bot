@@ -1,6 +1,7 @@
-import { Message } from "discord.js";
+import type { Message } from "discord.js";
 import { ApplyOptions } from "@sapphire/decorators";
-import { CxCommand, CxCommandOptions } from "@lib/command/CxCommand";
+import type { CxCommandOptions } from "@lib/command/CxCommand";
+import { CxCommand } from "@lib/command/CxCommand";
 
 @ApplyOptions<CxCommandOptions>({
   name: "hi",

@@ -1,19 +1,31 @@
-import { BitFieldResolvable, IntentsString } from "discord.js";
-import { SapphireClient, SapphirePrefix } from "@sapphire/framework";
-import { join } from "path";
+import type { BitFieldResolvable, IntentsString } from "discord.js";
+import type { SapphirePrefix } from "@sapphire/framework";
+import { SapphireClient } from "@sapphire/framework";
 import { TaskStore } from "@lib/Task/TaskStore";
+import { join } from "path";
 
 export default class CxClient extends SapphireClient {
   public constructor({
     prefix = process.env.PREFIX,
-    intents = ["DIRECT_MESSAGES", "GUILDS", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_INVITES", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"],
-  }: { prefix: SapphirePrefix, intents: BitFieldResolvable<IntentsString, number> }) {
+    intents = [
+      "DIRECT_MESSAGES",
+      "GUILDS",
+      "GUILD_MEMBERS",
+      "GUILD_BANS",
+      "GUILD_INVITES",
+      "GUILD_MESSAGES",
+      "GUILD_MESSAGE_REACTIONS",
+    ],
+  }: {
+    prefix: SapphirePrefix;
+    intents: BitFieldResolvable<IntentsString, number>;
+  }) {
     super({
-      caseInsensitiveCommands: true,
       baseUserDirectory: join(__dirname, "..", "..", "bot"),
+      caseInsensitiveCommands: true,
       caseInsensitivePrefixes: true,
-      intents: intents,
       defaultPrefix: prefix,
+      intents: intents,
     });
     // Store.defaultStrategy.onLoad = (store, piece) => container.logger.info(`Loading ${store.name}:${piece.name}`);
     this.stores.register(new TaskStore());

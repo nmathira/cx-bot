@@ -38,7 +38,7 @@ export class Ping extends CxCommand {
                 ? command.examples
                     .map((example: string) => `\`${example}\``)
                     .toString()
-                : "No Examples Provid,ed."
+                : "No Examples Provided."
             ),
         ],
       });
@@ -47,7 +47,7 @@ export class Ping extends CxCommand {
         .get("commands")
         .filter((command) => !["Owner"].includes(command.category));
       const embed = new MessageEmbed();
-      embed.setDescription(thing.aliases.array.toString());
+      embed.setDescription(thing.aliases.toString());
       return message.channel.send({ embeds: [embed] });
     }
   }

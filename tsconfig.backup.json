@@ -12,9 +12,7 @@
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
-      "@config/*": [
-        "config/*"
-      ]
+      "@config/*": ["config/*"]
     }
   },
   "exclude": [

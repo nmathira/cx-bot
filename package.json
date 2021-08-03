@@ -37,7 +37,9 @@
     "@typescript-eslint/parser": "^4.28.5",
     "eslint": "^7.31.0",
     "eslint-config-google": "^0.14.0",
-    "module-alias": "^2.2.2"
+    "eslint-config-prettier": "8.3.0",
+    "module-alias": "^2.2.2",
+    "prettier": "2.3.2"
   },
   "_moduleAliases": {
     "@lib": "dist/lib",

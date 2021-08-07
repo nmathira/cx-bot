@@ -1,4 +1,5 @@
 import type { Args } from "@sapphire/framework";
+import { PermissionsPrecondition } from "@sapphire/framework";
 import { ApplyOptions, RequiresPermissions } from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
 import { CxCommand } from "@lib/extensions/CxCommand";
@@ -19,6 +20,7 @@ import type {
   runIn: "guild",
   examples: ["cx clear 1"],
   description: "clears messages in a text channel",
+  preconditions: [new PermissionsPrecondition("MANAGE_MESSAGES")],
   detailedDescription:
     "Clears messages that are sent in a Server's Text Channel. Needs ManageMessages to work.",
 })

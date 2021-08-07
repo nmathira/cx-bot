@@ -1,9 +1,21 @@
-import { CxCommand } from "@lib/command/CxCommand";
-import type { Message } from "discord.js";
-import { MessageEmbed } from "discord.js";
 import type { Args } from "@sapphire/framework";
+import type { CxCommandOptions } from "@typings/index";
+import { CxCommand } from "@lib/extensions/CxCommand";
+import type { Message } from "discord.js";
+import { ApplyOptions } from "@sapphire/decorators";
 import { fetch, FetchResultTypes } from "@sapphire/fetch";
+import CxEmbed from "@lib/extensions/CxEmbed";
 
+@ApplyOptions<CxCommandOptions>({
+  name: "define",
+  aliases: ["define", "leo"],
+  category: "Utilities",
+  usage: "cx define [word]",
+  examples: ["cx define banana"],
+  description: "defines words for you.",
+  detailedDescription:
+    "defines inputted words using the Merriam Webster Dictionary",
+})
 export class Define extends CxCommand {
   public async run(message: Message, args: Args): Promise<Message> {
     const word = await args
@@ -21,7 +33,7 @@ export class Define extends CxCommand {
       return message.channel.send("that word doesn't seem to exist");
     return message.channel.send({
       embeds: [
-        new MessageEmbed()
+        new CxEmbed()
           .setTitle("Definition for: " + word)
           .setDescription(dictionary[0]["shortdef"][0]),
       ],

@@ -1,9 +1,10 @@
-import type { Message } from "discord.js";
-import { MessageEmbed, version } from "discord.js";
+import type { Message, Snowflake } from "discord.js";
+import { version } from "discord.js";
 import { ApplyOptions } from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
 import { CxCommand } from "@lib/extensions/CxCommand";
 import { execSync } from "child_process";
+import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
   name: "stats",
@@ -17,7 +18,7 @@ import { execSync } from "child_process";
 })
 export class Stats extends CxCommand {
   async run(message: Message): Promise<Message> {
-    const embed = new MessageEmbed()
+    const embed = new CxEmbed()
       .setTitle("CxBot's Invite!")
       .setURL(
         this.container.client.generateInvite({
@@ -30,12 +31,7 @@ export class Stats extends CxCommand {
         this.container.client.guilds.cache.size.toString(),
         true
       )
-      .addField(
-        "Users: ",
-        this.container.client.users.cache.size.toString(),
-        true
-      )
-      .addField("Discord.js", version.split("t")[0], true)
+      .addField("Discord.js", "v" + version.split("-")[0], true)
       .addField("NodeJS", process.version, true)
       .addField(
         "Memory Usage: ",
@@ -51,9 +47,8 @@ export class Stats extends CxCommand {
           "git rev-parse --short HEAD"
         )
           .toString()
-          .trim()} | `
-      )
-      .setTimestamp(Date.now());
+          .trim()} `
+      );
     return await message.channel.send({ embeds: [embed] });
   }
 }

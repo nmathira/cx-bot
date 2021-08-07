@@ -21,7 +21,7 @@ export class Avatar extends CxCommand {
     const user: User = await args.pick("user").catch(() => message.author);
     return await message.channel.send({
       embeds: [
-        new MessageEmbed()
+        new CxEmbed()
           .setTitle("Avatar of: " + message.author.username)
           .setImage(user.displayAvatarURL({ size: size as AllowedImageSize })),
       ],

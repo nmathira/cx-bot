@@ -1,6 +1,7 @@
 import type { PieceContext, PieceOptions } from "@sapphire/pieces";
 import { Piece } from "@sapphire/pieces";
-import { schedule, ScheduledTask, validate } from "node-cron";
+import type { ScheduledTask } from "node-cron";
+import { schedule, validate } from "node-cron";
 
 //https://github.com/EFREI-Horizon/MonkaBot
 

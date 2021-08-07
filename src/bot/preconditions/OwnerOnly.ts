@@ -1,6 +1,6 @@
 import type { PreconditionResult } from "@sapphire/framework";
 import { Precondition } from "@sapphire/framework";
-import { Message } from "discord.js";
+import type { Message } from "discord.js";
 
 export class OwnerOnly extends Precondition {
   public run(message: Message): PreconditionResult {

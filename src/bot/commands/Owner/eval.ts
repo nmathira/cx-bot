@@ -1,11 +1,12 @@
 import type { Message } from "discord.js";
 import { ApplyOptions } from "@sapphire/decorators";
-import type { CxCommandOptions } from "@lib/command/CxCommand";
-import { CxCommand } from "@lib/command/CxCommand";
+import type { CxCommandOptions } from "@typings/index";
+import { CxCommand } from "@lib/extensions/CxCommand";
 import type { Args } from "@sapphire/framework";
 import { codeBlock, isThenable } from "@sapphire/utilities";
 import { inspect } from "util";
 import { Type } from "@sapphire/type";
+import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
   name: "eval",

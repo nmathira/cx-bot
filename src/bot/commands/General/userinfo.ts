@@ -1,8 +1,8 @@
 import type { Message } from "discord.js";
 import { MessageEmbed } from "discord.js";
 import { ApplyOptions } from "@sapphire/decorators";
-import type { CxCommandOptions } from "@lib/command/CxCommand";
-import { CxCommand } from "@lib/command/CxCommand";
+import type { CxCommandOptions } from "@typings/index";
+import { CxCommand } from "@lib/extensions/CxCommand";
 import type { Args } from "@sapphire/framework";
 
 @ApplyOptions<CxCommandOptions>({
@@ -26,8 +26,7 @@ export class Userinfo extends CxCommand {
           .setThumbnail(user.displayAvatarURL())
           .addField("mention: ", user.toString())
           .addField("Created at: ", user.createdAt.toUTCString())
-          .setFooter(user.id)
-          .setTimestamp(Date.now()),
+          .setFooter(user.id),
       ],
     });
   }

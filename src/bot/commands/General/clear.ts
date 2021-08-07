@@ -1,8 +1,15 @@
 import type { Args } from "@sapphire/framework";
 import { ApplyOptions, RequiresPermissions } from "@sapphire/decorators";
-import type { CxCommandOptions } from "@lib/command/CxCommand";
-import { CxCommand } from "@lib/command/CxCommand";
-import type { Collection, Message, Snowflake } from "discord.js";
+import type { CxCommandOptions } from "@typings/index";
+import { CxCommand } from "@lib/extensions/CxCommand";
+import type {
+  Collection,
+  Message,
+  NewsChannel,
+  Snowflake,
+  TextChannel,
+  ThreadChannel,
+} from "discord.js";
 
 @ApplyOptions<CxCommandOptions>({
   name: "clear",
@@ -22,8 +29,10 @@ export class Clear extends CxCommand {
     args: Args
   ): Promise<Message | Collection<Snowflake, Message>> {
     const number = await args.pick("number", { maximum: 99, minimum: 0 });
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    return await message.channel.bulkDelete(number);
+    const channel = message.channel as
+      | TextChannel
+      | NewsChannel
+      | ThreadChannel;
+    return await channel.bulkDelete(number);
   }
 }

@@ -1,9 +1,9 @@
-import type { ImageSize, Message, User } from "discord.js";
-import { MessageEmbed } from "discord.js";
+import type { AllowedImageSize, Message, User } from "discord.js";
 import type { Args } from "@sapphire/framework";
 import { ApplyOptions } from "@sapphire/decorators";
-import type { CxCommandOptions } from "@lib/command/CxCommand";
-import { CxCommand } from "@lib/command/CxCommand";
+import type { CxCommandOptions } from "@typings/index";
+import { CxCommand } from "@lib/extensions/CxCommand";
+import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
   name: "avatar",
@@ -23,7 +23,7 @@ export class Avatar extends CxCommand {
       embeds: [
         new MessageEmbed()
           .setTitle("Avatar of: " + message.author.username)
-          .setImage(user.displayAvatarURL({ size: size as ImageSize })),
+          .setImage(user.displayAvatarURL({ size: size as AllowedImageSize })),
       ],
     });
   }

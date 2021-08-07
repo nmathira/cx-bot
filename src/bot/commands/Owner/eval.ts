@@ -23,7 +23,7 @@ export class Eval extends CxCommand {
   public async run(message: Message, args: Args): Promise<Message> {
     const code = await args.rest("string");
 
-    const { result, success, type } = await this.eval(message, code, {
+    const { result, success, type, timeInMs } = await this.eval(message, code, {
       async: args.getFlags("async"),
       depth: Number(args.getOption("depth")) ?? 0,
       showHidden: args.getFlags("hidden", "showHidden"),
@@ -31,12 +31,20 @@ export class Eval extends CxCommand {
 
     const output = success
       ? codeBlock("js", result)
-      : `**ERROR**: ${codeBlock("bash", result)}`;
+      : codeBlock("bash", result);
     if (args.getFlags("silent", "s")) return null;
 
-    const typeFooter = `**Type**: ${codeBlock("typescript", type)}`;
-
-    return message.channel.send(`${output}\n${typeFooter}`);
+    const typeFooter = codeBlock("typescript", type);
+    return message.channel.send({
+      embeds: [
+        new CxEmbed()
+          .setTitle(success ? "Evaluation Succeeded!" : "Evaluation Failed!")
+          .setColor(success ? "GREEN" : "RED")
+          .addField("Result: ", output)
+          .addField("Type: ", typeFooter)
+          .setFooter("Time Taken: " + timeInMs + "ms"),
+      ],
+    });
   }
 
   private async eval(
@@ -51,7 +59,9 @@ export class Eval extends CxCommand {
 
     let success = true;
     let result: string;
-
+    const start = process.hrtime();
+    let timer: number[];
+    let timeInMs: number;
     try {
       // eslint-disable-next-line no-eval
       result = eval(code);
@@ -61,6 +71,9 @@ export class Eval extends CxCommand {
       }
       result = error;
       success = false;
+    } finally {
+      timer = process.hrtime(start);
+      timeInMs = (timer[0] * 1000000000 + timer[1]) / 1000000;
     }
 
     const type = new Type(result).toString();
@@ -73,6 +86,6 @@ export class Eval extends CxCommand {
       });
     }
 
-    return { result, success, type };
+    return { result, success, type, timeInMs };
   }
 }

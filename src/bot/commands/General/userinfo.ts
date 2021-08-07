@@ -1,9 +1,9 @@
 import type { Message } from "discord.js";
-import { MessageEmbed } from "discord.js";
 import { ApplyOptions } from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
 import { CxCommand } from "@lib/extensions/CxCommand";
 import type { Args } from "@sapphire/framework";
+import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
   name: "userinfo",
@@ -20,7 +20,7 @@ export class Userinfo extends CxCommand {
     const user = await args.pick("user").catch(() => message.author);
     return message.channel.send({
       embeds: [
-        new MessageEmbed()
+        new CxEmbed()
           .setAuthor(user.username, user.displayAvatarURL())
           .setTitle("Info about: " + user.tag)
           .setThumbnail(user.displayAvatarURL())

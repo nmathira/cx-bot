@@ -1,11 +1,6 @@
-import type { CommandOptions, PieceContext } from "@sapphire/framework";
+import type { PieceContext } from "@sapphire/framework";
 import { Command } from "@sapphire/framework";
-
-export interface CxCommandOptions extends CommandOptions {
-  category?: string;
-  examples?: string[];
-  usage?: string;
-}
+import type { CxCommandOptions } from "@typings/index";
 
 export abstract class CxCommand extends Command {
   public category: Readonly<string>;
@@ -19,6 +14,7 @@ export abstract class CxCommand extends Command {
     this.usage = options.usage ?? "";
   }
 
+  // eslint-disable-next-line
   public toJSON(): Record<string, any> {
     return {
       ...super.toJSON(),

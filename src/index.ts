@@ -1,7 +1,7 @@
-import dotEnvExtended from "dotenv-extended";
 import "module-alias/register";
-import CxClient from "./lib/client/CxClient";
-import { BitFieldResolvable, IntentsString } from "discord.js";
+import type { BitFieldResolvable, IntentsString } from "discord.js";
+import dotEnvExtended from "dotenv-extended";
+import CxClient from "@lib/extensions/CxClient";
 
 dotEnvExtended.load();
 const cxbot: CxClient = new CxClient({
@@ -18,4 +18,9 @@ const cxbot: CxClient = new CxClient({
 });
 cxbot
   .login(process.env.DISCORD_TOKEN)
-  .then(() => cxbot.logger.info("we logged in baby"));
+  .then(() => cxbot.logger.info("we logged in baby"))
+  .catch(() => {
+    cxbot.logger.fatal("oh no, bot doesn't have life support");
+    cxbot.destroy();
+    process.exit(1);
+  });

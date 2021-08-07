@@ -1,3 +1,4 @@
+// noinspection ES6ConvertModuleExportToExport
 module.exports = {
   env: {
     es2021: true,
@@ -15,7 +16,7 @@ module.exports = {
   },
   plugins: ["@typescript-eslint"],
   rules: {
-    indent: ["error", 2],
+    indent: ["error", 2, { MemberExpression: 1 }],
     "linebreak-style": ["error", "unix"],
     "@typescript-eslint/consistent-type-imports": "error",
     quotes: ["error", "double"],

@@ -2,8 +2,7 @@ import type { Message, Snowflake } from "discord.js";
 import { version } from "discord.js";
 import { ApplyOptions } from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
-import { CxCommand } from "@lib/extensions/CxCommand";
-import { execSync } from "child_process";
+import CxCommand from "@lib/extensions/CxCommand";
 import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({

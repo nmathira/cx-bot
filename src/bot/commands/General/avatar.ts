@@ -2,18 +2,17 @@ import type { AllowedImageSize, Message, User } from "discord.js";
 import type { Args } from "@sapphire/framework";
 import { ApplyOptions } from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
-import { CxCommand } from "@lib/extensions/CxCommand";
+import CxCommand from "@lib/extensions/CxCommand";
 import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
-  name: "avatar",
-  aliases: ["avatar", "av"],
+  aliases: ["av"],
   category: "Utilities",
-  usage: "cx avatar",
-  examples: ["cx avatar", "cx avatar [user]"],
   description: "shows the avatar of the user passed in.",
   detailedDescription:
     "Shows the avatar of the user passed in, defaulting to the author of the command if no user is passed in.",
+  examples: ["cx avatar", "cx avatar [user]"],
+  usage: "cx avatar",
 })
 export class Avatar extends CxCommand {
   async run(message: Message, args: Args): Promise<Message> {

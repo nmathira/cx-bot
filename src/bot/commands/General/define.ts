@@ -1,6 +1,6 @@
 import type { Args } from "@sapphire/framework";
 import type { CxCommandOptions } from "@typings/index";
-import { CxCommand } from "@lib/extensions/CxCommand";
+import CxCommand from "@lib/extensions/CxCommand";
 import type { Message } from "discord.js";
 import { ApplyOptions } from "@sapphire/decorators";
 import { fetch, FetchResultTypes } from "@sapphire/fetch";

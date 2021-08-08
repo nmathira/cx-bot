@@ -1,7 +1,7 @@
 import type { Message } from "discord.js";
 import { ApplyOptions } from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
-import { CxCommand } from "@lib/extensions/CxCommand";
+import CxCommand from "@lib/extensions/CxCommand";
 import type { Args } from "@sapphire/framework";
 
 @ApplyOptions<CxCommandOptions>({

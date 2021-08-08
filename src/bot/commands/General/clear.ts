@@ -2,7 +2,7 @@ import type { Args } from "@sapphire/framework";
 import { PermissionsPrecondition } from "@sapphire/framework";
 import { ApplyOptions, RequiresPermissions } from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
-import { CxCommand } from "@lib/extensions/CxCommand";
+import CxCommand from "@lib/extensions/CxCommand";
 import type {
   Collection,
   Message,

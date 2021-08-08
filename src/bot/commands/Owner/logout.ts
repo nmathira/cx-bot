@@ -1,5 +1,5 @@
 import type { CxCommandOptions } from "@typings/index";
-import { CxCommand } from "@lib/extensions/CxCommand";
+import CxCommand from "@lib/extensions/CxCommand";
 import { ApplyOptions } from "@sapphire/decorators";
 import type { Message } from "discord.js";
 

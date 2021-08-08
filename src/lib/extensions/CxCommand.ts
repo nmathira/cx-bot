@@ -2,7 +2,7 @@ import type { PieceContext } from "@sapphire/framework";
 import { Command } from "@sapphire/framework";
 import type { CxCommandOptions } from "@typings/index";
 
-export abstract class CxCommand extends Command {
+export default abstract class CxCommand extends Command {
   public category: Readonly<string>;
   public examples: Readonly<string[]>;
   public usage: Readonly<string>;

@@ -1,5 +1,6 @@
-import { exec } from "child_process";
+import { exec as childProcessExec } from "child_process";
 import type { safeExecResult } from "../../typings";
+import { promisify } from "util";
 
 export async function safeExec(command: string): Promise<safeExecResult> {
   try {
@@ -14,3 +15,5 @@ export async function safeExec(command: string): Promise<safeExecResult> {
     };
   }
 }
+
+const exec = promisify(childProcessExec);

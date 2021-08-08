@@ -1,9 +1,10 @@
-import type { Message, Snowflake } from "discord.js";
+import type { Message } from "discord.js";
 import { version } from "discord.js";
 import { ApplyOptions } from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
 import CxCommand from "@lib/extensions/CxCommand";
 import CxEmbed from "@lib/extensions/CxEmbed";
+import { safeExec } from "@lib/utils/util";
 
 @ApplyOptions<CxCommandOptions>({
   category: "Utilities",
@@ -40,11 +41,9 @@ export class Stats extends CxCommand {
         true
       )
       .setFooter(
-        `PID: ${process.pid.toString()} | ${execSync(
-          "git rev-parse --short HEAD"
-        )
-          .toString()
-          .trim()} `
+        `PID: ${process.pid.toString()} | ${
+          (await safeExec("git rev-parse --short HEAD")).stdout
+        }`
       );
     return await message.channel.send({ embeds: [embed] });
   }

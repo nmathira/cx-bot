@@ -5,15 +5,13 @@ import { CxCommand } from "@lib/extensions/CxCommand";
 import type { Args } from "@sapphire/framework";
 
 @ApplyOptions<CxCommandOptions>({
-  name: "reload",
-  aliases: ["reload"],
   category: "Owner",
-  usage: "cx reload {command}",
-  examples: ["cx reload", "cx reload [command]"],
   description: "reloads the command specified",
-  preconditions: ["OwnerOnly"],
   detailedDescription:
     "Sends the ping of CxBot's connection to Discord, as well as the ping from Discord.",
+  examples: ["cx reload", "cx reload [command]"],
+  preconditions: ["OwnerOnly"],
+  usage: "cx reload {command}",
 })
 export class Reload extends CxCommand {
   async run(message: Message, args: Args): Promise<Message> {

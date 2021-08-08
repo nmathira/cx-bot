@@ -4,15 +4,12 @@ import type { CxCommandOptions } from "@typings/index";
 import { CxCommand } from "@lib/extensions/CxCommand";
 
 @ApplyOptions<CxCommandOptions>({
-  name: "reload",
-  aliases: ["reload"],
   category: "Owner",
-  usage: "cx reload {command}",
-  examples: ["cx reload", "cx reload [command]"],
-  description: "reloads the command specified",
+  description: "Loads all the commands in fs",
+  detailedDescription: "Loads all of the commands in the commands folder",
+  examples: ["cx load"],
   preconditions: ["OwnerOnly"],
-  detailedDescription:
-    "Sends the ping of CxBot's connection to Discord, as well as the ping from Discord.",
+  usage: "cx load",
 })
 export class Reload extends CxCommand {
   async run(message: Message): Promise<Message> {

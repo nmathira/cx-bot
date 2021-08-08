@@ -13,16 +13,15 @@ import type {
 } from "discord.js";
 
 @ApplyOptions<CxCommandOptions>({
-  name: "clear",
-  aliases: ["clear", "purge", "bulkdelete"],
+  aliases: ["purge", "bulkdelete"],
   category: "Utilities",
-  usage: "cx clear [amount]",
-  runIn: "guild",
-  examples: ["cx clear 1"],
   description: "clears messages in a text channel",
-  preconditions: [new PermissionsPrecondition("MANAGE_MESSAGES")],
   detailedDescription:
     "Clears messages that are sent in a Server's Text Channel. Needs ManageMessages to work.",
+  examples: ["cx clear 1"],
+  preconditions: [new PermissionsPrecondition("MANAGE_MESSAGES")],
+  runIn: "guild",
+  usage: "cx clear [amount]",
 })
 export class Clear extends CxCommand {
   @RequiresPermissions("MANAGE_MESSAGES")

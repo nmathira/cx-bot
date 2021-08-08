@@ -7,14 +7,13 @@ import { CxCommand } from "@lib/extensions/CxCommand";
 import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
-  name: "help",
-  aliases: ["help", "commands"],
+  aliases: ["commands"],
   category: "Utilities",
-  usage: "cx help [command]",
-  examples: ["cx help", "cx help ping"],
   description: "shows what commands in CxBot do.",
   detailedDescription:
     "Shows information on CxBot's commands and how to use them.",
+  examples: ["cx help", "cx help ping"],
+  usage: "cx help [command]",
 })
 export class Ping extends CxCommand {
   async run(message: Message, args: Args): Promise<Message> {

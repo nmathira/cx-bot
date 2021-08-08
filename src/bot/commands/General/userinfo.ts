@@ -6,14 +6,13 @@ import type { Args } from "@sapphire/framework";
 import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
-  name: "userinfo",
-  aliases: ["userinfo", "ui"],
+  aliases: ["ui"],
   category: "Utilities",
-  usage: "cx userinfo",
-  examples: ["cx userinfo", "cx userinfo [user]"],
   description: "Gets information about a user.",
   detailedDescription:
     "Gets information about a user, if no arguments are passed in, it will default to the message author.",
+  examples: ["cx userinfo", "cx userinfo [user]"],
+  usage: "cx userinfo",
 })
 export class Userinfo extends CxCommand {
   async run(message: Message, args: Args): Promise<Message> {

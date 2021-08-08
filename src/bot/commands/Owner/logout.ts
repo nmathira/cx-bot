@@ -4,7 +4,6 @@ import { ApplyOptions } from "@sapphire/decorators";
 import type { Message } from "discord.js";
 
 @ApplyOptions<CxCommandOptions>({
-  name: "logout",
   aliases: ["sleep", "shutdown"],
   category: "Owner",
 })

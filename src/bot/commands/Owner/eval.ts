@@ -9,15 +9,14 @@ import { Type } from "@sapphire/type";
 import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
-  name: "eval",
-  aliases: ["eval"],
+  aliases: ["ev"],
   category: "Owner",
-  usage: "cx eval",
-  preconditions: ["OwnerOnly"],
-  examples: ["cx eval"],
   description: "Evaluates arbitrary javascript",
   detailedDescription:
     "Uses the eval() function to evaluate javascript in CxBot.",
+  examples: ["cx eval"],
+  preconditions: ["OwnerOnly"],
+  usage: "cx eval",
 })
 export class Eval extends CxCommand {
   public async run(message: Message, args: Args): Promise<Message> {

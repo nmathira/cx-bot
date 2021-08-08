@@ -4,14 +4,12 @@ import type { CxCommandOptions } from "@typings/index";
 import { CxCommand } from "@lib/extensions/CxCommand";
 
 @ApplyOptions<CxCommandOptions>({
-  name: "ping",
-  aliases: ["ping"],
   category: "Utilities",
-  usage: "cx ping",
-  examples: ["cx ping"],
   description: "sends the ping of CxBot.",
   detailedDescription:
     "Sends the ping of CxBot's connection to Discord, as well as the ping from Discord.",
+  examples: ["cx ping"],
+  usage: "cx ping",
 })
 export class Ping extends CxCommand {
   async run(message: Message): Promise<Message> {

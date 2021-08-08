@@ -7,14 +7,13 @@ import { fetch, FetchResultTypes } from "@sapphire/fetch";
 import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
-  name: "define",
-  aliases: ["define", "leo"],
+  aliases: ["leo"],
   category: "Utilities",
-  usage: "cx define [word]",
-  examples: ["cx define banana"],
   description: "defines words for you.",
   detailedDescription:
     "defines inputted words using the Merriam Webster Dictionary",
+  examples: ["cx define banana"],
+  usage: "cx define [word]",
 })
 export class Define extends CxCommand {
   public async run(message: Message, args: Args): Promise<Message> {

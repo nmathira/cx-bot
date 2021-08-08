@@ -7,14 +7,12 @@ import { execSync } from "child_process";
 import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
-  name: "stats",
-  aliases: ["stats"],
   category: "Utilities",
-  usage: "cx stats",
-  examples: ["cx stats"],
   description: "sends the ping of CxBot.",
   detailedDescription:
     "Sends the ping of CxBot's connection to Discord, as well as the ping from Discord.",
+  examples: ["cx stats"],
+  usage: "cx stats",
 })
 export class Stats extends CxCommand {
   async run(message: Message): Promise<Message> {

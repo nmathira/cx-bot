@@ -18,24 +18,7 @@ import CxEmbed from "@lib/extensions/CxEmbed";
 export class Ping extends CxCommand {
   async run(message: Message, args: Args): Promise<Message> {
     if (args.finished) {
-      const allCommands = this.container.stores
-        .get("commands")
-        .reduce((acc, curr) => {
-          if (["Owner"].includes(curr.category)) return acc;
-          if (Reflect.has(acc, curr.category)) acc[curr.category].push(curr);
-          else acc[curr.category] = [curr];
-          return acc;
-        }, {} as Record<string, CxCommand[]>);
-      const embed = new CxEmbed().setTitle("Help | All");
-
-      for (const [category, commands] of Object.entries(allCommands)) {
-        embed.addField(
-          "**" + category + "**",
-          commands.map((cmd) => `\`${cmd.name}\``).join(", ")
-        );
-      }
-      embed.setFooter("cx  help [command] for more information for a command");
-      return message.channel.send({ embeds: [embed] });
+      return message.channel.send({ embeds: [this.sortAllCommands()] });
     } else {
       const command = this.container.stores
         .get("commands")
@@ -62,5 +45,26 @@ export class Ping extends CxCommand {
         ],
       });
     }
+  }
+
+  private sortAllCommands() {
+    const allCommands = this.container.stores
+      .get("commands")
+      .reduce((acc, curr) => {
+        if (["Owner"].includes(curr.category)) return acc;
+        if (Reflect.has(acc, curr.category)) acc[curr.category].push(curr);
+        else acc[curr.category] = [curr];
+        return acc;
+      }, {} as Record<string, CxCommand[]>);
+    const embed = new CxEmbed().setTitle("Help | All");
+
+    for (const [category, commands] of Object.entries(allCommands)) {
+      embed.addField(
+        "**" + category + "**",
+        commands.map((cmd) => `\`${cmd.name}\``).join(", ")
+      );
+    }
+    embed.setFooter("cx  help [command] for more information for a command");
+    return embed;
   }
 }

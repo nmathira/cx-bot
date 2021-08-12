@@ -13,7 +13,9 @@ import CxCommand from "@lib/extensions/CxCommand";
 })
 export class Reload extends CxCommand {
   async run(message: Message): Promise<Message> {
-    await this.container.stores.get("commands").loadAll();
-    return await message.channel.send("All commands loaded!");
+    for (const store of this.container.stores.values()) {
+      await store.loadAll();
+    }
+    return await message.channel.send("All Pieces loaded!");
   }
 }

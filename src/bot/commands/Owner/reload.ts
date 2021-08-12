@@ -16,12 +16,18 @@ import type { Args } from "@sapphire/framework";
 export class Reload extends CxCommand {
   async run(message: Message, args: Args): Promise<Message> {
     if (args.finished) {
-      this.container.stores.get("commands").forEach((cmd) => cmd.reload());
-      return message.channel.send("All commands reloaded!");
+      for (const store of this.container.stores.values()) {
+        store.forEach((piece) => {
+          piece.reload();
+          this.container.logger.info(piece.name);
+        });
+      }
+      return message.channel.send("All Pieces reloaded!");
     } else {
-      const command = await args.pick("string");
-      await this.container.stores.get("commands").get(command).reload();
-      return message.channel.send("Reloaded command: " + command);
+      return message.channel.send(
+        "Reloaded piece: " +
+          (await args.pick("Piece").then((piece) => piece.reload()))
+      );
     }
   }
 }

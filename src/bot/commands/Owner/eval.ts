@@ -7,6 +7,7 @@ import { codeBlock, isThenable } from "@sapphire/utilities";
 import { inspect } from "util";
 import { Type } from "@sapphire/type";
 import CxEmbed from "@lib/extensions/CxEmbed";
+import { Stopwatch } from "@sapphire/stopwatch";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["ev"],
@@ -22,7 +23,7 @@ export class Eval extends CxCommand {
   public async run(message: Message, args: Args): Promise<Message> {
     const code = await args.rest("string");
 
-    const { result, success, type, timeInMs } = await this.eval(message, code, {
+    const { result, success, type, time } = await this.eval(message, code, {
       async: args.getFlags("async"),
       depth: Number(args.getOption("depth")) ?? 0,
       showHidden: args.getFlags("hidden", "showHidden"),
@@ -41,7 +42,7 @@ export class Eval extends CxCommand {
           .setColor(success ? "GREEN" : "RED")
           .addField("Result: ", output)
           .addField("Type: ", typeFooter)
-          .setFooter("Time Taken: " + timeInMs + "ms"),
+          .setFooter("Time Taken: " + time),
       ],
     });
   }
@@ -58,9 +59,8 @@ export class Eval extends CxCommand {
 
     let success = true;
     let result: string;
-    const start = process.hrtime();
-    let timer: number[];
-    let timeInMs: number;
+    const stopwatch = new Stopwatch();
+    let time: string;
     try {
       // eslint-disable-next-line no-eval
       result = eval(code);
@@ -71,8 +71,7 @@ export class Eval extends CxCommand {
       result = error;
       success = false;
     } finally {
-      timer = process.hrtime(start);
-      timeInMs = (timer[0] * 1000000000 + timer[1]) / 1000000;
+      time = stopwatch.stop().toString();
     }
 
     const type = new Type(result).toString();
@@ -85,6 +84,6 @@ export class Eval extends CxCommand {
       });
     }
 
-    return { result, success, type, timeInMs };
+    return { result, success, type, time };
   }
 }

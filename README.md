@@ -7,7 +7,7 @@ Discord.
 
 ### to run:
 
-1. Fill our .env with the template in .env.schema
+1. Fill out .env with the template in .env.schema
 2. run `tsc` and compile the project
 3. If the compilation succeded, proceed to run the bot by doing `node dist &`
 

@@ -36,6 +36,7 @@ export default class CxClient extends SapphireClient {
       .then(() => this.logger.info("Logged in as " + this.user.username))
       .catch(() => {
         this.logger.fatal("bot has fucking died");
+        this.prisma.$disconnect();
         this.destroy();
         process.exit(1);
       });

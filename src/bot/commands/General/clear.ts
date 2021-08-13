@@ -20,7 +20,7 @@ import type {
     "Clears messages that are sent in a Server's Text Channel. Needs ManageMessages to work.",
   examples: ["cx clear 1"],
   preconditions: [new PermissionsPrecondition("MANAGE_MESSAGES")],
-  runIn: "guild",
+  runIn: "GUILD_ANY",
   usage: "cx clear [amount]",
 })
 export class Clear extends CxCommand {

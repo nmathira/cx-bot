@@ -3,7 +3,15 @@ import { Command } from "@sapphire/framework";
 import type { CxCommandOptions } from "@typings/index";
 
 export default abstract class CxCommand extends Command {
-  public category: Readonly<string>;
+  private _category: Readonly<string>;
+  public get category(): Readonly<string> {
+    return this._category;
+  }
+
+  public set category(value: Readonly<string>) {
+    this._category = value;
+  }
+
   public examples: Readonly<string[]>;
   public usage: Readonly<string>;
 

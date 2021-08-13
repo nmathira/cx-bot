@@ -50,7 +50,7 @@ export class Ping extends CxCommand {
   private sortAllCommands() {
     const allCommands = this.container.stores
       .get("commands")
-      .reduce((acc, curr) => {
+      .reduce((acc, curr: CxCommand) => {
         if (["Owner"].includes(curr.category)) return acc;
         if (Reflect.has(acc, curr.category)) acc[curr.category].push(curr);
         else acc[curr.category] = [curr];

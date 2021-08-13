@@ -1,8 +1,10 @@
+import { PrismaClient } from "@prisma/client";
 import { SapphireClient } from "@sapphire/framework";
 import { TaskStore } from "@lib/Task/TaskStore";
 import { join } from "path";
 
 export default class CxClient extends SapphireClient {
+  public prisma: PrismaClient;
   public constructor() {
     super({
       baseUserDirectory: join(__dirname, "..", "..", "bot"),
@@ -10,19 +12,20 @@ export default class CxClient extends SapphireClient {
       caseInsensitivePrefixes: true,
       defaultPrefix: process.env.PREFIX,
       intents: [
-        "GUILDS",
-        "GUILD_MEMBERS",
-        "GUILD_BANS",
-        "GUILD_EMOJIS_AND_STICKERS",
-        "GUILD_VOICE_STATES",
-        "GUILD_MESSAGES",
-        "GUILD_MESSAGE_REACTIONS",
         "DIRECT_MESSAGES",
         "DIRECT_MESSAGE_REACTIONS",
+        "GUILDS",
+        "GUILD_BANS",
+        "GUILD_EMOJIS_AND_STICKERS",
+        "GUILD_MEMBERS",
+        "GUILD_MESSAGES",
+        "GUILD_MESSAGE_REACTIONS",
+        "GUILD_VOICE_STATES",
       ],
     });
     // Store.defaultStrategy.onLoad = (store, piece) => container.logger.info(`Loading ${store.name}:${piece.name}`);
     this.stores.register(new TaskStore());
+    this.prisma = new PrismaClient();
   }
 
   public fetchPrefix = (): string => process.env.PREFIX;
@@ -50,5 +53,8 @@ declare module "@sapphire/framework" {
     category: Readonly<string>;
     examples: Readonly<string[]>;
     usage: Readonly<string>;
+  }
+  interface SapphireClient {
+    prisma: PrismaClient;
   }
 }

@@ -14,6 +14,7 @@
   "author": "Neragin <niranjan@nmathirajan.xyz>",
   "repository": "https://github.com/Neragin/cx-bot.git",
   "dependencies": {
+    "@prisma/client": "^2.29.1",
     "@sapphire/decorators": "^2.2.0",
     "@sapphire/discord.js-utilities": "^1.6.0",
     "@sapphire/fetch": "^1.0.5",
@@ -29,7 +30,6 @@
     "node-fetch": "^2.6.1",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.6.5",
     "utf-8-validate": "^5.0.5",
     "zlib-sync": "^0.1.7"
   },
@@ -43,10 +43,14 @@
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "8.3.0",
     "prettier": "2.3.2",
+    "prisma": "^2.29.1",
     "typescript": "^4.3.5"
   },
   "_moduleAliases": {
     "@lib": "dist/lib",
     "@bot": "dist/bot"
+  },
+  "prisma": {
+    "schema": "src/prisma/schema.prisma"
   }
 }

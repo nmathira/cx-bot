@@ -11,6 +11,6 @@ generator client {
 }
 
 model TrelloUser {
-  discordId Int @unique
-  trelloId  Int @unique
+  discordId String @db.VarChar(255) @unique
+  trelloId  String @db.VarChar(255) @unique
 }

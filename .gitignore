@@ -7,3 +7,5 @@ deploy.sh
 config/
 *.log
 gh
+
+src/prisma/migrations/2*/

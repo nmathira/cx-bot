@@ -1,5 +1,5 @@
 import type { AsyncArgumentResult } from "@sapphire/framework";
-import { Argument, StoreRegistryEntries } from "@sapphire/framework";
+import { Argument } from "@sapphire/framework";
 import type { trelloMember } from "@typings/index";
 import { getMembersFromBoard } from "@lib/trello/trello";
 

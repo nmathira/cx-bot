@@ -17,7 +17,7 @@ export class Register extends CxCommand {
     const arg = await args.pickResult("trelloMember");
     if (!arg.success)
       return message.channel.send(
-        "that wasn't a valid member in the ExploreHacks Register Board!"
+        "that wasn't a valid member in the Explore Hack's Trello Board!"
       );
     await this.container.client.prisma.trelloUser
       .create({
@@ -28,7 +28,7 @@ export class Register extends CxCommand {
       })
       .catch(() => {
         message.channel.send(
-          "You are already registered for CxBot's Register!"
+          "You are already registered for CxBot's Trello Integration!"
         );
       });
     return message.channel.send(

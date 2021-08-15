@@ -34,3 +34,84 @@ export interface trelloMember {
 export interface boardMember extends trelloMember {
   fullName: string;
 }
+export interface Emoji {}
+
+export interface DescData {
+  emoji: Emoji;
+}
+
+export interface Trello {
+  board: number;
+  card: number;
+}
+
+export interface AttachmentsByType {
+  trello: Trello;
+}
+
+export interface Badges {
+  attachmentsByType: AttachmentsByType;
+  location: boolean;
+  votes: number;
+  viewingMemberVoted: boolean;
+  subscribed: boolean;
+  fogbugz: string;
+  checkItems: number;
+  checkItemsChecked: number;
+  checkItemsEarliestDue?: any;
+  comments: number;
+  attachments: number;
+  description: boolean;
+  due?: Date;
+  dueComplete: boolean;
+  start?: any;
+}
+
+export interface Label {
+  id: string;
+  idBoard: string;
+  name: string;
+  color: string;
+}
+
+export interface Cover {
+  idAttachment?: any;
+  color?: any;
+  idUploadedBackground?: any;
+  size: string;
+  brightness: string;
+  idPlugin?: any;
+}
+
+export interface MemberCards {
+  id: string;
+  checkItemStates?: any;
+  closed: boolean;
+  dateLastActivity: Date;
+  desc: string;
+  descData: DescData;
+  dueReminder?: number;
+  idBoard: string;
+  idList: string;
+  idMembersVoted: any[];
+  idShort: number;
+  idAttachmentCover?: any;
+  idLabels: string[];
+  manualCoverAttachment: boolean;
+  name: string;
+  pos: number;
+  shortLink: string;
+  isTemplate: boolean;
+  cardRole?: any;
+  badges: Badges;
+  dueComplete: boolean;
+  due?: Date;
+  idChecklists: any[];
+  idMembers: string[];
+  labels: Label[];
+  shortUrl: string;
+  start?: any;
+  subscribed: boolean;
+  url: string;
+  cover: Cover;
+}

@@ -16,15 +16,17 @@ import CxEmbed from "@lib/extensions/CxEmbed";
 })
 export class Userinfo extends CxCommand {
   async run(message: Message, args: Args): Promise<Message> {
-    const user = await args.pick("user").catch(() => message.author);
+    const member = await args.pick("member").catch(() => message.member);
+    const user = member.user;
     return message.channel.send({
       embeds: [
         new CxEmbed()
-          .setAuthor(user.username, user.displayAvatarURL())
           .setTitle("Info about: " + user.tag)
-          .setThumbnail(user.displayAvatarURL())
+          .setThumbnail(user.displayAvatarURL({ dynamic: true }))
           .addField("mention: ", user.toString())
-          .addField("Created at: ", user.createdAt.toUTCString())
+          .addField("Created at: ", user.createdAt.toDateString(), true)
+          .addField("Joined at: ", member.joinedAt.toDateString(), true)
+          .setColor(member.roles.highest.color)
           .setFooter(user.id),
       ],
     });

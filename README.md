@@ -9,7 +9,7 @@ Discord.
 
 1. Fill out .env with the template in .env.schema
 2. run `tsc` and compile the project
-3. If the compilation succeded, proceed to run the bot by doing `node dist &`
+3. If the compilation succeeded, proceed to run the bot by doing `node dist &`
 
 ### Architecture:
 

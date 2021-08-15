@@ -17,7 +17,7 @@ import { codeBlock } from "@sapphire/utilities";
 })
 export class Compile extends CxCommand {
   async run(message: Message): Promise<Message> {
-    const { stderr } = await safeExec("tsc");
+    const { stderr } = await safeExec("npx tsc");
     console.log(stderr);
     const embed = new MessageEmbed()
       .setTitle(stderr === "" ? "Compilation succeded!" : "Compilation Failed!")

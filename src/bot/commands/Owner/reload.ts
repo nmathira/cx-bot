@@ -17,7 +17,7 @@ export class Reload extends CxCommand {
   async run(message: Message, args: Args): Promise<Message> {
     if (args.finished) {
       for (const store of this.container.stores.values()) {
-        store.forEach((piece) => {
+        store.forEach(piece => {
           piece.reload();
           this.container.logger.info(piece.name);
         });
@@ -26,7 +26,7 @@ export class Reload extends CxCommand {
     } else {
       return message.channel.send(
         "Reloaded piece: " +
-          (await args.pick("Piece").then((piece) => piece.reload()))
+          (await args.pick("Piece").then(piece => piece.reload()))
       );
     }
   }

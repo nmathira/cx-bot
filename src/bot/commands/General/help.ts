@@ -61,7 +61,7 @@ export class Ping extends CxCommand {
     for (const [category, commands] of Object.entries(allCommands)) {
       embed.addField(
         "**" + category + "**",
-        commands.map((cmd) => `\`${cmd.name}\``).join(", ")
+        commands.map(cmd => `\`${cmd.name}\``).join(", ")
       );
     }
     embed.setFooter("cx  help [command] for more information for a command");

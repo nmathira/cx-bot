@@ -23,7 +23,7 @@ export class Due extends CxCommand {
     );
     const cards = await getCardsForMember(trellouser);
     const embed = new CxEmbed().setTitle("Your unfinished tasks!");
-    cards.forEach((element) => {
+    cards.forEach(element => {
       console.dir(element);
       if (element.due) {
         embed.addField(element.name, new Date(element.due).toDateString());

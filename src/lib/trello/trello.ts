@@ -12,7 +12,6 @@ export async function getMembersFromBoard(
     `https://api.trello.com/1/boards/${boardId}/members?key=${key}&token=${token}`,
     FetchResultTypes.JSON
   );
-  members.forEach((member) => delete member.fullName);
   return members;
 }
 
@@ -26,7 +25,7 @@ export async function getCardsForMember(
     `https://api.trello.com/1/members/${trelloId}/cards?key=${key}&token=${token}`,
     FetchResultTypes.JSON
   );
-  return cards.filter((val) => val.idBoard === boardId && !val.dueComplete);
+  return cards.filter(val => val.idBoard === boardId && !val.dueComplete);
 }
 
 export async function getTrelloIdFromDiscordId(

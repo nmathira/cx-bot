@@ -19,7 +19,7 @@ export class Define extends CxCommand {
   public async run(message: Message, args: Args): Promise<Message> {
     const word = await args
       .pick("string")
-      .catch((message) =>
+      .catch(message =>
         message.channel.send(
           "Please pass in a word that you would like to define"
         )

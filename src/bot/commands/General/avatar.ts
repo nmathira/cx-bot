@@ -14,7 +14,7 @@ import CxEmbed from "@lib/extensions/CxEmbed";
   examples: ["cx avatar", "cx avatar [user]"],
   usage: "cx avatar",
 })
-export class Avatar extends CxCommand {
+export default class Avatar extends CxCommand {
   async run(message: Message, args: Args): Promise<Message> {
     const size = parseInt(args.getOption("size")) ?? 2048;
     const user: User = await args.pick("user").catch(() => message.author);

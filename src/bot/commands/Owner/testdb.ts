@@ -7,7 +7,7 @@ import type { Message } from "discord.js";
   category: "Owner",
   preconditions: ["OwnerOnly"],
 })
-export class testdb extends CxCommand {
+export default class testdb extends CxCommand {
   public async run(message: Message): Promise<Message> {
     const database = await this.container.database.trelloUser.findMany();
     console.log(database);

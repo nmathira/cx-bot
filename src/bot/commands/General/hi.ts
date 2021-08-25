@@ -11,7 +11,7 @@ import CxCommand from "@lib/extensions/CxCommand";
   examples: ["cx hi"],
   usage: "cx hi",
 })
-export class Hi extends CxCommand {
+export default class Hi extends CxCommand {
   async run(message: Message): Promise<Message> {
     return await message.channel.send("Hi");
   }

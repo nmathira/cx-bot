@@ -15,7 +15,7 @@ import CxEmbed from "@lib/extensions/CxEmbed";
   examples: ["cx define banana"],
   usage: "cx define [word]",
 })
-export class Define extends CxCommand {
+export default class Define extends CxCommand {
   public async run(message: Message, args: Args): Promise<Message> {
     const word = await args
       .pick("string")

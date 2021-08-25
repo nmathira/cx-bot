@@ -12,7 +12,7 @@ import type { Args } from "@sapphire/framework";
   preconditions: ["OwnerOnly"],
   usage: "cx unload {command}",
 })
-export class Reload extends CxCommand {
+export default class Reload extends CxCommand {
   async run(message: Message, args: Args): Promise<void> {
     const cmd = await args.pick("string");
     await this.container.stores.get("commands").get(cmd).unload();

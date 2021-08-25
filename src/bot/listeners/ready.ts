@@ -1,7 +1,7 @@
 import type { PieceContext } from "@sapphire/framework";
 import { Listener } from "@sapphire/framework";
 
-export class ready extends Listener {
+export default class Ready extends Listener {
   public constructor(context: PieceContext) {
     super(context, { once: true });
   }

@@ -15,7 +15,7 @@ import CxEmbed from "@lib/extensions/CxEmbed";
   examples: ["cx help", "cx help ping"],
   usage: "cx help [command]",
 })
-export class Ping extends CxCommand {
+export default class Ping extends CxCommand {
   async run(message: Message, args: Args): Promise<Message> {
     if (args.finished) {
       return message.channel.send({ embeds: [this.sortAllCommands()] });

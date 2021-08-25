@@ -11,7 +11,7 @@ import CxCommand from "@lib/extensions/CxCommand";
   examples: ["cx ping"],
   usage: "cx ping",
 })
-export class Ping extends CxCommand {
+export default class Ping extends CxCommand {
   async run(message: Message): Promise<Message> {
     const msg = await message.channel.send("you have good eyes?");
     return await msg.edit(

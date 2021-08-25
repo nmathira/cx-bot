@@ -13,7 +13,7 @@ import type { Args } from "@sapphire/framework";
   preconditions: ["OwnerOnly"],
   usage: "cx reload {command}",
 })
-export class Reload extends CxCommand {
+export default class Reload extends CxCommand {
   async run(message: Message, args: Args): Promise<Message> {
     if (args.finished) {
       for (const store of this.container.stores.values()) {

@@ -11,7 +11,7 @@ import CxCommand from "@lib/extensions/CxCommand";
   preconditions: ["OwnerOnly"],
   usage: "cx load",
 })
-export class Reload extends CxCommand {
+export default class Reload extends CxCommand {
   async run(message: Message): Promise<Message> {
     for (const store of this.container.stores.values()) {
       await store.loadAll();

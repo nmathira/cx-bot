@@ -15,7 +15,7 @@ import {
   examples: ["cx register [trellousername]"],
   usage: "cx register [trellousername]",
 })
-export class Due extends CxCommand {
+export default class Due extends CxCommand {
   async run(message: Message): Promise<Message> {
     const trellouser = await getTrelloIdFromDiscordId(
       message.author.id,

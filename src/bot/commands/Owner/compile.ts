@@ -15,7 +15,7 @@ import { codeBlock } from "@sapphire/utilities";
   description: "compiles cxbot",
   detailedDescription: "Compiles CxBot's typescript code into runnable code.",
 })
-export class Compile extends CxCommand {
+export default class Compile extends CxCommand {
   async run(message: Message): Promise<Message> {
     const { stderr } = await safeExec("npx tsc");
     console.log(stderr);

@@ -14,7 +14,7 @@ import { safeExec } from "@lib/utils/util";
   examples: ["cx stats"],
   usage: "cx stats",
 })
-export class Stats extends CxCommand {
+export default class Stats extends CxCommand {
   async run(message: Message): Promise<Message> {
     const embed = new CxEmbed()
       .setTitle("CxBot's Invite!")

@@ -19,7 +19,7 @@ import { Stopwatch } from "@sapphire/stopwatch";
   preconditions: ["OwnerOnly"],
   usage: "cx eval",
 })
-export class Eval extends CxCommand {
+export default class Eval extends CxCommand {
   public async run(message: Message, args: Args): Promise<Message> {
     const code = await args.rest("string");
 

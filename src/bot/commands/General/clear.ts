@@ -1,5 +1,4 @@
 import type { Args } from "@sapphire/framework";
-import { PermissionsPrecondition } from "@sapphire/framework";
 import { ApplyOptions, RequiresPermissions } from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
 import CxCommand from "@lib/extensions/CxCommand";
@@ -19,11 +18,11 @@ import type {
   detailedDescription:
     "Clears messages that are sent in a Server's Text Channel. Needs ManageMessages to work.",
   examples: ["cx clear 1"],
-  preconditions: [new PermissionsPrecondition("MANAGE_MESSAGES")],
+  preconditions: ["OwnerOnly"],
   runIn: "GUILD_ANY",
   usage: "cx clear [amount]",
 })
-export class Clear extends CxCommand {
+export default class Clear extends CxCommand {
   @RequiresPermissions("MANAGE_MESSAGES")
   public async run(
     message: Message,

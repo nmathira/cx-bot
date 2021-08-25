@@ -2,7 +2,7 @@ import type { PreconditionResult } from "@sapphire/framework";
 import { Precondition } from "@sapphire/framework";
 import type { Message } from "discord.js";
 
-export class OwnerOnly extends Precondition {
+export default class OwnerOnly extends Precondition {
   public run(message: Message): PreconditionResult {
     return process.env.OWNER === message.author.id
       ? this.ok()

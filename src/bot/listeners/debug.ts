@@ -1,7 +1,7 @@
 import type { PieceContext } from "@sapphire/framework";
 import { Listener } from "@sapphire/framework";
 
-export class Debug extends Listener {
+export default class Debug extends Listener {
   public constructor(context: PieceContext) {
     super(context);
   }

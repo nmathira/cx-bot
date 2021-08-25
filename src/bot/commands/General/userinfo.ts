@@ -14,7 +14,7 @@ import CxEmbed from "@lib/extensions/CxEmbed";
   examples: ["cx userinfo", "cx userinfo [user]"],
   usage: "cx userinfo",
 })
-export class Userinfo extends CxCommand {
+export default class Userinfo extends CxCommand {
   async run(message: Message, args: Args): Promise<Message> {
     const member = await args.pick("member").catch(() => message.member);
     const user = member.user;

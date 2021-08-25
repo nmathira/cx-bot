@@ -12,7 +12,7 @@ import type { Args } from "@sapphire/framework";
   examples: ["cx register [trellousername]"],
   usage: "cx register [trellousername]",
 })
-export class Register extends CxCommand {
+export default class Register extends CxCommand {
   async run(message: Message, args: Args): Promise<Message> {
     const arg = await args.pickResult("trelloMember");
     if (!arg.success)

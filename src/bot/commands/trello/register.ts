@@ -19,7 +19,7 @@ export class Register extends CxCommand {
       return message.channel.send(
         "that wasn't a valid member in the Explore Hack's Trello Board!"
       );
-    await this.container.client.prisma.trelloUser
+    await this.container.database.trelloUser
       .create({
         data: {
           discordId: message.author.id,

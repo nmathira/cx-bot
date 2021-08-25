@@ -9,7 +9,7 @@ import type { Message } from "discord.js";
 })
 export class testdb extends CxCommand {
   public async run(message: Message): Promise<Message> {
-    const database = await this.container.client.prisma.trelloUser.findMany();
+    const database = await this.container.database.trelloUser.findMany();
     console.log(database);
     return await message.channel.send("db results:" + database[0]);
   }

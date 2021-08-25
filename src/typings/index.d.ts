@@ -27,13 +27,12 @@ export interface GuildMessage extends Message {
   readonly member: GuildMember;
 }
 
-export interface trelloMember {
+export interface boardMember {
   id: string;
   username: string;
-}
-export interface boardMember extends trelloMember {
   fullName: string;
 }
+
 export interface Emoji {}
 
 export interface DescData {

@@ -8,9 +8,3 @@ export default class extends Argument<StoreRegistryEntries> {
       : this.error({ parameter, identifier: "Store" });
   }
 }
-
-declare module "@sapphire/framework/" {
-  export interface ArgType {
-    store: StoreRegistryEntries;
-  }
-}

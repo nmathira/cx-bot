@@ -19,7 +19,7 @@ export class Due extends CxCommand {
   async run(message: Message): Promise<Message> {
     const trellouser = await getTrelloIdFromDiscordId(
       message.author.id,
-      this.container.client.prisma
+      this.container.database
     );
     const cards = await getCardsForMember(trellouser);
     const embed = new CxEmbed().setTitle("Your unfinished tasks!");

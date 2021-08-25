@@ -3,15 +3,6 @@ import { Command } from "@sapphire/framework";
 import type { CxCommandOptions } from "@typings/index";
 
 export default abstract class CxCommand extends Command {
-  private _category: Readonly<string>;
-  public get category(): Readonly<string> {
-    return this._category;
-  }
-
-  public set category(value: Readonly<string>) {
-    this._category = value;
-  }
-
   public examples: Readonly<string[]>;
   public usage: Readonly<string>;
 
@@ -20,6 +11,16 @@ export default abstract class CxCommand extends Command {
     this.category = options.category ?? "";
     this.examples = options.examples ?? [""];
     this.usage = options.usage ?? "";
+  }
+
+  private _category: Readonly<string>;
+
+  public get category(): Readonly<string> {
+    return this._category;
+  }
+
+  public set category(value: Readonly<string>) {
+    this._category = value;
   }
 
   // eslint-disable-next-line

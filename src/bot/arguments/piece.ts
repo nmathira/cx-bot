@@ -9,9 +9,3 @@ export default class extends Argument<Piece> {
     return this.error({ identifier: "piece", parameter });
   }
 }
-
-declare module "@sapphire/framework/" {
-  export interface ArgType {
-    Piece: Piece;
-  }
-}

@@ -21,5 +21,6 @@ module.exports = {
     "@typescript-eslint/consistent-type-imports": "error",
     quotes: ["error", "double"],
     semi: ["error", "always"],
+    "eol-last": ["error", "always"],
   },
 };

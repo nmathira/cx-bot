@@ -1,4 +1,3 @@
-/* eslint-disable */
 import type { Args } from "@sapphire/framework";
 import type { Message } from "discord.js";
 import { ApplyOptions } from "@sapphire/decorators";
@@ -36,11 +35,11 @@ export default class Ping extends CxCommand {
             )
             .addField(
               "Examples: ",
-              command["examples"]
-                ? command["examples"]
+              !command["examples"]
+                ? "No Examples Provided."
+                : command["examples"]
                     .map((example: string) => `\`${example}\``)
                     .toString()
-                : "No Examples Provided."
             ),
         ],
       });

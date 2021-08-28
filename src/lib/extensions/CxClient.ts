@@ -23,7 +23,7 @@ export default class CxClient extends SapphireClient {
       ],
       logger: { level: LogLevel.Debug },
     });
-    // Store.defaultStrategy.onLoad = (store, piece) => container.logger.info(`Loading ${store.name}:${piece.name}`);
+    // Store.defaultStrategy.onLoad = (store, piece: Piece) => container.logger.debug(`Loading ${store.name}:${piece.name}`);
     this.stores.register(new TaskStore());
     container.database = new PrismaClient();
     container.client = this;
@@ -32,16 +32,10 @@ export default class CxClient extends SapphireClient {
   public fetchPrefix = (): string => process.env.PREFIX;
 
   public start(): void {
-    this.login(process.env.DISCORD_TOKEN)
-      .then(() => this.logger.info("[CxBot] Logged in as " + this.user.tag))
-      .catch(() => {
-        this.logger.fatal(
-          "[CxBot] bot has fucking died. Beginning safe shutdown..."
-        );
-        container.database.$disconnect();
-        this.destroy();
-        this.logger.fatal("[CxBot] Cya later!");
-        process.exit(1);
-      });
+    this.login(process.env.DISCORD_TOKEN).catch(() => this.stop());
+  }
+
+  public stop(): void {
+    process.exit(1);
   }
 }

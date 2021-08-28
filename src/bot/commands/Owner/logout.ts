@@ -10,7 +10,6 @@ import type { Message } from "discord.js";
 export default class Logout extends CxCommand {
   public async run(message: Message): Promise<void> {
     await message.channel.send("cya");
-    this.container.client.destroy();
     process.exit(0);
   }
 }

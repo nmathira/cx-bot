@@ -7,7 +7,9 @@ export default class Ready extends Listener {
   }
 
   public run(): void {
-    this.container.logger.info("[CxBot] Successfully logged in!");
+    this.container.logger.info(
+      "[CxBot] Successfully logged in as " + this.container.client.user.tag
+    );
     this.container.client.user.setPresence({ status: "online" });
   }
 }

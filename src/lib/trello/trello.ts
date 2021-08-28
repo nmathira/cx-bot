@@ -8,6 +8,7 @@ export async function getMembersFromBoard(
   key = process.env.TRELLO_KEY,
   token = process.env.TRELLO_TOKEN
 ): Promise<boardMember[]> {
+  // noinspection UnnecessaryLocalVariableJS
   const members = await fetch<boardMember[]>(
     `https://api.trello.com/1/boards/${boardId}/members?key=${key}&token=${token}`,
     FetchResultTypes.JSON

@@ -38,8 +38,8 @@ export default class Ping extends CxCommand {
               !command["examples"]
                 ? "No Examples Provided."
                 : command["examples"]
-                    .map((example: string) => `\`${example}\``)
-                    .toString()
+                  .map((example: string) => `\`${example}\``)
+                  .toString()
             ),
         ],
       });

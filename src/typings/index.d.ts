@@ -114,3 +114,7 @@ export interface MemberCards {
   url: string;
   cover: Cover;
 }
+
+export const enum Events {
+  TaskError = "taskError",
+}

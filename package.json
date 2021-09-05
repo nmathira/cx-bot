@@ -5,10 +5,10 @@
   "main": "dist/index.js",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "NODE_PATH=. node dist/",
-    "lint": "eslint --ext ts src --fix",
-    "clean": "tsc -b . --clean",
-    "build": "tsc"
+    "start": "rm -rdf dist && tsc && node dist/",
+    "lint": "eslint --fix && prettier . --write",
+    "build": "tsc",
+    "prod": "rm -rdf dist && tsc && node dist >> log.log &"
   },
   "keywords": [],
   "author": "Neragin <niranjan@nmathirajan.xyz>",
@@ -43,8 +43,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "8.3.0",
     "prettier": "2.3.2",
-    "prisma": "^2.29.1",
-    "typescript": "^4.3.5"
+    "prisma": "^2.29.1"
   },
   "_moduleAliases": {
     "@lib": "dist/lib",

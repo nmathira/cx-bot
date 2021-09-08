@@ -6,6 +6,7 @@ CxBot is a Discord bot that allows me to automate and improve many aspects of
 Discord.
 
 ### to run:
+
 1. Install dependencies with `npm i`
 2. Fill out a new file called .env with the template in .env.schema
 3. run `tsc` and compile the project

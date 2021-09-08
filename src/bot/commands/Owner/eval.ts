@@ -1,26 +1,28 @@
-import type { Message } from "discord.js";
-import { ApplyOptions } from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
-import CxCommand from "@lib/extensions/CxCommand";
+import { ApplyOptions } from "@sapphire/decorators";
 import type { Args } from "@sapphire/framework";
-import { codeBlock, isThenable } from "@sapphire/utilities";
-import { inspect } from "util";
 import { Type } from "@sapphire/type";
+import { codeBlock, isThenable } from "@sapphire/utilities";
+import type { Message } from "discord.js";
+import { inspect } from "util";
+import CxCommand from "@lib/extensions/CxCommand";
 import CxEmbed from "@lib/extensions/CxEmbed";
 import { Stopwatch } from "@sapphire/stopwatch";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["ev"],
-  category: "Owner",
   description: "Evaluates arbitrary javascript",
   detailedDescription:
     "Uses the eval() function to evaluate javascript in CxBot.",
   examples: ["cx eval"],
+  category: "Owner",
+  quotes: [],
   preconditions: ["OwnerOnly"],
-  usage: "cx eval",
+  flags: ["async", "hidden", "showHidden", "silent", "s"],
+  options: ["depth"],
 })
-export default class Eval extends CxCommand {
-  public async run(message: Message, args: Args): Promise<Message> {
+export class UserCommand extends CxCommand {
+  public async run(message: Message, args: Args): Promise<Message | CxEmbed> {
     const code = await args.rest("string");
 
     const { result, success, type, time } = await this.eval(message, code, {
@@ -31,10 +33,18 @@ export default class Eval extends CxCommand {
 
     const output = success
       ? codeBlock("js", result)
-      : codeBlock("bash", result);
+      : `**ERROR**: ${codeBlock("bash", result)}`;
     if (args.getFlags("silent", "s")) return null;
 
     const typeFooter = codeBlock("typescript", type);
+
+    if (output.length > 2000) {
+      return message.channel.send({
+        content: `Output was too long... sent the result as a file.\n\n${typeFooter}`,
+        files: [{ attachment: Buffer.from(output), name: "output.js" }],
+      });
+    }
+
     return message.channel.send({
       embeds: [
         new CxEmbed()
@@ -58,14 +68,15 @@ export default class Eval extends CxCommand {
     const msg = message;
 
     let success = true;
-    let result: string;
+    let result = null;
     const stopwatch = new Stopwatch();
     let time: string;
+
     try {
       // eslint-disable-next-line no-eval
       result = eval(code);
     } catch (error) {
-      if (error && error.stack) {
+      if (error && error instanceof Error && error.stack) {
         this.container.client.logger.error(error);
       }
       result = error;

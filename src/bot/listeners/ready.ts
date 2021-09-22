@@ -30,12 +30,12 @@ export default class Ready extends Listener {
       this.container.stores.get("preconditions").size
     } Preconditions, and ${this.container.stores.get("tasks").size} Tasks.
         \\/_____/   \\/_/\\/_/   \\/_____/   \\/_____/     \\/_/\t| As ${
-          this.container.client.user.tag
-        } (${this.container.client.user.id})
+          this.container.client.user?.tag
+        } (${this.container.client.user?.id})
 
 
     ========================================================================================
     `);
-    this.container.client.user.setPresence({ status: "online" });
+    this.container.client.user?.setPresence({ status: "online" });
   }
 }

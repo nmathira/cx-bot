@@ -2,7 +2,7 @@ import type { PieceContext, PieceOptions } from "@sapphire/pieces";
 import { Piece } from "@sapphire/pieces";
 import type { ScheduledTask } from "node-cron";
 import { schedule, validate } from "node-cron";
-import { Events } from "@typings/index";
+import { Events, TaskJSON } from "@typings/index";
 
 export abstract class Task extends Piece {
   public readonly cronTime?: string;
@@ -24,7 +24,7 @@ export abstract class Task extends Piece {
     if (this.cronJob) this.cronJob.stop().destroy();
   }
 
-  public toJSON(): Record<PropertyKey, unknown> {
+  public toJSON(): TaskJSON {
     return {
       ...super.toJSON(),
       cron: this.cronTime,

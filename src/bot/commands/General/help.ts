@@ -1,3 +1,5 @@
+//shut up shut up shut up
+/* eslint-disable indent */
 import type { Args } from "@sapphire/framework";
 import type { Message } from "discord.js";
 import { ApplyOptions } from "@sapphire/decorators";
@@ -21,7 +23,7 @@ export default class Ping extends CxCommand {
     } else {
       const command = this.container.stores
         .get("commands")
-        .get(await args.pick("string")) as CxCommand;
+        .get(await args.pick("string")) as unknown as CxCommand;
       return message.channel.send({
         embeds: [
           new CxEmbed()
@@ -38,8 +40,8 @@ export default class Ping extends CxCommand {
               !command["examples"]
                 ? "No Examples Provided."
                 : command["examples"]
-                  .map((example: string) => `\`${example}\``)
-                  .toString()
+                    .map((example: string) => `\`${example}\``)
+                    .toString()
             ),
         ],
       });

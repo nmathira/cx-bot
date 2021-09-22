@@ -29,7 +29,7 @@ export default class CxClient extends SapphireClient {
     container.client = this;
   }
 
-  public fetchPrefix = (): string => process.env.PREFIX;
+  public fetchPrefix = (): string => process.env.PREFIX || "cx ";
 
   public start(): void {
     this.login(process.env.DISCORD_TOKEN).catch(() => this.stop());

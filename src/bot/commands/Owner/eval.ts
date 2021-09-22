@@ -22,7 +22,10 @@ import { Stopwatch } from "@sapphire/stopwatch";
   options: ["depth"],
 })
 export class UserCommand extends CxCommand {
-  public async run(message: Message, args: Args): Promise<Message | CxEmbed> {
+  public async run(
+    message: Message,
+    args: Args
+  ): Promise<Message | CxEmbed | null> {
     const code = await args.rest("string");
 
     const { result, success, type, time } = await this.eval(message, code, {

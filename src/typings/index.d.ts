@@ -1,4 +1,4 @@
-import type { CommandOptions } from "@sapphire/framework";
+import type { CommandJSON, CommandOptions } from "@sapphire/framework";
 import type {
   Guild,
   GuildChannel,
@@ -7,6 +7,7 @@ import type {
   TextBasedChannelTypes,
 } from "discord.js";
 import type { Readable } from "stream";
+import { PieceJSON } from "@sapphire/pieces";
 
 export interface safeExecResult {
   stdout: string | Readable;
@@ -117,4 +118,14 @@ export interface MemberCards {
 
 export const enum Events {
   TaskError = "taskError",
+}
+
+export interface TaskJSON extends PieceJSON {
+  cron: string;
+}
+
+export interface CxCommandJSON extends CommandJSON {
+  category: Readonly<string>;
+  examples: string | Readonly<string[]>;
+  usage: string;
 }

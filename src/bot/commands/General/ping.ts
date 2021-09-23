@@ -17,7 +17,7 @@ export default class Ping extends CxCommand {
     return await msg.edit(
       `Heartbeat: ${Math.round(this.container.client.ws.ping)}ms. API Latency ${
         msg.createdTimestamp - message.createdTimestamp
-      }ms.`
+      }ms.`,
     );
   }
 }

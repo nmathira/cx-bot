@@ -6,12 +6,12 @@ import type { PrismaClient } from "@prisma/client";
 export async function getMembersFromBoard(
   boardId = process.env.TRELLO_BOARD_ID,
   key = process.env.TRELLO_KEY,
-  token = process.env.TRELLO_TOKEN
+  token = process.env.TRELLO_TOKEN,
 ): Promise<boardMember[]> {
   // noinspection UnnecessaryLocalVariableJS
   const members = await fetch<boardMember[]>(
     `https://api.trello.com/1/boards/${boardId}/members?key=${key}&token=${token}`,
-    FetchResultTypes.JSON
+    FetchResultTypes.JSON,
   );
   return members;
 }
@@ -20,18 +20,18 @@ export async function getCardsForMember(
   trelloId: string,
   boardId = process.env.TRELLO_BOARD_ID,
   key = process.env.TRELLO_KEY,
-  token = process.env.TRELLO_TOKEN
+  token = process.env.TRELLO_TOKEN,
 ): Promise<MemberCards[]> {
   const cards = await fetch<MemberCards[]>(
     `https://api.trello.com/1/members/${trelloId}/cards?key=${key}&token=${token}`,
-    FetchResultTypes.JSON
+    FetchResultTypes.JSON,
   );
   return cards.filter(val => val.idBoard === boardId && !val.dueComplete);
 }
 
 export async function getTrelloIdFromDiscordId(
   user: Snowflake,
-  prisma: PrismaClient
+  prisma: PrismaClient,
 ): Promise<string> {
   const data = await prisma.trelloUser.findFirst({
     where: { discordId: user.toString() },

@@ -26,7 +26,7 @@ export default class Reload extends CxCommand {
     } else {
       return message.channel.send(
         "Reloaded piece: " +
-          (await args.pick("Piece").then(piece => piece.reload()))
+          (await args.pick("Piece").then(piece => piece.reload())),
       );
     }
   }

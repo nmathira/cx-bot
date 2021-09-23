@@ -33,7 +33,7 @@ export default class Ping extends CxCommand {
             .addField("Aliases: ", command.aliases.toString())
             .addField(
               "Usages: ",
-              command.usage ? command.usage : "No Usage Provided."
+              command.usage ? command.usage : "No Usage Provided.",
             )
             .addField(
               "Examples: ",
@@ -41,7 +41,7 @@ export default class Ping extends CxCommand {
                 ? "No Examples Provided."
                 : command["examples"]
                     .map((example: string) => `\`${example}\``)
-                    .toString()
+                    .toString(),
             ),
         ],
       });
@@ -62,7 +62,7 @@ export default class Ping extends CxCommand {
     for (const [category, commands] of Object.entries(allCommands)) {
       embed.addField(
         "**" + category + "**",
-        commands.map(cmd => `\`${cmd.name}\``).join(", ")
+        commands.map(cmd => `\`${cmd.name}\``).join(", "),
       );
     }
     embed.setFooter("cx  help [command] for more information for a command");

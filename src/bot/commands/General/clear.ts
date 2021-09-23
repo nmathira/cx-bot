@@ -26,7 +26,7 @@ export default class Clear extends CxCommand {
   @RequiresPermissions("MANAGE_MESSAGES")
   public async run(
     message: Message,
-    args: Args
+    args: Args,
   ): Promise<Message | Collection<Snowflake, Message>> {
     const number = await args.pick("number", { maximum: 99, minimum: 0 });
     const channel = message.channel as

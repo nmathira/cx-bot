@@ -22,12 +22,12 @@ export default class Stats extends CxCommand {
         this.container.client.generateInvite({
           scopes: ["bot"],
           permissions: ["ADMINISTRATOR"],
-        })
+        }),
       )
       .addField(
         "Guilds: ",
         this.container.client.guilds.cache.size.toString(),
-        true
+        true,
       )
       .addField("Discord.js", "v" + version.split("-")[0], true)
       .addField("NodeJS", process.version, true)
@@ -38,12 +38,12 @@ export default class Stats extends CxCommand {
           1024 /
           1024
         ).toFixed(2)} MiB`,
-        true
+        true,
       )
       .setFooter(
         `PID: ${process.pid.toString()} | ${
           (await safeExec("git rev-parse --short HEAD")).stdout
-        }`
+        }`,
       );
     return await message.channel.send({ embeds: [embed] });
   }

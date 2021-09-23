@@ -8,7 +8,7 @@ export default class Exit extends Listener {
 
   public run(): void {
     this.container.logger.fatal(
-      "[CxBot] CxBot has been told to shutdown, so it will."
+      "[CxBot] CxBot has been told to shutdown, so it will.",
     );
     this.container.client.destroy();
     container.database.$disconnect();

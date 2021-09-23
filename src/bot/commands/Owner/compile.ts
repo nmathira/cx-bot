@@ -24,7 +24,7 @@ export default class Compile extends CxCommand {
       .setDescription(
         stderr === ""
           ? "The core of CxBot has been backed up in memory, and will still function normally. However, if there were any breaking changes in the previous versions, make sure to restart me at your earliest convinience!"
-          : codeBlock("bash", stderr)
+          : codeBlock("bash", stderr),
       );
     return message.channel.send({ embeds: [embed] });
   }

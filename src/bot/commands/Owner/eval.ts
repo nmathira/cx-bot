@@ -24,7 +24,7 @@ import { Stopwatch } from "@sapphire/stopwatch";
 export class UserCommand extends CxCommand {
   public async run(
     message: Message,
-    args: Args
+    args: Args,
   ): Promise<Message | CxEmbed | null> {
     const code = await args.rest("string");
 
@@ -63,7 +63,7 @@ export class UserCommand extends CxCommand {
   private async eval(
     message: Message,
     code: string,
-    flags: { async: boolean; depth: number; showHidden: boolean }
+    flags: { async: boolean; depth: number; showHidden: boolean },
   ) {
     if (flags.async) code = `(async () => {\n${code}\n})();`;
 

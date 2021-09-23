@@ -21,12 +21,12 @@ export default class Define extends CxCommand {
       .pick("string")
       .catch(message =>
         message.channel.send(
-          "Please pass in a word that you would like to define"
-        )
+          "Please pass in a word that you would like to define",
+        ),
       );
     const dictionary = await fetch<never>(
       `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.DICTIONARY_TOKEN}`,
-      FetchResultTypes.JSON
+      FetchResultTypes.JSON,
     );
     if (dictionary === [] || dictionary[0]["shortdef"] === undefined)
       return message.channel.send("that word doesn't seem to exist");

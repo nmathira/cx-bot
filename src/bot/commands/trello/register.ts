@@ -17,7 +17,7 @@ export default class Register extends CxCommand {
     const arg = await args.pickResult("trelloMember");
     if (!arg.success)
       return message.channel.send(
-        "that wasn't a valid member in the Explore Hack's Trello Board!"
+        "that wasn't a valid member in the Explore Hack's Trello Board!",
       );
     await this.container.database.trelloUser
       .create({
@@ -28,11 +28,11 @@ export default class Register extends CxCommand {
       })
       .catch(() => {
         message.channel.send(
-          "You are already registered for CxBot's Trello Integration!"
+          "You are already registered for CxBot's Trello Integration!",
         );
       });
     return message.channel.send(
-      "success! You have been registered into CxBot's Register Integration"
+      "success! You have been registered into CxBot's Register Integration",
     );
   }
 }

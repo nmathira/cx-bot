@@ -67,7 +67,7 @@ export class UserCommand extends CxCommand {
   ) {
     if (flags.async) code = `(async () => {\n${code}\n})();`;
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // noinspection JSUnusedLocalSymbols
     const msg = message;
 
     let success = true;

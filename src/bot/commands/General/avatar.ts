@@ -16,7 +16,8 @@ import CxEmbed from "@lib/extensions/CxEmbed";
 })
 export default class Avatar extends CxCommand {
   async run(message: Message, args: Args): Promise<Message> {
-    const size = parseInt(args.getOption("size")) ?? 2048;
+    //le lazy problem solver
+    const size = parseInt(args.getOption("size") ?? "2048") ?? 2048;
     const user: User = await args.pick("user").catch(() => message.author);
     return await message.channel.send({
       embeds: [

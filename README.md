@@ -1,6 +1,7 @@
 # CxBot
 
 ## A Discord Bot based on Discord.js and the Sapphire Framework
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ae9fadb699b24688a4cdfaa2c2c4804f)](https://app.codacy.com/gh/Neragin/cx-bot?utm_source=github.com&utm_medium=referral&utm_content=Neragin/cx-bot&utm_campaign=Badge_Grade_Settings)
 
 CxBot is a Discord bot that allows me to automate and improve many aspects of
 Discord.

@@ -13,14 +13,14 @@ Discord.
 
 2. Fill out a new file called .env with the template in .env.schema
 
-3. run `tsc` and compile the project
+3. Run `tsc` and compile the project
 
 4. If the compilation succeeded, proceed to run the bot by doing `node dist &`
 
 5. If you want to work with trello integration, you will need a postgres
    database. Use prisma to generate the tables and such. To do that,
 
-   1. set the database url in the `.env` file. It should look something
+   1. Set the database url in the `.env` file. It should look something
       like: `DATABASE_URL="postgres://{user}:{password}@{location[localhost]}:{port}/{dbname}&schema={schema type [probably public]}"`
 
    2. After, run `npx prisma migrate dev --name init`

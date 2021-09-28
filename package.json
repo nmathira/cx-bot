@@ -16,31 +16,31 @@
   "dependencies": {
     "@prisma/client": "^2.29.1",
     "@sapphire/decorators": "^2.2.0",
-    "@sapphire/discord.js-utilities": "^1.6.0",
+    "@sapphire/discord.js-utilities": "^2.0.0",
     "@sapphire/fetch": "^1.0.5",
     "@sapphire/framework": "^2.0.0-next.71c18830.0",
     "@sapphire/pieces": "^3.0.0",
     "@sapphire/stopwatch": "^1.1.4",
     "@sapphire/type": "^2.0.11",
-    "@sapphire/utilities": "^1.7.0",
+    "@sapphire/utilities": "^2.0.0",
     "bufferutil": "^4.0.3",
     "colorette": "^2.0.2",
     "discord.js": "^13.0.1",
     "dotenv-extended": "^2.9.0",
     "module-alias": "^2.2.2",
     "node-cron": "^3.0.0",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.0.0",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "utf-8-validate": "^5.0.5",
     "zlib-sync": "^0.1.7"
   },
   "devDependencies": {
-    "@types/node": "^16.3.3",
-    "@types/node-cron": "^2.0.4",
-    "@types/node-fetch": "^2.5.11",
+    "@types/node": "16.9.6",
+    "@types/node-cron": "2.0.4",
+    "@types/node-fetch": "3.0.2",
     "prettier": "2.4.1",
-    "prisma": "^2.29.1"
+    "prisma": "2.30.3"
   },
   "_moduleAliases": {
     "@lib": "dist/lib",

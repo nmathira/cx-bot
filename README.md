@@ -20,7 +20,7 @@ Discord.
 5. If you want to work with trello integration, you will need a postgres
    database. Use prisma to generate the tables and such. To do that,
 
-   1. set the databse url in the `.env` file. It should look something
+   1. set the database url in the `.env` file. It should look something
       like: `DATABASE_URL="postgres://{user}:{password}@{location[localhost]}:{port}/{dbname}&schema={schema type [probably public]}"`
 
    2. After, run `npx prisma migrate dev --name init`

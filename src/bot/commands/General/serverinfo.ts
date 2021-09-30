@@ -14,7 +14,7 @@ import CxEmbed from "@lib/extensions/CxEmbed";
   preconditions: ["GuildOnly"],
   usage: "cx serverinfo",
 })
-export default class Userinfo extends CxCommand {
+export default class Serverinfo extends CxCommand {
   async run(message: Message): Promise<Message | null> {
     let guild = message.guild;
     return message.channel.send({
@@ -22,8 +22,13 @@ export default class Userinfo extends CxCommand {
         new CxEmbed()
           .setTitle("Info about: " + message.guild!.name)
           .setThumbnail(guild!.iconURL({ dynamic: true })!)
-          .addField("Created at: ", guild!.createdAt.toDateString(), true)
-          .setColor("RANDOM")
+          .addField(
+            "Owned by: ",
+            await guild.fetchOwner().then(member => member.toString()),
+          )
+          .addField("Members: ", guild.memberCount.toString(), true)
+          .addField("Channels: ", guild.channels.cache.size.toString(), true)
+          .addField("Created at: ", guild!.createdAt.toDateString())
           .setFooter(guild!.id),
       ],
     });

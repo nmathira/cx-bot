@@ -22,8 +22,8 @@ export default class Avatar extends CxCommand {
     return await message.channel.send({
       embeds: [
         new CxEmbed()
-          .setTitle("Avatar of: " + message.author.username)
-          .setImage(user.displayAvatarURL({ size: size as AllowedImageSize })),
+          .setTitle("Avatar of: " + user.username)
+          .setImage(user.displayAvatarURL({ size: size as AllowedImageSize, dynamic: true })),
       ],
     });
   }

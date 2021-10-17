@@ -15,14 +15,13 @@ import { Stopwatch } from "@sapphire/stopwatch";
   detailedDescription:
     "Uses the eval() function to evaluate javascript in CxBot.",
   examples: ["cx eval"],
-  category: "Owner",
   quotes: [],
   preconditions: ["OwnerOnly"],
   flags: ["async", "hidden", "showHidden", "silent", "s"],
   options: ["depth"],
 })
 export class UserCommand extends CxCommand {
-  public async run(
+  public async messageRun(
     message: Message,
     args: Args,
   ): Promise<Message | CxEmbed | null> {

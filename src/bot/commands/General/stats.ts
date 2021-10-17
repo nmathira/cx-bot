@@ -7,7 +7,6 @@ import CxEmbed from "@lib/extensions/CxEmbed";
 import { safeExec } from "@lib/utils/util";
 
 @ApplyOptions<CxCommandOptions>({
-  category: "Utilities",
   description: "sends the ping of CxBot.",
   detailedDescription:
     "Sends the ping of CxBot's connection to Discord, as well as the ping from Discord.",
@@ -15,7 +14,7 @@ import { safeExec } from "@lib/utils/util";
   usage: "cx stats",
 })
 export default class Stats extends CxCommand {
-  async run(message: Message): Promise<Message> {
+  async messageRun(message: Message): Promise<Message> {
     const embed = new CxEmbed()
       .setTitle("CxBot's Invite!")
       .setURL(

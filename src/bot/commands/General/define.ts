@@ -8,7 +8,6 @@ import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["leo"],
-  category: "Utilities",
   description: "defines words for you.",
   detailedDescription:
     "defines inputted words using the Merriam Webster Dictionary",
@@ -16,7 +15,7 @@ import CxEmbed from "@lib/extensions/CxEmbed";
   usage: "cx define [word]",
 })
 export default class Define extends CxCommand {
-  public async run(message: Message, args: Args): Promise<Message> {
+  public async messageRun(message: Message, args: Args): Promise<Message> {
     const word = await args
       .pick("string")
       .catch(message =>

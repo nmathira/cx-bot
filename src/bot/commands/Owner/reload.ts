@@ -5,7 +5,6 @@ import CxCommand from "@lib/extensions/CxCommand";
 import type { Args } from "@sapphire/framework";
 
 @ApplyOptions<CxCommandOptions>({
-  category: "Owner",
   description: "reloads the command specified",
   detailedDescription:
     "Sends the ping of CxBot's connection to Discord, as well as the ping from Discord.",
@@ -14,7 +13,7 @@ import type { Args } from "@sapphire/framework";
   usage: "cx reload {command}",
 })
 export default class Reload extends CxCommand {
-  async run(message: Message, args: Args): Promise<Message> {
+  async messageRun(message: Message, args: Args): Promise<Message> {
     if (args.finished) {
       for (const store of this.container.stores.values()) {
         store.forEach(piece => {

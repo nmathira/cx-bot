@@ -9,7 +9,6 @@ import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["commands"],
-  category: "Utilities",
   description: "shows what commands in CxBot do.",
   detailedDescription:
     "Shows information on CxBot's commands and how to use them.",
@@ -17,7 +16,7 @@ import CxEmbed from "@lib/extensions/CxEmbed";
   usage: "cx help [command]",
 })
 export default class Ping extends CxCommand {
-  async run(message: Message, args: Args): Promise<Message> {
+  async messageRun(message: Message, args: Args): Promise<Message> {
     if (args.finished) {
       return message.channel.send({ embeds: [this.sortAllCommands()] });
     } else {

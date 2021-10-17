@@ -6,7 +6,6 @@ import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["si"],
-  category: "Utilities",
   description: "Gets information about a guild.",
   detailedDescription:
     "Gets information about the guild that the command is ran in.",
@@ -15,7 +14,7 @@ import CxEmbed from "@lib/extensions/CxEmbed";
   usage: "cx serverinfo",
 })
 export default class Serverinfo extends CxCommand {
-  async run(message: Message): Promise<Message | null> {
+  async messageRun(message: Message): Promise<Message | null> {
     let guild = message.guild;
     return message.channel.send({
       embeds: [

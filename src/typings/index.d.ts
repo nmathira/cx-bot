@@ -17,7 +17,6 @@ export interface safeExecResult {
 }
 
 export interface CxCommandOptions extends CommandOptions {
-  category?: string;
   examples?: string[];
   usage?: string;
 }

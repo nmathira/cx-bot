@@ -1,5 +1,9 @@
 import type { Args } from "@sapphire/framework";
-import { ApplyOptions, RequiresUserPermissions, RequiresClientPermissions } from "@sapphire/decorators";
+import {
+  ApplyOptions,
+  RequiresUserPermissions,
+  RequiresClientPermissions,
+} from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
 import CxCommand from "@lib/extensions/CxCommand";
 import type {

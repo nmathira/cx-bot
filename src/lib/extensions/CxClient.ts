@@ -21,7 +21,11 @@ export default class CxClient extends SapphireClient {
         "GUILD_MESSAGE_REACTIONS",
         "GUILD_VOICE_STATES",
       ],
-      logger: { level: LogLevel.Debug },
+      logger: { level: LogLevel.Warn },
+      defaultCooldown: {
+        limit: 1,
+        delay: 3,
+      },
     });
     // Store.defaultStrategy.onLoad = (store, piece: Piece) => container.logger.debug(`Loading ${store.name}:${piece.name}`);
     this.stores.register(new TaskStore());

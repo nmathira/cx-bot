@@ -7,7 +7,7 @@
 //   getCardsForMember,
 //   getTrelloIdFromDiscordId,
 // } from "@lib/trello/trello";
-// 
+//
 // @ApplyOptions<CxCommandOptions>({
 //   description: "Shows all unfinished tasks you have left on trello",
 //   detailedDescription: "Shows all unfinished tasks you have left on trello",

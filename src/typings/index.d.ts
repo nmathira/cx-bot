@@ -124,7 +124,6 @@ export interface TaskJSON extends PieceJSON {
 }
 
 export interface CxCommandJSON extends CommandJSON {
-  category: Readonly<string>;
   examples: string | Readonly<string[]>;
   usage: string;
 }

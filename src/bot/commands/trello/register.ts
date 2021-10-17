@@ -3,7 +3,7 @@
 // import type { CxCommandOptions } from "@typings/index";
 // import CxCommand from "@lib/extensions/CxCommand";
 // import type { Args } from "@sapphire/framework";
-// 
+//
 // @ApplyOptions<CxCommandOptions>({
 //   description: "registers your trello username",
 //   detailedDescription:

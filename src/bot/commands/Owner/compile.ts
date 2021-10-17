@@ -8,7 +8,6 @@ import { codeBlock } from "@sapphire/utilities";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["tsc"],
-  category: "Owner",
   usage: "cx compile",
   examples: ["cx compile"],
   preconditions: ["OwnerOnly"],
@@ -16,7 +15,7 @@ import { codeBlock } from "@sapphire/utilities";
   detailedDescription: "Compiles CxBot's typescript code into runnable code.",
 })
 export default class Compile extends CxCommand {
-  async run(message: Message): Promise<Message> {
+  async messageRun(message: Message): Promise<Message> {
     const { stderr } = await safeExec("npx tsc");
     console.log(stderr);
     const embed = new MessageEmbed()

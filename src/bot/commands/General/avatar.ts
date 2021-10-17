@@ -7,7 +7,6 @@ import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["av"],
-  category: "Utilities",
   description: "shows the avatar of the user passed in.",
   detailedDescription:
     "Shows the avatar of the user passed in, defaulting to the author of the command if no user is passed in.",
@@ -15,7 +14,7 @@ import CxEmbed from "@lib/extensions/CxEmbed";
   usage: "cx avatar",
 })
 export default class Avatar extends CxCommand {
-  async run(message: Message, args: Args): Promise<Message> {
+  public async messageRun(message: Message, args: Args): Promise<Message> {
     //le lazy problem solver
     const size = parseInt(args.getOption("size") ?? "2048") ?? 2048;
     const user: User = await args.pick("user").catch(() => message.author);

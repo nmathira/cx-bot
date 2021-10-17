@@ -8,26 +8,14 @@ export default abstract class CxCommand extends Command {
 
   protected constructor(context: PieceContext, options: CxCommandOptions) {
     super(context, options);
-    this.category = options.category ?? "";
     this.examples = options.examples ?? [""];
     this.usage = options.usage ?? "";
-  }
-
-  private _category: Readonly<string>;
-
-  public get category(): Readonly<string> {
-    return this._category;
-  }
-
-  public set category(value: Readonly<string>) {
-    this._category = value;
   }
 
   // eslint-disable-next-line
   public toJSON(): CxCommandJSON {
     return {
       ...super.toJSON(),
-      category: this.category,
       examples: this.examples,
       usage: this.usage,
     };

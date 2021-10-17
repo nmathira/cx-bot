@@ -7,7 +7,6 @@ import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["ui"],
-  category: "Utilities",
   description: "Gets information about a user.",
   detailedDescription:
     "Gets information about a user, if no arguments are passed in, it will default to the message author.",
@@ -15,7 +14,7 @@ import CxEmbed from "@lib/extensions/CxEmbed";
   usage: "cx userinfo",
 })
 export default class Userinfo extends CxCommand {
-  async run(message: Message, args: Args): Promise<Message> {
+  async messageRun(message: Message, args: Args): Promise<Message> {
     const member = await args.pick("member").catch(() => message.member);
     const user = member.user;
     return message.channel.send({

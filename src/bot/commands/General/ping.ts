@@ -4,7 +4,6 @@ import type { CxCommandOptions } from "@typings/index";
 import CxCommand from "@lib/extensions/CxCommand";
 
 @ApplyOptions<CxCommandOptions>({
-  category: "Utilities",
   description: "sends the ping of CxBot.",
   detailedDescription:
     "Sends the ping of CxBot's connection to Discord, as well as the ping from Discord.",
@@ -12,7 +11,7 @@ import CxCommand from "@lib/extensions/CxCommand";
   usage: "cx ping",
 })
 export default class Ping extends CxCommand {
-  async run(message: Message): Promise<Message> {
+  async messageRun(message: Message): Promise<Message> {
     const msg = await message.channel.send("you have good eyes?");
     return await msg.edit(
       `Heartbeat: ${Math.round(this.container.client.ws.ping)}ms. API Latency ${

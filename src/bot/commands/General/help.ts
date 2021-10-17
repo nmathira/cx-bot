@@ -9,7 +9,6 @@ import CxEmbed from "@lib/extensions/CxEmbed";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["commands"],
-  category: "Utilities",
   description: "shows what commands in CxBot do.",
   detailedDescription:
     "Shows information on CxBot's commands and how to use them.",
@@ -17,13 +16,15 @@ import CxEmbed from "@lib/extensions/CxEmbed";
   usage: "cx help [command]",
 })
 export default class Ping extends CxCommand {
-  async run(message: Message, args: Args): Promise<Message> {
+  async messageRun(message: Message, args: Args): Promise<Message> {
     if (args.finished) {
       return message.channel.send({ embeds: [this.sortAllCommands()] });
     } else {
+      const arg = await args.pick("string");
+      // if (!this.container.stores.has(arg)) return message.channel.send("That command doesn't exist!");
       const command = this.container.stores
         .get("commands")
-        .get(await args.pick("string")) as unknown as CxCommand;
+        .get(arg) as CxCommand;
       return message.channel.send({
         embeds: [
           new CxEmbed()
@@ -57,15 +58,16 @@ export default class Ping extends CxCommand {
         else acc[curr.category] = [curr];
         return acc;
       }, {} as Record<string, CxCommand[]>);
-    const embed = new CxEmbed().setTitle("Help | All");
 
+    const embed = new CxEmbed().setTitle("Help | All");
     for (const [category, commands] of Object.entries(allCommands)) {
       embed.addField(
         "**" + category + "**",
         commands.map(cmd => `\`${cmd.name}\``).join(", "),
       );
     }
-    embed.setFooter("cx  help [command] for more information for a command");
-    return embed;
+    return embed.setFooter(
+      "cx  help [command] for more information for a command",
+    );
   }
 }

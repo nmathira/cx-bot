@@ -21,7 +21,7 @@ export abstract class Task extends Piece {
   }
 
   public onUnload(): void {
-    if (this.cronJob) this.cronJob.stop().destroy();
+    if (this.cronJob) this.cronJob.stop();
   }
 
   public toJSON(): TaskJSON {

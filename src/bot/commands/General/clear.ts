@@ -1,5 +1,9 @@
 import type { Args } from "@sapphire/framework";
-import { ApplyOptions, RequiresPermissions } from "@sapphire/decorators";
+import {
+  ApplyOptions,
+  RequiresUserPermissions,
+  RequiresClientPermissions,
+} from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
 import CxCommand from "@lib/extensions/CxCommand";
 import type {
@@ -13,7 +17,6 @@ import type {
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["purge", "bulkdelete"],
-  category: "Utilities",
   description: "clears messages in a text channel",
   detailedDescription:
     "Clears messages that are sent in a Server's Text Channel. Needs ManageMessages to work.",
@@ -23,8 +26,9 @@ import type {
   usage: "cx clear [amount]",
 })
 export default class Clear extends CxCommand {
-  @RequiresPermissions("MANAGE_MESSAGES")
-  public async run(
+  @RequiresUserPermissions("MANAGE_MESSAGES")
+  @RequiresClientPermissions("MANAGE_MESSAGES")
+  public async messageRun(
     message: Message,
     args: Args,
   ): Promise<Message | Collection<Snowflake, Message>> {

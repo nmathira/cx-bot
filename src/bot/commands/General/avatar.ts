@@ -20,14 +20,12 @@ export default class Avatar extends CxCommand {
     const user: User = await args.pick("user").catch(() => message.author);
     return await message.channel.send({
       embeds: [
-        new CxEmbed()
-          .setTitle("Avatar of: " + user.username)
-          .setImage(
-            user.displayAvatarURL({
-              size: size as AllowedImageSize,
-              dynamic: true,
-            }),
-          ),
+        new CxEmbed().setTitle("Avatar of: " + user.username).setImage(
+          user.displayAvatarURL({
+            size: size as AllowedImageSize,
+            dynamic: true,
+          }),
+        ),
       ],
     });
   }

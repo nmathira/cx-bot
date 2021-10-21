@@ -22,7 +22,12 @@ export default class Avatar extends CxCommand {
       embeds: [
         new CxEmbed()
           .setTitle("Avatar of: " + user.username)
-          .setImage(user.displayAvatarURL({ size: size as AllowedImageSize, dynamic: true })),
+          .setImage(
+            user.displayAvatarURL({
+              size: size as AllowedImageSize,
+              dynamic: true,
+            }),
+          ),
       ],
     });
   }

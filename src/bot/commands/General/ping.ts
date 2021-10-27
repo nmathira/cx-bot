@@ -2,6 +2,7 @@ import type { Message } from "discord.js";
 import { ApplyOptions } from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
 import CxCommand from "@lib/extensions/CxCommand";
+import { send } from "@sapphire/plugin-editable-commands";
 
 @ApplyOptions<CxCommandOptions>({
   description: "sends the ping of CxBot.",

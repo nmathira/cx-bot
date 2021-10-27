@@ -5,6 +5,7 @@ import type { CxCommandOptions } from "@typings/index";
 import CxCommand from "@lib/extensions/CxCommand";
 import CxEmbed from "@lib/extensions/CxEmbed";
 import { safeExec } from "@lib/utils/util";
+import { send } from "@sapphire/plugin-editable-commands";
 
 @ApplyOptions<CxCommandOptions>({
   description: "sends the ping of CxBot.",
@@ -44,6 +45,6 @@ export default class Stats extends CxCommand {
           (await safeExec("git rev-parse --short HEAD")).stdout
         }`,
       );
-    return await message.channel.send({ embeds: [embed] });
+    return await send(message, { embeds: [embed] });
   }
 }

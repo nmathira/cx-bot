@@ -4,6 +4,7 @@ import type { CxCommandOptions } from "@typings/index";
 import CxCommand from "@lib/extensions/CxCommand";
 import type { Args } from "@sapphire/framework";
 import CxEmbed from "@lib/extensions/CxEmbed";
+import { send } from "@sapphire/plugin-editable-commands";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["ui"],
@@ -17,7 +18,7 @@ export default class Userinfo extends CxCommand {
   async messageRun(message: Message, args: Args): Promise<Message> {
     const member = await args.pick("member").catch(() => message.member);
     const user = member.user;
-    return message.channel.send({
+    return send(message, {
       embeds: [
         new CxEmbed()
           .setTitle("Info about: " + user.tag)

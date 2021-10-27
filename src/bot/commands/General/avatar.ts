@@ -4,6 +4,7 @@ import { ApplyOptions } from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
 import CxCommand from "@lib/extensions/CxCommand";
 import CxEmbed from "@lib/extensions/CxEmbed";
+import { send } from "@sapphire/plugin-editable-commands";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["av"],
@@ -18,7 +19,7 @@ export default class Avatar extends CxCommand {
     //le lazy problem solver
     const size = parseInt(args.getOption("size") ?? "2048") ?? 2048;
     const user: User = await args.pick("user").catch(() => message.author);
-    return await message.channel.send({
+    return await send(message, {
       embeds: [
         new CxEmbed().setTitle("Avatar of: " + user.username).setImage(
           user.displayAvatarURL({

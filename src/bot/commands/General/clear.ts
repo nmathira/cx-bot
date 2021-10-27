@@ -14,6 +14,7 @@ import type {
   TextChannel,
   ThreadChannel,
 } from "discord.js";
+import { send } from "@sapphire/plugin-editable-commands";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["purge", "bulkdelete"],

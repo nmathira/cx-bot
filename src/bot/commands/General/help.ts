@@ -6,6 +6,7 @@ import { ApplyOptions } from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
 import CxCommand from "@lib/extensions/CxCommand";
 import CxEmbed from "@lib/extensions/CxEmbed";
+import { send } from "@sapphire/plugin-editable-commands";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["commands"],
@@ -25,7 +26,7 @@ export default class Ping extends CxCommand {
       const command = this.container.stores
         .get("commands")
         .get(arg) as CxCommand;
-      return message.channel.send({
+      return send(message, {
         embeds: [
           new CxEmbed()
             .setTitle(`Help | ${command.name}`)

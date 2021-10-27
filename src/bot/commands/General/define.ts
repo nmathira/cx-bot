@@ -5,6 +5,7 @@ import type { Message } from "discord.js";
 import { ApplyOptions } from "@sapphire/decorators";
 import { fetch, FetchResultTypes } from "@sapphire/fetch";
 import CxEmbed from "@lib/extensions/CxEmbed";
+import { send } from "@sapphire/plugin-editable-commands";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["leo"],
@@ -29,7 +30,7 @@ export default class Define extends CxCommand {
     );
     if (dictionary === [] || dictionary[0]["shortdef"] === undefined)
       return message.channel.send("that word doesn't seem to exist");
-    return message.channel.send({
+    return send(message, {
       embeds: [
         new CxEmbed()
           .setTitle("Definition for: " + word)

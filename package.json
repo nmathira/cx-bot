@@ -20,6 +20,7 @@
     "@sapphire/fetch": "^2.0.0",
     "@sapphire/framework": "^2.0.0-next.71c18830.0",
     "@sapphire/pieces": "^3.0.0",
+    "@sapphire/plugin-editable-commands": "^1.0.1",
     "@sapphire/stopwatch": "^1.1.4",
     "@sapphire/type": "^2.0.11",
     "@sapphire/utilities": "^3.0.0",

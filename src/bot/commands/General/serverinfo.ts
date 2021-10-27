@@ -3,6 +3,7 @@ import { ApplyOptions } from "@sapphire/decorators";
 import type { CxCommandOptions } from "@typings/index";
 import CxCommand from "@lib/extensions/CxCommand";
 import CxEmbed from "@lib/extensions/CxEmbed";
+import { send } from "@sapphire/plugin-editable-commands";
 
 @ApplyOptions<CxCommandOptions>({
   aliases: ["si"],
@@ -16,7 +17,7 @@ import CxEmbed from "@lib/extensions/CxEmbed";
 export default class Serverinfo extends CxCommand {
   async messageRun(message: Message): Promise<Message | null> {
     let guild = message.guild;
-    return message.channel.send({
+    return send(message, {
       embeds: [
         new CxEmbed()
           .setTitle("Info about: " + message.guild!.name)

@@ -6,7 +6,7 @@ import type { Args } from "@sapphire/framework";
 
 @ApplyOptions<CxCommandOptions>({
   description: "reloads the command specified",
-  detailedDescription:
+  "detailedDescription":
     "Sends the ping of CxBot's connection to Discord, as well as the ping from Discord.",
   examples: ["cx reload", "cx reload [command]"],
   preconditions: ["OwnerOnly"],

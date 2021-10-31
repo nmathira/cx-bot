@@ -1,6 +1,7 @@
 import { exec as childProcessExec } from "child_process";
 import type { safeExecResult } from "../../typings";
 import { promisify } from "util";
+import fetch from "node-fetch"
 
 export async function safeExec(command: string): Promise<safeExecResult> {
   try {
@@ -14,6 +15,13 @@ export async function safeExec(command: string): Promise<safeExecResult> {
       exitCode: ((err as Error & { code: number }).code ?? 1) as number,
     };
   }
+}
+
+export async function getCat() {
+
+  let cat = await fetch("https://api.thecatapi.com/v1/images/search", { headers: {"X-API-KEY": process.env.CAT_API_KEY}})
+  return cat.url;
+
 }
 
 const exec = promisify(childProcessExec);

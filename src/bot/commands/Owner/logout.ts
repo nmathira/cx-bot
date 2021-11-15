@@ -5,12 +5,11 @@ import type { Message } from "discord.js";
 
 @ApplyOptions<CxCommandOptions>({
   description: "makes bot go offline",
-  "detailedDescription":
-      "Stops.",
+  detailedDescription: "Stops.",
   examples: ["cx reload", "cx reload [command]"],
   preconditions: ["OwnerOnly"],
   usage: "cx reload {command}",
-  aliases: ["sleep", "shutdown"]
+  aliases: ["sleep", "shutdown"],
 })
 export default class Logout extends CxCommand {
   public async messageRun(message: Message): Promise<void> {

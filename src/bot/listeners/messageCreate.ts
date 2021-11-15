@@ -8,9 +8,10 @@ export default class onMessage extends Listener {
   }
 
   public run(message: Message): Promise<Message> {
-    if (message.guildId = "893383816402575401") {
-      if (message.content.includes("fr")) return message.channel.send("ong")
-      if (message.content.includes("ong") && !message.author.bot) return message.channel.send("no cap")
+    if ((message.guildId = "893383816402575401")) {
+      if (message.content.includes("fr")) return message.channel.send("ong");
+      if (message.content.includes("ong") && !message.author.bot)
+        return message.channel.send("no cap");
     }
   }
 }

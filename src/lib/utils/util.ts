@@ -1,7 +1,7 @@
 import { exec as childProcessExec } from "child_process";
-import type { safeExecResult } from "../../typings";
+import type { safeExecResult, catApiResult } from "../../typings";
 import { promisify } from "util";
-import fetch from "node-fetch"
+import { fetch, FetchResultTypes } from "@sapphire/fetch";
 
 export async function safeExec(command: string): Promise<safeExecResult> {
   try {
@@ -17,11 +17,12 @@ export async function safeExec(command: string): Promise<safeExecResult> {
   }
 }
 
-export async function getCat() {
-
-  let cat = await fetch("https://api.thecatapi.com/v1/images/search", { headers: {"X-API-KEY": process.env.CAT_API_KEY}})
+export async function getCat(): Promise<string> {
+  let cat = await fetch<catApiResult>(
+    "https://api.thecatapi.com/v1/images/search?api_key=16ff346b-d8eb-47ff-8c46-97ff92f549be",
+    FetchResultTypes.JSON,
+  );
   return cat.url;
-
 }
 
 const exec = promisify(childProcessExec);

@@ -21,6 +21,14 @@ export interface CxCommandOptions extends CommandOptions {
   usage?: string;
 }
 
+export interface catApiResult {
+  breeds: any[];
+  id: string;
+  url: string;
+  width: number;
+  height: number;
+}
+
 export interface GuildMessage extends Message {
   channel: Extract<TextBasedChannelTypes, GuildChannel>;
   readonly guild: Guild;

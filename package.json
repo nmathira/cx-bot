@@ -17,7 +17,7 @@
     "@prisma/client": "^3.0.0",
     "@sapphire/decorators": "^3.0.0",
     "@sapphire/discord.js-utilities": "^4.0.0",
-    "@sapphire/fetch": "^2.0.0",
+    "@sapphire/fetch": "^2.0.3",
     "@sapphire/framework": "^2.0.0-next.71c18830.0",
     "@sapphire/pieces": "^3.0.0",
     "@sapphire/plugin-editable-commands": "^1.0.1",
@@ -31,7 +31,6 @@
     "dotenv-extended": "^2.9.0",
     "module-alias": "^2.2.2",
     "node-cron": "^3.0.0",
-    "node-fetch": "^3.0.0",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "utf-8-validate": "^5.0.5",
@@ -40,7 +39,6 @@
   "devDependencies": {
     "@types/node": "16.11.6",
     "@types/node-cron": "3.0.0",
-    "@types/node-fetch": "3.0.2",
     "prettier": "2.4.1",
     "prisma": "3.4.1"
   },

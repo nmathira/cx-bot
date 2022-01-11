@@ -37,7 +37,7 @@
     "zlib-sync": "^0.1.7"
   },
   "devDependencies": {
-    "@types/node": "16.11.18",
+    "@types/node": "16.11.19",
     "@types/node-cron": "3.0.1",
     "prettier": "2.5.1",
     "prisma": "3.7.0"

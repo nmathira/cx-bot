@@ -40,7 +40,7 @@
     "@types/node": "16.11.24",
     "@types/node-cron": "3.0.1",
     "prettier": "2.5.1",
-    "prisma": "3.9.1"
+    "prisma": "3.9.2"
   },
   "_moduleAliases": {
     "@lib": "dist/lib",

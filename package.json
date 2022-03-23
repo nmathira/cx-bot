@@ -39,7 +39,7 @@
   "devDependencies": {
     "@types/node": "16.11.26",
     "@types/node-cron": "3.0.1",
-    "prettier": "2.5.1",
+    "prettier": "2.6.0",
     "prisma": "3.11.0"
   },
   "_moduleAliases": {

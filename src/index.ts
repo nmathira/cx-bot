@@ -3,5 +3,5 @@ import dotEnvExtended from "dotenv-extended";
 import CxClient from "@lib/extensions/CxClient";
 
 process.env.NODE_ENV ??= "development";
-dotEnvExtended.load();
+dotEnvExtended.load()
 new CxClient().start();
